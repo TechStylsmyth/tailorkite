@@ -145,3 +145,6 @@ dist/
 
 # jetbrains setting folder
 .idea/
+
+.env.deploy.local
+.vercel

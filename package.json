@@ -6,11 +6,17 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "dotenv -e .env.deploy.local -- sh -c \"vercel pull --yes --environment=production --scope $VERCEL_SCOPE --token $VERCEL_TOKEN && vercel build --scope $VERCEL_SCOPE --token $VERCEL_TOKEN && vercel deploy --prebuilt --prod --scope $VERCEL_SCOPE --token $VERCEL_TOKEN\"",
+    "deploy:preview": "dotenv -e .env.deploy.local -- sh -c \"vercel pull --yes --environment=preview --scope $VERCEL_SCOPE --token $VERCEL_TOKEN && vercel build --scope $VERCEL_SCOPE --token $VERCEL_TOKEN && vercel deploy --prebuilt --scope $VERCEL_SCOPE --token $VERCEL_TOKEN\""
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.13",
     "astro": "^5.13.6",
     "tailwindcss": "^4.1.13"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^10.0.0",
+    "vercel": "^47.0.6"
   }
 }
