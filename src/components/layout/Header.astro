@@ -1,4 +1,10 @@
 ---
+// IMPORT //
+import BrandLogo from "../BrandLogo.astro";
+import Button from "../Button.astro";
+import Hamburger from "../Hamburger.astro";
+
+// DATA //
 const headerItems = [
   { name: "Home", href: "#", active: true },
   { name: "About", href: "#" },
@@ -9,12 +15,14 @@ const headerItems = [
 ];
 ---
 
+<!-- Header Component -->
 <header>
   <div class="container mx-auto flex justify-between items-center py-2 px-4">
     <!-- Brand Logo -->
     <div class="">
       <a href="#">
-        <img src="/images/stylsmyth-light-logo.svg" alt="styl-smyth" />
+        <!-- Brand logo component -->
+        <BrandLogo variant="white" />
       </a>
     </div>
     <div class="flex-1">
@@ -38,23 +46,13 @@ const headerItems = [
             ))
           }
         </ul>
-        <div
-          class="bg-n-950 rounded-4xl text-n-50 text-base font-medium py-2.5 px-8 cursor-pointer flex gap-2 items-baseline"
-        >
-          <!-- Button  -->
-          <button class="cursor-pointer">Lets Talk</button>
-          <!-- Dot  -->
-          <span class="size-2 rounded-full bg-n-50"></span>
-        </div>
+
+        <!-- Button Component -->
+        <Button text={"Lets Talk"} variant="default" showRightDot />
       </nav>
 
-      <!-- Hamburger -->
-      <div
-        class="flex lg:hidden w-7 flex-col gap-2 cursor-pointer flex-1 justify-self-end"
-      >
-        <span class="h-0.5 bg-n-950"></span>
-        <span class="h-0.5 bg-n-950"></span>
-      </div>
+      <!-- Hamburger Component -->
+      <Hamburger />
     </div>
   </div>
 </header>
