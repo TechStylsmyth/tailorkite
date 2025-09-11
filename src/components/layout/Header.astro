@@ -1,7 +1,60 @@
 ---
-
+const headerItems = [
+  { name: "Home", href: "#", active: true },
+  { name: "About", href: "#" },
+  { name: "Services", href: "#" },
+  { name: "Life at STYL", href: "#" },
+  { name: "Case Studies", href: "#" },
+  { name: "Career", href: "#" },
+];
 ---
 
 <header>
-  <div></div>
+  <div class="container mx-auto flex justify-between items-center py-2 px-4">
+    <!-- Brand Logo -->
+    <div class="">
+      <a href="#">
+        <img src="/images/stylsmyth-light-logo.svg" alt="styl-smyth" />
+      </a>
+    </div>
+    <div class="flex-1">
+      <!-- Navbar -->
+      <nav class="hidden lg:flex lg:gap-10 xl:gap-18 items-center justify-end">
+        <!-- Pages Links -->
+        <ul class="flex lg:gap-9 xl:gap-14 font-medium text-base items-center">
+          {
+            headerItems.map((headerItem) => (
+              <li>
+                <a
+                  href={headerItem.href}
+                  class={headerItem.active ? "font-semibold relative" : null}
+                >
+                  {headerItem.name}
+                  {headerItem.active ? (
+                    <span class="absolute size-1.5 rounded-full bg-blue-500 -right-3 bottom-[4px]" />
+                  ) : null}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <div
+          class="bg-n-950 rounded-4xl text-n-50 text-base font-medium py-2.5 px-8 cursor-pointer flex gap-2 items-baseline"
+        >
+          <!-- Button  -->
+          <button class="cursor-pointer">Lets Talk</button>
+          <!-- Dot  -->
+          <span class="size-2 rounded-full bg-n-50"></span>
+        </div>
+      </nav>
+
+      <!-- Hamburger -->
+      <div
+        class="flex lg:hidden w-7 flex-col gap-2 cursor-pointer flex-1 justify-self-end"
+      >
+        <span class="h-0.5 bg-n-950"></span>
+        <span class="h-0.5 bg-n-950"></span>
+      </div>
+    </div>
+  </div>
 </header>
