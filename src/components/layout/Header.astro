@@ -5,29 +5,52 @@ import Hamburger from "../Hamburger.astro";
 import Navbar from "../Navbar.astro";
 
 // DATA //
-const navLinkItems = [
-  { name: "Home", href: "#", active: true },
-  { name: "About", href: "#" },
-  { name: "Services", href: "#" },
-  { name: "Life at STYL", href: "#" },
-  { name: "Case Studies", href: "#" },
-  { name: "Career", href: "#" },
+const baseItems = [
+  { name: "Home", href: "/", active: true },
+  { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "Life at STYL", href: "/life-at-styl" },
+  { name: "Case Studies", href: "/case-studies" },
+  { name: "Career", href: "/career" },
 ];
+
+// Normalize a path (removes trailing slash except for "/")
+function normalizePath(path: string): string {
+  if (path.endsWith("/") && path !== "/") {
+    // Remove last slash
+    return path.slice(0, -1);
+  }
+  return path;
+}
+
+// Get current path from Astro
+const currentPath = normalizePath(Astro.url.pathname);
+
+// Add active to current page path
+const navItemWithActive = baseItems.map((item) => {
+  const itemPath = normalizePath(item.href);
+
+  // Marks active if path matches
+  return {
+    ...item,
+    active: itemPath === currentPath,
+  };
+});
 ---
 
 <!-- Header Component -->
 <header>
   <div class="container mx-auto flex justify-between items-center py-2 px-4">
-    <!-- Brand Logo -->
-    <div class="">
-      <a href="#">
+    <!-- Logo Wrapper -->
+    <div>
+      <a href="/">
         <!-- Brand logo component -->
         <BrandLogo variant="white" classes="w-32 md:w-50 lg:w-53" />
       </a>
     </div>
-    <div class="">
+    <div>
       <!-- Navbar component -->
-      <Navbar navItems={navLinkItems} />
+      <Navbar navItems={navItemWithActive} />
 
       <!-- Hamburger Component -->
       <Hamburger />
