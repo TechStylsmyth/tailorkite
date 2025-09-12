@@ -3,9 +3,10 @@
 import BrandLogo from "../BrandLogo.astro";
 import Button from "../Button.astro";
 import Hamburger from "../Hamburger.astro";
+import Navbar from "../Navbar.astro";
 
 // DATA //
-const headerItems = [
+const navLinkItems = [
   { name: "Home", href: "#", active: true },
   { name: "About", href: "#" },
   { name: "Services", href: "#" },
@@ -22,34 +23,12 @@ const headerItems = [
     <div class="">
       <a href="#">
         <!-- Brand logo component -->
-        <BrandLogo variant="white" />
+        <BrandLogo variant="white" classes="w-32 md:w-50 lg:w-53" />
       </a>
     </div>
-    <div class="flex-1">
-      <!-- Navbar -->
-      <nav class="hidden lg:flex lg:gap-10 xl:gap-18 items-center justify-end">
-        <!-- Pages Links -->
-        <ul class="flex lg:gap-9 xl:gap-14 font-medium text-base items-center">
-          {
-            headerItems.map((headerItem) => (
-              <li>
-                <a
-                  href={headerItem.href}
-                  class={headerItem.active ? "font-semibold relative" : null}
-                >
-                  {headerItem.name}
-                  {headerItem.active ? (
-                    <span class="absolute size-1.5 rounded-full bg-blue-500 -right-3 bottom-[4px]" />
-                  ) : null}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-
-        <!-- Button Component -->
-        <Button text={"Lets Talk"} variant="default" showRightDot />
-      </nav>
+    <div class="">
+      <!-- Navbar component -->
+      <Navbar navItems={navLinkItems} />
 
       <!-- Hamburger Component -->
       <Hamburger />

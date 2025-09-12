@@ -2,15 +2,23 @@
 // Props
 interface Props {
   variant?: "default" | "white" | "black";
-  size?: number;
+  classes?: string;
+  width?: number;
+  height?: number;
 }
 
 // Default values
-const { variant = "default", size = 120 } = Astro.props;
+const { variant = "default", width = 120, height = 120, classes } = Astro.props;
 
 // Image path
 const imagePath = `/brand-logo/${variant}.svg`;
 ---
 
 <!-- BrandLogo Component -->
-<img src={imagePath} alt="Brand Logo" width={size} height={size} />
+<img
+  src={imagePath}
+  alt="Brand Logo"
+  width={width}
+  height={height}
+  class={classes}
+/>

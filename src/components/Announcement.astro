@@ -1,0 +1,32 @@
+---
+interface Props {
+  text: string;
+  linkText?: string;
+  linkHref?: string;
+}
+
+const { text, linkText, linkHref = "#" } = Astro.props;
+---
+
+<div class={`bg-blue-50 py-3`}>
+  <div
+    class="container mx-auto flex items-center justify-center gap-1 md:gap-1.5 lg:gap-2.5"
+  >
+    <!-- Icon -->
+    <img src="/images/celebration.png" alt="icon" class="w-6 md:w-9" />
+
+    <!-- Title text -->
+    <p class={`text-xs md:text-lg font-normal text-n-950`}>
+      {text}
+
+      <!-- Link -->
+      {
+        linkText && (
+          <a href={linkHref} class="text-red-500 ">
+            {linkText}
+          </a>
+        )
+      }
+    </p>
+  </div>
+</div>
