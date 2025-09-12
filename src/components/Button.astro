@@ -19,12 +19,14 @@ const {
 
 // Common class
 const baseClasses =
-  "bg-n-950 rounded-4xl text-n-50 text-base font-medium py-2.5 px-8 cursor-pointer flex gap-2 items-baseline transition-colors duration-200";
+  "rounded-4xl text-base font-medium py-2.5 px-8 cursor-pointer flex gap-2 items-baseline transition-colors duration-200";
 
 // Variant base classes
 const variants = {
-  solid: "bg-n-950 text-n-50 hover:bg-n-900",
-  outline: "border border-n-950 text-n-950 hover:bg-n-50 hover:text-n-900",
+  solid:
+    "border border-transparent bg-n-950 text-n-50 hover:bg-n-50 hover:text-n-950  hover:border-n-950 ",
+  outline:
+    "border border-n-950 bg-n-50 text-n-950 hover:bg-n-950 hover:text-n-50",
   default: "bg-gray-200 text-gray-900 hover:bg-gray-300",
 };
 
@@ -35,7 +37,7 @@ const classes = `${baseClasses} ${variants[variant]}`;
 <!-- Button -->
 <div class={classes}>
   <!-- Left dot -->
-  {showLeftDot && <span class=" size-2 rounded-full bg-n-50" />}
+  {showLeftDot && <span class=" size-2 rounded-full bg-current" />}
 
   <!-- Main Button with text -->
   <button onclick={onClick}>
@@ -43,5 +45,5 @@ const classes = `${baseClasses} ${variants[variant]}`;
   </button>
 
   <!-- Right dot -->
-  {showRightDot && <span class=" size-2 rounded-full bg-n-50" />}
+  {showRightDot && <span class=" size-2 rounded-full bg-current" />}
 </div>

@@ -1,0 +1,38 @@
+---
+import Button from "./Button.astro";
+
+// Props
+interface Props {
+  navItems: { name: string; href: string; active?: boolean }[];
+}
+
+const { navItems } = Astro.props;
+---
+
+<nav class="hidden lg:flex lg:gap-10 xl:gap-18 items-center justify-end">
+  <!-- Pages Links -->
+  <ul class="flex lg:gap-9 xl:gap-14 font-medium text-base items-center">
+    {
+      navItems.map((navItem) => (
+        <li>
+          <a
+            href={navItem.href}
+            class={`relative transition-colors duration-200 ${
+              navItem.active
+                ? "font-semibold"
+                : "text-n-700 hover:text-blue-950"
+            }`}
+          >
+            {navItem.name}
+            {navItem.active && (
+              <span class="absolute size-1.5 rounded-full bg-blue-500 -right-3 bottom-[4px]" />
+            )}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <!-- Button Component -->
+  <Button text="Lets Talk" variant="solid" showRightDot />
+</nav>
