@@ -5,14 +5,14 @@
 <!-- Footer -->
 <footer class="bg-n-950 sticky bottom-0 z-0 text-n-50">
   <div
-    class="container mx-auto flex flex-col items-center gap-8 md:gap-12 lg:gap-20 justify-center py-10 md:pb-16 lg:pb-20 px-5"
+    class="container mx-auto flex flex-col items-center gap-8 justify-center px-5 py-10 md:pb-16 md:gap-12 lg:gap-20 lg:pb-20"
   >
     <!-- Logo Wrapper -->
-    <div class="flex flex-col items-center gap-4 md:gap-6 lg:gap-0 md:pb-2.5">
-      <img src="/images/stylsmyth-brand-logo.svg" alt="styl-smyth" />
+    <div class="flex flex-col items-center gap-4 md:gap-6 md:pb-2.5 lg:gap-0">
+      <img src="/images/stylsmyth-brand-logo-white.svg" alt="styl-smyth" />
       <!-- Sub title text -->
       <p
-        class="text-n-50 font-medium text-xs sm:text-lg md:text-xl lg:text-2xl w-8/9 md:w-4/5 g:2/3 text-center leading-normal md:leading-8 lg:leading-10"
+        class="text-n-50 font-medium text-xs w-8/9 text-center leading-normal sm:text-lg md:w-4/5 md:leading-8 md:text-xl lg:text-2xl lg:leading-10"
       >
         A specialized staffing solutions company for the fashion industry, <br
           class="hidden md:block"
@@ -31,15 +31,17 @@
       <!-- Social Media Links -->
       <div class="flex gap-4 order-2 lg:order-none">
         <!-- Linkedin logo -->
-        <img src="/icons/linkedin.svg" alt="linkedin" />
+        <a href="#">
+          <img src="/icons/linkedin.svg" alt="linkedin" />
+        </a>
       </div>
 
       <!-- Footer links -->
       <div
-        class="order-1 lg:order-none w-full text-n-50 font-medium text-xs md:text-base lg:max-w-[60%] self-center"
+        class="order-1 w-full self-center text-n-50 font-medium text-xs md:text-base lg:order-none lg:max-w-[60%]"
       >
         <ul
-          class="flex gap-x-12 gap-y-3 sm:gap-6 md:gap-9 justify-center flex-wrap"
+          class="flex gap-x-12 gap-y-3 justify-center flex-wrap sm:gap-6 md:gap-9"
         >
           <li><a href="#">About</a></li>
           <li><a href="#">Services</a></li>
@@ -52,14 +54,25 @@
 
       <!-- Bottom right text Wrapper -->
       <div
-        class="order-3 lg:order-none text-n-50 font-medium text-right text-xs sm:text-sm md:text-base leading-normal"
+        class="order-3 text-n-50 font-medium text-right text-xs leading-normal sm:text-sm md:text-base lg:order-none"
       >
-        <p class="flex gap-1 items-center">
-          Proudly krafted with <img
-            src="/icons/heart.svg"
-            loading="lazy"
-            alt=""
-          />in India
+        <!-- Text with heart icon -->
+        <p class="flex gap-1 items-center text-n-50">
+          Proudly krafted with
+          <svg
+            class="h-5 w-5"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15.4909 1.29537C17.0374 0.803469 18.5287 0.951107 19.8155 1.55186C22.3363 2.72879 23.9576 5.56905 24 8.44475C24.0001 8.45095 24 8.45722 24 8.46342C23.9999 12.6122 21.5442 16.2389 19.0141 18.7417C17.7304 20.0116 16.3742 21.0472 15.1865 21.7723C14.5933 22.1345 14.0254 22.4292 13.5156 22.6377C13.0364 22.8336 12.4971 23 11.9994 23C11.5018 22.9999 10.9634 22.8335 10.4844 22.6377C9.97464 22.4292 9.40675 22.1345 8.81353 21.7723C7.62578 21.0472 6.26957 20.0116 4.98587 18.7417C2.45575 16.239 3.98836e-05 12.6123 3.98836e-05 8.46342C4.09984e-05 8.4572 -5.04093e-05 8.45097 3.98836e-05 8.44475C0.0424634 5.56908 1.66374 2.72887 4.18453 1.55186C5.47122 0.951181 6.96272 0.803538 8.50907 1.29537C9.69864 1.67379 10.8729 2.41568 11.9994 3.54029C13.1261 2.41533 14.3011 1.67384 15.4909 1.29537ZM18.7791 3.87148C18.0363 3.52477 17.1777 3.43027 16.2326 3.73079C15.2723 4.03624 14.1459 4.77676 12.959 6.23593C12.7221 6.52713 12.3699 6.69538 11.9994 6.69538C11.6291 6.69523 11.2778 6.52692 11.041 6.23593C9.8541 4.77676 8.7277 4.03621 7.76741 3.73079C6.8223 3.43024 5.96372 3.5248 5.22091 3.87148C3.68217 4.58996 2.52392 6.46671 2.49417 8.48334C2.50208 11.6107 4.39264 14.6067 6.72007 16.909C7.86752 18.044 9.0712 18.9588 10.0923 19.5822C10.6032 19.8941 11.0521 20.1239 11.4112 20.2707C11.5901 20.3439 11.7356 20.3917 11.8459 20.4201C11.9425 20.445 11.9908 20.4493 11.9994 20.45C12.0048 20.4496 12.0531 20.4462 12.1541 20.4201C12.2645 20.3917 12.4098 20.3439 12.5888 20.2707C12.948 20.1239 13.3968 19.8942 13.9077 19.5822C14.9288 18.9588 16.1325 18.044 17.2799 16.909C19.6076 14.6064 21.4983 11.6098 21.5058 8.4821L21.4876 8.10608C21.3301 6.23581 20.2216 4.54496 18.7791 3.87148Z"
+              fill="currentColor"></path>
+          </svg>
+
+          in India
         </p>
         <p class="md:text-sm">All Rights Reserved</p>
       </div>
