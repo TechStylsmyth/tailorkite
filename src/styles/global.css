@@ -1,6 +1,17 @@
 @import "tailwindcss";
 
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
 @custom-variant dark (&:is(.dark *));
+
+html,
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-n-950);
+}
 
 @theme inline {
   --color-n-50: var(--color-n-50);
