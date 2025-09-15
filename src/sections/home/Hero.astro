@@ -3,7 +3,7 @@
 ---
 
 <section
-  class="flex h-[55vh] w-full flex-col sm:h-[45vh] xl:h-[calc(100vh-90px)]"
+  class="relative flex h-[55vh] w-full flex-col sm:h-[45vh] xl:h-[calc(100vh-90px)]"
 >
   <div class="relative container mx-auto flex flex-1 items-center px-6">
     <!-- Text content wrapper -->
@@ -34,17 +34,34 @@
       </p>
     </div>
   </div>
+
+  <svg
+    width="484"
+    height="796"
+    viewBox="0 0 484 796"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    class="absolute -right-[160px] bottom-[-30vh] hidden h-[45vh] md:block xl:h-[60vh]"
+  >
+    <path
+      d="M453.143 49.9261C366.733 27.3087 56.208 -18.4028 31.2368 202.291C12.7368 365.793 208.737 278.793 154.237 487.791C59.3932 851.5 294 784.5 388 693"
+      stroke="#006DFD"
+      stroke-width="60"
+      stroke-linecap="round"
+      class="draw-path"></path>
+  </svg>
   <!-- Scroll to explore text bar -->
   <div
     class="flex h-[80px] w-full items-center justify-between px-3 text-xs font-normal sm:px-12 md:text-sm lg:text-base"
   >
-    <span class="hidden md:block">+</span>
-    <span class="">+</span>
-    <span class="">+</span>
+    <span class="hidden text-xs md:block md:text-3xl">+</span>
+    <span class="text-xs md:text-3xl">+</span>
+    <span class="text-xs md:text-3xl">+</span>
     <!-- Text -->
     <p class="text-n-800 tracking-widest">SCROLL TO EXPLORE</p>
-    <span class="hidden md:block">+</span>
-    <span class="">+</span>
-    <span class="">+</span>
+
+    <span class="hidden text-xs md:block md:text-3xl">+</span>
+    <span class="text-xs md:text-3xl">+</span>
+    <span class="text-xs md:text-3xl">+</span>
   </div>
 </section>
