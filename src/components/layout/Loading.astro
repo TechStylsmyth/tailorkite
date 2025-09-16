@@ -1,14 +1,62 @@
 ---
 import BrandLogo from "../BrandLogo.astro";
-import ProgressBar from "../ProgressBar.astro";
 ---
 
-<!-- Loading Page -->
-<section class="bg-n-950 flex h-screen items-center justify-center">
+<section
+  id="loading-screen"
+  class="bg-n-950 fixed inset-0 z-[9999] flex h-screen w-screen items-center justify-center transition-opacity duration-700"
+>
   <div class="px-6 md:w-3/4 lg:w-1/2">
     <!-- Brand Logo -->
     <BrandLogo variant="black" classes="w-full" />
-    <!-- Progress bar component -->
-    <ProgressBar progress={60} />
+
+    <!-- Progress -->
+    <div class="mt-6 flex w-full flex-col gap-1">
+      <!-- Progress percentage label -->
+      <p
+        id="progress-label"
+        class="text-n-50 text-right text-xs font-medium md:text-xl lg:text-3xl"
+      >
+        0%
+      </p>
+      <div class="bg-n-50 h-1 w-full overflow-hidden rounded-xl lg:h-3">
+        <!-- Progress bar fill -->
+        <div
+          id="progress-fill"
+          class="h-full bg-blue-500 transition-all duration-300 ease-in-out"
+          style="width: 0%"
+        >
+        </div>
+      </div>
+    </div>
   </div>
 </section>
+
+<script>
+  // Elements references
+  const loader = document.getElementById("loading-screen") as HTMLElement;
+  const fill = document.getElementById("progress-fill") as HTMLElement;
+  const label = document.getElementById("progress-label") as HTMLElement;
+
+  let progress = 0;
+
+  // Update progress
+  const interval = setInterval(() => {
+    // Increment by 5
+    progress += 5;
+    if (progress > 100) progress = 100;
+
+    fill.style.width = progress + "%";
+    label.textContent = progress + "%";
+
+    // When progress is 100%
+    if (progress === 100) {
+      // Stop interval
+      clearInterval(interval);
+      setTimeout(() => {
+        loader.style.opacity = "0";
+        setTimeout(() => loader.remove(), 700); // cleanup
+      }, 300);
+    }
+  }, 80);
+</script>
