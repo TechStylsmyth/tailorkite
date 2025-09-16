@@ -20,13 +20,21 @@ import Loading from "../components/layout/Loading.astro";
       rel="stylesheet"
     />
     <title>STYL SMYTH</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <!-- Loader -->
     <Loading />
 
     <!-- Main content -->
-    <main class="bg-n-50 relative z-1 rounded-br-4xl rounded-bl-4xl">
+    <main
+      class="bg-n-50 relative z-1 overflow-hidden rounded-br-4xl rounded-bl-4xl"
+    >
       <!-- Header -->
       <Header />
       <slot />

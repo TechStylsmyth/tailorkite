@@ -9,9 +9,9 @@ interface Props {
 const { navItems } = Astro.props;
 ---
 
-<nav class="hidden lg:flex lg:gap-10 xl:gap-18 items-center justify-end">
+<nav class="hidden items-center justify-end xl:flex xl:gap-10 xl:gap-18">
   <!-- Pages Links -->
-  <ul class="flex lg:gap-9 xl:gap-14 font-medium text-base items-center">
+  <ul class="flex items-center text-base font-medium lg:gap-9 xl:gap-14">
     {
       navItems.map((navItem) => (
         <li>
@@ -25,7 +25,7 @@ const { navItems } = Astro.props;
           >
             {navItem.name}
             {navItem.active && (
-              <span class="absolute size-1.5 rounded-full bg-blue-500 -right-3 bottom-[4px]" />
+              <span class="absolute -right-3 bottom-[4px] size-1.5 rounded-full bg-blue-500" />
             )}
           </a>
         </li>
