@@ -3,6 +3,7 @@
 import BrandLogo from "../BrandLogo.astro";
 import Hamburger from "../Hamburger.astro";
 import Navbar from "../Navbar.astro";
+import MobileMenu from "./MobileMenu.astro";
 
 // DATA //
 const baseItems = [
@@ -56,4 +57,7 @@ const navItemWithActive = baseItems.map((item) => {
       <Hamburger />
     </div>
   </div>
+
+  <!-- Mobile/Tablet Overlay Menu -->
+  <MobileMenu navItems={navItemWithActive} />
 </header>
