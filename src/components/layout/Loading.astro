@@ -33,30 +33,51 @@ import BrandLogo from "../BrandLogo.astro";
 </section>
 
 <script>
-  // Elements references
   const loader = document.getElementById("loading-screen") as HTMLElement;
   const fill = document.getElementById("progress-fill") as HTMLElement;
   const label = document.getElementById("progress-label") as HTMLElement;
 
   let progress = 0;
+  let fakeInterval;
 
-  // Update progress
-  const interval = setInterval(() => {
-    // Increment by 5
-    progress += 5;
-    if (progress > 100) progress = 100;
-
+  function updateUI() {
     fill.style.width = progress + "%";
-    label.textContent = progress + "%";
+    label.textContent = Math.floor(progress) + "%"; // same source
+  }
 
-    // When progress is 100%
-    if (progress === 100) {
-      // Stop interval
-      clearInterval(interval);
-      setTimeout(() => {
-        loader.style.opacity = "0";
-        setTimeout(() => loader.remove(), 700); // cleanup
-      }, 300);
-    }
-  }, 80);
+  // Fake smooth increase (illusion of progress)
+  function startFakeProgress() {
+    // Accelerate slowly but never reach 100 until ready
+    fakeInterval = setInterval(() => {
+      if (progress < 90) {
+        progress += Math.random() * 3; // smooth increments
+        if (progress > 90) progress = 90;
+        updateUI();
+      }
+    }, 120);
+  }
+
+  // Complete the bar when window fully loaded
+  function finishProgress() {
+    clearInterval(fakeInterval);
+    const complete = setInterval(() => {
+      // Jump smoothly to 100%
+      if (progress < 100) {
+        progress += 2; // step to 100
+        if (progress > 100) progress = 100;
+        updateUI();
+      } else {
+        clearInterval(complete);
+        setTimeout(() => {
+          loader.style.opacity = "0";
+          setTimeout(() => loader.remove(), 700);
+        }, 300);
+      }
+    }, 30);
+  }
+
+  startFakeProgress();
+
+  // Complete the bar when window fully loaded
+  window.addEventListener("load", finishProgress);
 </script>
