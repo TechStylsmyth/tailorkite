@@ -1,3 +1,95 @@
-<section>
-  <img src="/images/stats.png" alt="Stats" />
+---
+import BrandLogo from "../../components/BrandLogo.astro";
+
+// Dummy Data
+const statsContent = [
+  {
+    number: "150+",
+    title: "Experienced Employees",
+    description:
+      "From global brands to fast-growing startups — our people know how to get it done.",
+  },
+  {
+    number: "50+",
+    title: "Global Clients",
+    description:
+      "Partnering with businesses worldwide to deliver impactful solutions.",
+  },
+  {
+    number: "10%",
+    title: "Industry Experience",
+    description:
+      "A decade of proven expertise across multiple sectors and domains.",
+  },
+  {
+    number: "25+",
+    title: "Award-Winning Projects",
+    description:
+      "Recognized for innovation, creativity, and measurable impact across industries.",
+  },
+  {
+    number: "98%",
+    title: "Client Satisfaction",
+    description:
+      "Building long-term partnerships with a commitment to excellence and trust.",
+  },
+];
+---
+
+<section class="bg-n-50 w-full">
+  <div
+    class="container mx-auto flex flex-col gap-6 px-6 py-9 md:gap-7 md:py-24 lg:gap-16"
+  >
+    <div class="flex flex-col gap-4 lg:gap-7">
+      <div class="flex items-baseline gap-1 md:gap-1.5">
+        <!-- Brand Logo -->
+        <BrandLogo variant="default" classes="w-38 md:w-70" />
+        <!-- Dot -->
+        <span class="size-1.5 rounded-full bg-blue-500"></span>
+        <!-- Scorecard text -->
+        <p class="text-sm leading-0 font-normal tracking-widest md:text-2xl">
+          Scorecard
+        </p>
+      </div>
+
+      <!-- Subtitle -->
+      <div class="flex items-center gap-2 md:gap-4 lg:gap-6">
+        <!-- Text one -->
+        <p class="text-xs font-extralight md:text-xl lg:text-4xl">Real stats</p>
+        <span class="bg-n-950 size-1 rounded-full md:size-1.5"></span>
+        <!-- Text Two -->
+        <p class="text-xs font-extralight md:text-xl lg:text-4xl">
+          Real results
+        </p>
+        <span class="bg-n-950 size-1 rounded-full md:size-1.5"></span>
+        <!-- Text Three -->
+        <p class="text-xs font-extralight md:text-xl lg:text-4xl">
+          Real stories
+        </p>
+      </div>
+    </div>
+
+    <!-- Stats List -->
+    <div class="mx-auto flex w-full flex-col gap-3.5 sm:gap-0 lg:w-5/6">
+      {
+        statsContent.map((statItem) => (
+          <div class="border-n-500 flex items-center justify-between border-b border-dashed py-4 md:px-2.5 md:py-7 lg:px-5 lg:py-9">
+            {/* Stats number */}
+            <p class="text-2xl font-normal md:w-1/6 md:text-3xl lg:text-5xl">
+              {statItem.number}
+            </p>
+            {/* Stats title */}
+            <p class="text-center text-sm font-normal md:w-2/4 md:text-base lg:text-xl">
+              {statItem.title}
+            </p>
+            {/* Stats description */}
+            <p class="text-n-500 hidden text-xs leading-loose font-normal sm:block sm:w-1/3 md:w-1/2 lg:text-base">
+              {statItem.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+    <!-- <img src="/images/stats.png" alt="Stats" /> -->
+  </div>
 </section>
