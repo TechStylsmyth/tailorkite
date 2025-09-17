@@ -1,3 +1,104 @@
+---
+import Accordion from "../../components/Accordian.astro";
+
+const faqs = [
+  {
+    question:
+      "Where are your garments produced? are your garments produced? are your garments produced? ",
+    answer:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    isOpen: true, // 👈 First one open by default
+  },
+  {
+    question: "Do you ship internationally?",
+    answer:
+      "Yes, we ship worldwide. Costs and delivery times vary by location.",
+    isOpen: false,
+  },
+  {
+    question: "What materials do you use in your clothing?",
+    answer: "Absolutely! Reach out to us with your ideas.",
+    isOpen: false,
+  },
+  {
+    question: "How do you ensure ethical labor practices?",
+    answer: "Absolutely! Reach out to us with your ideas.",
+    isOpen: false,
+  },
+];
+
+const tags = [
+  { name: "Services", isActive: true },
+  { name: "Filesharing", isActive: false },
+  { name: "Communication", isActive: false },
+  { name: "Confidentiality", isActive: false },
+];
+---
+
 <section>
-  <img src="/images/faq.png" alt="FAQ" />
+  <div
+    class="container mx-auto flex items-center justify-center gap-40 px-6 py-20"
+  >
+    <!-- Left Side -->
+    <div class="flex flex-col gap-6 md:gap-10 lg:w-1/2">
+      <!-- Texts Wrapper -->
+      <div>
+        <!-- Title -->
+        <p class="mb-1 text-2xl font-semibold md:text-3xl lg:text-6xl">
+          Got Questions?
+        </p>
+        <!-- Subtitle -->
+        <p class="text-base font-normal md:text-2xl">
+          No jargon. Just answers.
+        </p>
+      </div>
+      <div class="flex flex-col gap-7 md:gap-10">
+        <!-- Tags Wrapper -->
+        <div class="flex flex-wrap gap-3.5">
+          {
+            tags.map((tag) => (
+              <div
+                class={`cursor-pointer rounded-3xl border px-6 py-2.5 text-sm font-normal transition-colors duration-200 md:text-lg ${
+                  tag.isActive
+                    ? "bg-n-950 text-n-50 border-n-950"
+                    : "border-n-950 text-n-950 hover:bg-n-950 hover:text-n-50 bg-transparent"
+                }`}
+              >
+                <p>{tag.name}</p>
+              </div>
+            ))
+          }
+        </div>
+        <!-- Faq Wrapper -->
+        <div id="faq" class="space-y-4">
+          {
+            faqs.map((faq) => (
+              <Accordion
+                question={faq.question}
+                answer={faq.answer}
+                isOpen={faq.isOpen}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Right side -->
+    <div class="hidden text-blue-500 lg:block">
+      <svg
+        class="w-[95%]"
+        width="330"
+        height="521"
+        viewBox="0 0 330 521"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M46.8329 125.387C40.4459 144.187 59.5562 166.759 41.1557 178.239C32.4253 183.685 -0.666548 165.824 3.94681 149.508C8.56016 133.191 22.0454 46.2881 111.828 15.7833C201.611 -14.7215 254.467 14.3053 295.298 57.2839C336.41 100.558 338.895 195.265 290.685 236.765C241.438 279.157 204.043 312.673 211.548 363.75C212.258 365.76 205.04 369.231 182.395 371.199C157.909 373.327 143.767 386.096 132.411 381.84C121.055 377.583 89.1164 366.942 91.6005 347.079C94.0847 327.215 95.1493 273.3 132.411 233.573C169.673 193.846 201.611 170.79 200.902 137.447C200.192 104.105 196.998 95.2373 175.706 104.814C154.413 114.391 123.539 125.387 107.57 181.076C104.494 182.495 93.091 184.481 72.0825 181.076C45.8219 176.82 39.7891 181.431 42.2732 167.952C44.7572 154.473 76.1612 78.7852 141.993 45.5784C179.964 26.4248 225.69 17.2025 264.069 36.7108C299.443 54.6916 182.395 36.7108 179.964 90.2714C178.412 124.466 206.478 102.091 222.194 110.49C243.434 121.841 268.682 154.828 232.131 205.196C195.579 255.564 131.701 273.3 140.573 390.353C149.445 507.406 205.817 374.037 217.226 422.276C227.696 466.547 240.595 491.799 175.298 513.436C110.001 535.073 146.251 471.58 132.411 443.204C118.571 414.827 100.827 396.028 84.1482 429.37C67.4692 462.713 92.6652 514.5 112.538 516.273C132.411 518.047 108.28 447.106 140.573 438.238C172.867 429.37 211.548 443.204 196.235 408.798C184.397 382.197 117.861 385.387 107.57 403.832C97.2785 422.276 120.345 444.268 135.605 433.272"
+          stroke="currentColor"
+          stroke-width="6"></path>
+      </svg>
+    </div>
+  </div>
 </section>

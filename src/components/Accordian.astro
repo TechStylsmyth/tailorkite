@@ -1,0 +1,53 @@
+---
+interface Props {
+  question: string;
+  answer: string;
+  isOpen?: boolean;
+}
+
+const { question, answer, isOpen = false } = Astro.props;
+---
+
+<div
+  class="bg-n-100 cursor-pointer rounded-3xl"
+  data-open={isOpen ? "true" : "false"}
+>
+  <!-- Header -->
+  <div class="flex w-full flex-col px-6 py-4 md:py-8">
+    <div class="flex items-center">
+      <p class="w-[95%] text-sm font-medium md:text-xl">{question}</p>
+      <span
+        class={`bg-n-50 flex size-5 md:size-12 items-center justify-center rounded-full transition-transform duration-300 ${
+          isOpen ? "rotate-180" : ""
+        }`}
+      >
+        <!-- Arrow Icon -->
+        <div class="text-n-500">
+          <svg
+            class="size-2 md:size-4 lg:size-5"
+            width="22"
+            height="14"
+            viewBox="0 0 22 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M17.7335 1.94675C18.2392 1.03663 19.3863 0.708531 20.2965 1.21396C21.2066 1.71958 21.5347 2.86671 21.0292 3.77688C20.1975 5.27401 18.7577 7.5141 17.1002 9.40721C16.2726 10.3524 15.343 11.267 14.3623 11.9591C13.4111 12.6304 12.2151 13.2313 10.8972 13.2313C9.57937 13.2313 8.38341 12.6304 7.43214 11.9591C6.45148 11.267 5.5219 10.3524 4.69431 9.40721C3.03678 7.5141 1.59697 5.27401 0.765232 3.77688C0.2598 2.86671 0.587901 1.71958 1.49802 1.21396C2.4082 0.708531 3.55532 1.03663 4.06094 1.94675C4.8003 3.27754 6.09423 5.27988 7.53156 6.92162C8.25121 7.74355 8.95946 8.4202 9.60657 8.87695C10.2834 9.35456 10.7068 9.4606 10.8972 9.4606C11.0877 9.4606 11.5111 9.35456 12.1879 8.87695C12.835 8.4202 13.5433 7.74355 14.2629 6.92162C15.7002 5.27988 16.9942 3.27754 17.7335 1.94675Z"
+              fill="currentColor"></path>
+          </svg>
+        </div>
+      </span>
+    </div>
+
+    <!-- Answer -->
+    <div
+      class={`overflow-hidden transition-[max-height] duration-300 ease-in-out  ${
+        isOpen ? "max-h-[500px]" : "max-h-0"
+      }`}
+    >
+      <p class="w-[95%] pt-4 text-sm font-normal md:pt-8 md:text-xl">
+        {answer}
+      </p>
+    </div>
+  </div>
+</div>
