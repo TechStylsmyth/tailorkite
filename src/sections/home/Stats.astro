@@ -43,7 +43,7 @@ const statsContent = [
     <div class="flex flex-col gap-4 lg:gap-7">
       <div class="flex items-baseline gap-1 md:gap-1.5">
         <!-- Brand Logo -->
-        <BrandLogo variant="default" classes="w-38 md:w-70" />
+        <BrandLogo variant="default" classes="w-38 md:w-88 lg:w-70" />
         <!-- Dot -->
         <span class="size-1.5 rounded-full bg-blue-500"></span>
         <!-- Scorecard text -->
@@ -73,13 +73,16 @@ const statsContent = [
     <div class="mx-auto flex w-full flex-col gap-3.5 sm:gap-0 lg:w-5/6">
       {
         statsContent.map((statItem) => (
-          <div class="border-n-500 flex items-center justify-between border-b border-dashed py-4 md:px-2.5 md:py-7 lg:px-5 lg:py-9">
+          <div
+            class="text-n-500 flex items-center justify-between border-b border-dashed py-4 md:px-2.5 md:py-7 lg:px-5 lg:py-9"
+            style=" border-image: repeating-linear-gradient(to right, currentColor 0, currentColor 5px, transparent 5px, transparent 10px) 1;"
+          >
             {/* Stats number */}
-            <p class="text-2xl font-normal md:w-1/6 md:text-3xl lg:text-5xl">
+            <p class="text-n-950 text-2xl font-normal md:w-1/6 md:text-3xl lg:text-5xl">
               {statItem.number}
             </p>
             {/* Stats title */}
-            <p class="text-center text-sm font-normal md:w-2/4 md:text-base lg:text-xl">
+            <p class="text-n-950 text-center text-sm font-normal md:w-2/4 md:text-base lg:text-xl">
               {statItem.title}
             </p>
             {/* Stats description */}
