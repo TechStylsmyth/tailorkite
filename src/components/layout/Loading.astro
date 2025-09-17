@@ -6,12 +6,14 @@ import BrandLogo from "../BrandLogo.astro";
   id="loading-screen"
   class="bg-n-950 fixed inset-0 z-[9999] flex h-screen w-screen items-center justify-center transition-opacity duration-700"
 >
-  <div class="px-6 md:w-3/4 lg:w-1/2">
+  <div
+    class="flex w-9/10 flex-col gap-4 px-6 md:w-3/4 md:gap-6 lg:w-1/2 lg:gap-10"
+  >
     <!-- Brand Logo -->
     <BrandLogo variant="black" classes="w-full" />
 
     <!-- Progress -->
-    <div class="mt-6 flex w-full flex-col gap-1">
+    <div class="flex w-full flex-col gap-1">
       <!-- Progress percentage label -->
       <p
         id="progress-label"
@@ -19,7 +21,9 @@ import BrandLogo from "../BrandLogo.astro";
       >
         0%
       </p>
-      <div class="bg-n-50 h-1 w-full overflow-hidden rounded-xl lg:h-3">
+      <div
+        class="bg-n-50 h-1 w-full overflow-hidden rounded-xl md:h-1.5 lg:h-3"
+      >
         <!-- Progress bar fill -->
         <div
           id="progress-fill"
