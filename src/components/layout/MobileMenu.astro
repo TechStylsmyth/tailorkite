@@ -90,12 +90,14 @@ const { navItems = [] as NavItem[] } = Astro.props;
 
     <!-- Let's Talk Button -->
     <div class="button-animation">
-      <Button
-        text="Contact Us"
-        variant="solid"
-        showRightDot
-        extraClasses="rounded-xl !justify-between"
-      />
+      <a href="/contact-us">
+        <Button
+          text="Contact Us"
+          variant="solid"
+          showRightDot
+          extraClasses="rounded-xl !justify-between"
+        />
+      </a>
     </div>
   </div>
 </div>

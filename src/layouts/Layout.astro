@@ -6,6 +6,8 @@ import "../styles/global.css";
 import Loading from "../components/layout/Loading.astro";
 
 const title = "STYL SMYTH";
+
+const isHomePage = Astro.url.pathname === "/";
 ---
 
 <!doctype html>
@@ -25,7 +27,7 @@ const title = "STYL SMYTH";
   </head>
   <body>
     <!-- Loader -->
-    <Loading />
+    {isHomePage && <Loading />}
 
     <!-- Main content -->
     <main
