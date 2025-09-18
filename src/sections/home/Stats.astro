@@ -79,7 +79,9 @@ const statsContent = [
           >
             {/* Stats number */}
             <p class="text-n-950 text-2xl font-normal md:w-1/6 md:text-3xl lg:text-5xl">
-              {statItem.number}
+              <span class="stat-count" data-target={statItem.number}>
+                0
+              </span>
             </p>
             {/* Stats title */}
             <p class="text-n-950 text-center text-sm font-normal md:w-2/4 md:text-base lg:text-xl">
@@ -94,4 +96,47 @@ const statsContent = [
       }
     </div>
   </div>
+
+  <script is:inline type="module">
+    import { animate } from "https://cdn.jsdelivr.net/npm/motion@12.23.12/+esm";
+
+    // Get all counters
+    const counters = Array.from(document.querySelectorAll(".stat-count"));
+
+    /** Start Counter */
+    const startCounter = (el) => {
+      const raw = el.getAttribute("data-target") || "";
+      const match = raw
+        .toString()
+        .trim()
+        .match(/^(\d+)(.*)$/);
+      const end = match ? parseInt(match[1], 10) : 0;
+      const suffix = match ? match[2] : "";
+
+      // Animate
+      animate(0, end, {
+        duration: 2,
+        easing: "circOut",
+        onUpdate: (latest) => {
+          el.textContent = Math.round(latest) + suffix;
+        },
+      });
+    };
+
+    // Animate when in view
+    const once = new WeakSet();
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !once.has(entry.target)) {
+            once.add(entry.target);
+            startCounter(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    counters.forEach((el) => io.observe(el));
+  </script>
 </section>
