@@ -1,0 +1,27 @@
+---
+interface Props {
+  src: string;
+  alt?: string;
+  backgroundSrc?: string;
+}
+
+const { src, alt = "brand-partner", backgroundSrc } = Astro.props;
+---
+
+<div
+  class="border-n-300 bg-n-50 group relative flex aspect-square w-1/2 overflow-hidden border px-3 py-7 md:w-auto"
+>
+  <!-- Sliding Background with Blue Overlay -->
+  <div
+    class="absolute inset-0 translate-y-full bg-blue-500 bg-cover bg-center opacity-50 bg-blend-multiply transition-transform duration-500 group-hover:translate-y-0"
+    style={`background-image: url('${backgroundSrc}')`}
+  >
+  </div>
+
+  <!-- Partner Image/Logo -->
+  <img
+    src={src}
+    alt={alt}
+    class="relative z-10 mx-auto transition-opacity duration-500 group-hover:opacity-0"
+  />
+</div>
