@@ -1,0 +1,177 @@
+---
+import BrandLogo from "../BrandLogo.astro";
+import Button from "../Button.astro";
+
+interface NavItem {
+  name: string;
+  href: string;
+  active?: boolean;
+}
+const { navItems = [] as NavItem[] } = Astro.props;
+---
+
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-50 hidden bg-blue-500 opacity-0 transition-opacity duration-300 ease-in-out lg:hidden"
+  aria-hidden="true"
+>
+  <div class="px-6 py-4">
+    <!-- Header with logo and close button -->
+    <div class="mb-7 flex items-center justify-between">
+      <div class="flex items-center">
+        <a href="/">
+          <!-- Brand logo component -->
+          <BrandLogo variant="black" classes="w-[128px]" />
+        </a>
+      </div>
+
+      <!-- Close Button  -->
+      <button
+        id="close-mobile-menu"
+        aria-label="Close menu"
+        class="flex h-10 w-10 items-center justify-center rounded-full bg-white"
+      >
+        <span class="sr-only">Close</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="12"
+          height="13"
+          viewBox="0 0 12 13"
+          fill="none"
+        >
+          <g clip-path="url(#clip0_3017_884)">
+            <path
+              d="M11.1735 11.4989C7.54058 8.33044 4.16919 4.95906 1.00073 1.32617"
+              stroke="var(--color-n-950)"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <path
+              d="M0.826538 11.4989C4.45942 8.33044 7.83081 4.95906 10.9993 1.32617"
+              stroke="var(--color-n-950)"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </g>
+          <defs>
+            <clipPath id="clip0_3017_884">
+              <rect
+                width="12"
+                height="12"
+                fill="white"
+                transform="translate(0 0.5)"></rect>
+            </clipPath>
+          </defs>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Navigation Menu -->
+    <div class="bg-n-50 links mb-6 overflow-hidden rounded-xl">
+      <nav class="flex flex-col">
+        <!-- Map through nav items  -->
+        {
+          navItems.map((item: any, index: number) => (
+            <a
+              href={item.href}
+              class={`flex items-center justify-between px-8 py-3 text-base transition-colors ${
+                index < navItems.length - 1
+                  ? "border-n-300 border-b-[0.4px]"
+                  : ""
+              }`}
+            >
+              <span class="text-n-950 font-normal">{item.name}</span>
+              {item.active && <div class="h-2 w-2 rounded-full bg-blue-500" />}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+
+    <!-- Let's Talk Button -->
+    <div class="button-animation">
+      <Button
+        text="Contact Us"
+        variant="solid"
+        showRightDot
+        extraClasses="rounded-xl !justify-between"
+      />
+    </div>
+  </div>
+</div>
+
+<style>
+  #mobile-menu.open {
+    opacity: 1;
+  }
+
+  .links {
+    transition:
+      transform 0.5s cubic-bezier(0.4, 0, 0.1, 1),
+      opacity 0.5s cubic-bezier(0.4, 0, 0.1, 1);
+    transform: translate3d(0, 5.5em, 0) rotate(3.5deg);
+    opacity: 0;
+  }
+
+  .button-animation {
+    transition:
+      transform 0.5s cubic-bezier(0.4, 0, 0.1, 1),
+      opacity 0.5s cubic-bezier(0.4, 0, 0.1, 1);
+    transform: translate3d(0, 7.75em, 0) rotate(-3.5deg);
+    opacity: 0;
+  }
+
+  .links.show,
+  .button-animation.show {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(0);
+  }
+</style>
+
+<script>
+  const openBtn = document.getElementById("open-mobile-menu-button");
+  const closeBtn = document.getElementById("close-mobile-menu");
+  const menu = document.getElementById("mobile-menu");
+  const links = document.querySelector(".links");
+  const button = document.querySelector(".button-animation");
+
+  const OPEN_CLOSE_MS = 300; // keep in sync with transition-duration
+
+  /** Open Mobile Menu */
+  const openMobileMenu = () => {
+    if (!menu) return;
+    // Ensure it's displayed for animation
+    menu.classList.remove("hidden");
+    // Start animations on next frame
+    requestAnimationFrame(() => {
+      menu.classList.add("open");
+      links?.classList.add("show");
+      button?.classList.add("show");
+    });
+    menu.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  };
+
+  /** Close Mobile Menu */
+  const closeMobileMenu = () => {
+    if (!menu) return;
+
+    // Reverse animations
+    links?.classList.remove("show");
+    button?.classList.remove("show");
+    menu.classList.remove("open");
+
+    // After transition finishes, actually hide and cleanup
+    setTimeout(() => {
+      menu.classList.add("hidden");
+      menu.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }, OPEN_CLOSE_MS);
+  };
+
+  if (openBtn) openBtn.addEventListener("click", openMobileMenu);
+  if (closeBtn) closeBtn.addEventListener("click", closeMobileMenu);
+  menu
+    ?.querySelectorAll("a")
+    .forEach((a) => a.addEventListener("click", closeMobileMenu));
+</script>

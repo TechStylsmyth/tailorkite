@@ -6,6 +6,7 @@ interface Props {
   variant?: "outline" | "solid" | "default";
   showLeftDot?: boolean;
   showRightDot?: boolean;
+  extraClasses?: string;
 }
 
 // Default values
@@ -15,6 +16,7 @@ const {
   showRightDot = false,
   onClick,
   variant = "solid",
+  extraClasses = "",
 } = Astro.props;
 
 // Common class
@@ -31,7 +33,7 @@ const variants = {
 };
 
 // Passing as a merge class
-const classes = `${baseClasses} ${variants[variant]}`;
+const classes = `${baseClasses} ${variants[variant]} ${extraClasses}`;
 ---
 
 <!-- Button -->
