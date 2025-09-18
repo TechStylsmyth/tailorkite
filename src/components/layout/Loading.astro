@@ -44,6 +44,7 @@ import BrandLogo from "../BrandLogo.astro";
   let progress = 0;
   let fakeInterval;
 
+  // Update UI content
   function updateUI() {
     fill.style.width = progress + "%";
     label.textContent = Math.floor(progress) + "%"; // same source
