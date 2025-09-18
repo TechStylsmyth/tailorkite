@@ -3,6 +3,9 @@ import Announcement from "../components/Announcement.astro";
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
 import "../styles/global.css";
+import Loading from "../components/layout/Loading.astro";
+
+const title = "STYL SMYTH";
 ---
 
 <!doctype html>
@@ -12,15 +15,18 @@ import "../styles/global.css";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>STYL SMYTH</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <title>{title}</title>
   </head>
   <body>
+    <!-- Loader -->
+    <Loading />
+
     <!-- Main content -->
     <main
       class="bg-n-50 relative z-1 overflow-hidden rounded-br-4xl rounded-bl-4xl"
