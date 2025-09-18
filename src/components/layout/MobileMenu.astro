@@ -21,7 +21,7 @@ const { navItems = [] as NavItem[] } = Astro.props;
       <div class="flex items-center">
         <a href="/">
           <!-- Brand logo component -->
-          <BrandLogo variant="black" classes="w-[128px] h-[40px]" />
+          <BrandLogo variant="black" classes="w-[128px]" />
         </a>
       </div>
 
@@ -42,13 +42,13 @@ const { navItems = [] as NavItem[] } = Astro.props;
           <g clip-path="url(#clip0_3017_884)">
             <path
               d="M11.1735 11.4989C7.54058 8.33044 4.16919 4.95906 1.00073 1.32617"
-              stroke="#020617"
+              stroke="var(--color-n-950)"
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"></path>
             <path
               d="M0.826538 11.4989C4.45942 8.33044 7.83081 4.95906 10.9993 1.32617"
-              stroke="#020617"
+              stroke="var(--color-n-950)"
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"></path>
@@ -91,7 +91,7 @@ const { navItems = [] as NavItem[] } = Astro.props;
     <!-- Let's Talk Button -->
     <div class="button-animation">
       <Button
-        text="Lets Talk"
+        text="Contact Us"
         variant="solid"
         showRightDot
         extraClasses="rounded-xl !justify-between"
@@ -129,7 +129,7 @@ const { navItems = [] as NavItem[] } = Astro.props;
 </style>
 
 <script>
-  const openBtn = document.getElementById("open-mobile-menu");
+  const openBtn = document.getElementById("open-mobile-menu-button");
   const closeBtn = document.getElementById("close-mobile-menu");
   const menu = document.getElementById("mobile-menu");
   const links = document.querySelector(".links");
@@ -137,7 +137,8 @@ const { navItems = [] as NavItem[] } = Astro.props;
 
   const OPEN_CLOSE_MS = 300; // keep in sync with transition-duration
 
-  const open = () => {
+  /** Open Mobile Menu */
+  const openMobileMenu = () => {
     if (!menu) return;
     // Ensure it's displayed for animation
     menu.classList.remove("hidden");
@@ -151,7 +152,8 @@ const { navItems = [] as NavItem[] } = Astro.props;
     document.body.style.overflow = "hidden";
   };
 
-  const close = () => {
+  /** Close Mobile Menu */
+  const closeMobileMenu = () => {
     if (!menu) return;
 
     // Reverse animations
@@ -167,9 +169,9 @@ const { navItems = [] as NavItem[] } = Astro.props;
     }, OPEN_CLOSE_MS);
   };
 
-  if (openBtn) openBtn.addEventListener("click", open);
-  if (closeBtn) closeBtn.addEventListener("click", close);
+  if (openBtn) openBtn.addEventListener("click", openMobileMenu);
+  if (closeBtn) closeBtn.addEventListener("click", closeMobileMenu);
   menu
     ?.querySelectorAll("a")
-    .forEach((a) => a.addEventListener("click", close));
+    .forEach((a) => a.addEventListener("click", closeMobileMenu));
 </script>
