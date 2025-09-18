@@ -141,7 +141,7 @@ const faqData = {
 
 const tags = Object.keys(faqData).map((key, index) => ({
   name: key,
-  isActive: index === 0, // first active by default
+  isActive: index === 0,
 }));
 ---
 
@@ -233,7 +233,6 @@ const tags = Object.keys(faqData).map((key, index) => ({
       const isActive = el.getAttribute("data-tag") === name;
       el.classList.toggle("bg-n-950", isActive);
       el.classList.toggle("text-n-50", isActive);
-      el.classList.toggle("border-n-950", true); // always keep border
       el.classList.toggle("text-n-950", !isActive);
     });
 
