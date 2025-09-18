@@ -153,25 +153,27 @@ const tags = Object.keys(faqData).map((key, index) => ({
     <div class="flex flex-col gap-6 md:gap-10 lg:w-1/2">
       <!-- Texts Wrapper -->
       <div>
-        <p class="mb-1 text-2xl font-semibold md:text-3xl lg:text-6xl">
+        <p
+          class="lg:6xl mb-1 text-3xl font-bold md:mb-3 md:text-5xl md:tracking-[4px]"
+        >
           Got Questions?
         </p>
-        <p class="text-base font-normal md:text-2xl">
+        <p class="text-n-950 text-base font-normal md:text-2xl">
           No jargon. Just answers.
         </p>
       </div>
 
-      <div class="flex flex-col gap-7 md:gap-10">
+      <div class="flex flex-col gap-7">
         <!-- Tags Wrapper -->
-        <div id="faq-tags" class="flex flex-wrap gap-3.5">
+        <div id="faq-tags" class="flex flex-wrap gap-3 md:gap-6">
           {
             tags.map((tag) => (
               <div
                 data-tag={tag.name}
-                class={`cursor-pointer rounded-3xl border px-6 py-2.5 text-sm font-normal transition-colors duration-200 md:text-lg ${
+                class={`border-n-950 cursor-pointer rounded-3xl border px-5 py-2 text-sm font-normal transition-colors duration-200 md:px-6 md:py-2.5 lg:text-lg ${
                   tag.isActive
-                    ? "bg-n-950 text-n-50 border-n-950"
-                    : "border-n-950 text-n-950 hover:bg-n-950 hover:text-n-50"
+                    ? "bg-n-950 text-n-50"
+                    : "text-n-950 hover:bg-n-950 hover:text-n-50"
                 }`}
               >
                 <p>{tag.name}</p>
