@@ -13,7 +13,7 @@ const { src, alt = "brand-partner", backgroundSrc } = Astro.props;
 >
   <!-- Sliding Background with Blue Overlay -->
   <div
-    class="absolute inset-0 translate-y-full bg-blue-500 bg-cover bg-center opacity-50 bg-blend-multiply transition-transform duration-500 group-hover:translate-y-0"
+    class="absolute inset-0 translate-y-full bg-blue-500/30 bg-cover bg-center bg-blend-multiply transition-transform duration-500 group-hover:translate-y-0"
     style={`background-image: url('${backgroundSrc}')`}
   >
   </div>
