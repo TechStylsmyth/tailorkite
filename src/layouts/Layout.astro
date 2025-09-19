@@ -51,6 +51,8 @@ const isHomePage = Astro.url.pathname === "/";
       if (hasLoadedBefore && loader) {
         // skip instantly if already loaded
         loader.style.display = "none";
+      } else {
+        loader.style.display = "flex";
       }
     }
   </script>
