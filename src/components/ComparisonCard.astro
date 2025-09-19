@@ -12,14 +12,14 @@ const { icon, title, negativePoint, positivePoint } = Astro.props;
 ---
 
 <div
-  class="border-n-200 bg-n-50 relative flex min-h-[300px] flex-col gap-4 overflow-hidden rounded-3xl border-2 p-7 md:gap-9 md:p-9"
+  class="border-n-200 bg-n-50 relative flex flex-col gap-3 overflow-hidden rounded-3xl border-2 p-5 md:gap-5 md:p-7"
 >
   <!-- Background Icon (watermark) -->
-  <div
+  <!-- <div
     class="pointer-events-none absolute -right-[18%] -bottom-[16%] w-[300px] opacity-6"
   >
     <img src={icon} alt="" class="w-full" />
-  </div>
+  </div> -->
 
   <!-- Icon and Title -->
   <div class="flex items-center gap-3 md:gap-5">
@@ -56,7 +56,7 @@ const { icon, title, negativePoint, positivePoint } = Astro.props;
   </div>
 
   <!-- Negative Point -->
-  <div class="flex items-center gap-5 md:px-10 lg:px-14">
+  <div class="flex items-center gap-5 md:px-10">
     <div class="text-n-600">
       <svg
         width="38"
@@ -81,13 +81,13 @@ const { icon, title, negativePoint, positivePoint } = Astro.props;
           stroke-linejoin="round"></path>
       </svg>
     </div>
-    <p class="text-n-900 text-2xl leading-relaxed font-normal">
+    <p class="text-n-900 text-xl leading-relaxed font-normal">
       {negativePoint}
     </p>
   </div>
 
   <!-- Positive Point -->
-  <div class="flex items-center gap-5 md:px-10 lg:px-14">
+  <div class="flex items-center gap-5 md:px-10">
     <div class="text-blue-500">
       <svg
         width="38"
@@ -120,7 +120,7 @@ const { icon, title, negativePoint, positivePoint } = Astro.props;
         </defs>
       </svg>
     </div>
-    <p class="text-2xl leading-relaxed font-semibold text-blue-500">
+    <p class="text-xl leading-relaxed font-semibold text-blue-500">
       {positivePoint}
     </p>
   </div>
