@@ -4,7 +4,7 @@ import BrandLogo from "../BrandLogo.astro";
 
 <section
   id="loading-screen"
-  class="bg-n-950 fixed inset-0 z-[9999] flex h-screen w-screen items-center justify-center transition-opacity duration-700"
+  class="bg-n-950 fixed inset-0 z-[9999] flex hidden h-screen w-screen items-center justify-center transition-opacity duration-700"
 >
   <div
     class="flex w-9/10 flex-col gap-4 px-6 md:w-3/4 md:gap-6 lg:w-1/2 lg:gap-10"
@@ -36,10 +36,10 @@ import BrandLogo from "../BrandLogo.astro";
   </div>
 </section>
 
-<script>
-  const loader = document.getElementById("loading-screen") as HTMLElement;
-  const fill = document.getElementById("progress-fill") as HTMLElement;
-  const label = document.getElementById("progress-label") as HTMLElement;
+<script is:inline>
+  const loader = document.getElementById("loading-screen");
+  const fill = document.getElementById("progress-fill");
+  const label = document.getElementById("progress-label");
 
   let progress = 0;
   let fakeInterval;
@@ -79,6 +79,7 @@ import BrandLogo from "../BrandLogo.astro";
         }, 300);
       }
     }, 30);
+    sessionStorage.setItem("indexLoaderShown", "true");
   }
 
   startFakeProgress();
