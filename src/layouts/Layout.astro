@@ -30,15 +30,30 @@ const isHomePage = Astro.url.pathname === "/";
     {isHomePage && <Loading />}
 
     <!-- Main content -->
-    <main
-      class="bg-n-50 relative z-1 overflow-hidden rounded-br-4xl rounded-bl-4xl"
-    >
-      <!-- Header -->
-      <Header />
-      <slot />
+    <main>
+      <div
+        class="bg-n-50 relative z-1 overflow-hidden rounded-br-4xl rounded-bl-4xl"
+      >
+        <!-- Header -->
+        <Header />
+        <slot />
+        <!-- Footer -->
+      </div>
+      <Footer />
     </main>
-
-    <!-- Footer -->
-    <Footer />
   </body>
+
+  <script is:inline>
+    if (window.location.pathname === "/") {
+      const loader = document.querySelector("#loading-screen");
+      const hasLoadedBefore = sessionStorage.getItem("indexLoaderShown");
+
+      if (hasLoadedBefore && loader) {
+        // skip instantly if already loaded
+        loader.style.display = "none";
+      } else {
+        loader.style.display = "flex";
+      }
+    }
+  </script>
 </html>
