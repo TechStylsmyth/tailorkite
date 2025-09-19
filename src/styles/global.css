@@ -37,7 +37,17 @@ body {
   --color-n-800: var(--color-slate-800);
   --color-n-900: var(--color-slate-900);
   --color-n-950: var(--color-slate-950);
+  --color-blue-50: #d6e8ff;
+  --color-blue-100: #add1ff;
+  --color-blue-200: #85baff;
+  --color-blue-300: #5ca3ff;
+  --color-blue-400: #338bff;
   --color-blue-500: #006dfd;
+  --color-blue-600: #0061e0;
+  --color-blue-700: #0050b8;
+  --color-blue-800: #003e8f;
+  --color-blue-900: #002c66;
+  --color-blue-950: #001b3d;
 }
 
 .dark {
@@ -52,6 +62,17 @@ body {
   --color-n-800: var(--color-slate-200);
   --color-n-900: var(--color-slate-100);
   --color-n-950: var(--color-slate-50);
+  --color-blue-100: #add1ff;
+  --color-blue-200: #85baff;
+  --color-blue-300: #5ca3ff;
+  --color-blue-400: #338bff;
+  --color-blue-50: #d6e8ff;
+  --color-blue-500: #006dfd;
+  --color-blue-600: #0061e0;
+  --color-blue-700: #0050b8;
+  --color-blue-800: #003e8f;
+  --color-blue-900: #002c66;
+  --color-blue-950: #001b3d;
 }
 
 .draw-path {
