@@ -5,6 +5,11 @@ import "../styles/global.css";
 // COMPONENTS //
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
+import Loading from "../components/layout/Loading.astro";
+
+const title = "STYL SMYTH";
+
+const isHomePage = Astro.url.pathname === "/";
 ---
 
 <!doctype html>
@@ -14,25 +19,43 @@ import Footer from "../components/layout/Footer.astro";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>STYL SMYTH</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <title>{title}</title>
   </head>
   <body>
-    <!-- Main content -->
-    <main
-      class="bg-n-50 relative z-1 overflow-hidden rounded-br-4xl rounded-bl-4xl"
-    >
-      <!-- Header -->
-      <Header />
-      <slot />
-    </main>
+    <!-- Loader -->
+    {isHomePage && <Loading />}
 
-    <!-- Footer -->
-    <Footer />
+    <!-- Main content -->
+    <main>
+      <div
+        class="bg-n-50 relative z-1 overflow-hidden rounded-br-4xl rounded-bl-4xl"
+      >
+        <!-- Header -->
+        <Header />
+        <slot />
+        <!-- Footer -->
+      </div>
+      <Footer />
+    </main>
   </body>
+
+  <script is:inline>
+    if (window.location.pathname === "/") {
+      const loader = document.querySelector("#loading-screen");
+      const hasLoadedBefore = sessionStorage.getItem("indexLoaderShown");
+
+      if (hasLoadedBefore && loader) {
+        // skip instantly if already loaded
+        loader.style.display = "none";
+      } else {
+        loader.style.display = "flex";
+      }
+    }
+  </script>
 </html>

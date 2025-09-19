@@ -1,0 +1,89 @@
+---
+import BrandLogo from "../BrandLogo.astro";
+---
+
+<section
+  id="loading-screen"
+  class="bg-n-950 fixed inset-0 z-[9999] flex hidden h-screen w-screen items-center justify-center transition-opacity duration-700"
+>
+  <div
+    class="flex w-9/10 flex-col gap-4 px-6 md:w-3/4 md:gap-6 lg:w-1/2 lg:gap-10"
+  >
+    <!-- Brand Logo -->
+    <BrandLogo variant="white" classes="w-full" />
+
+    <!-- Progress -->
+    <div class="flex w-full flex-col gap-1">
+      <!-- Progress percentage label -->
+      <p
+        id="progress-label"
+        class="text-n-50 text-right text-xs font-medium md:text-xl lg:text-3xl"
+      >
+        0%
+      </p>
+      <div
+        class="bg-n-50 h-1 w-full overflow-hidden rounded-xl md:h-1.5 lg:h-3"
+      >
+        <!-- Progress bar fill -->
+        <div
+          id="progress-fill"
+          class="h-full bg-blue-500 transition-all ease-in-out"
+          style="width: 0%"
+        >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  const loader = document.getElementById("loading-screen");
+  const fill = document.getElementById("progress-fill");
+  const label = document.getElementById("progress-label");
+
+  let progress = 0;
+  let fakeInterval;
+
+  // Update UI content
+  function updateUI() {
+    fill.style.width = progress + "%";
+    label.textContent = Math.floor(progress) + "%"; // same source
+  }
+
+  // Fake smooth increase (illusion of progress)
+  function startFakeProgress() {
+    // Accelerate slowly but never reach 100 until ready
+    fakeInterval = setInterval(() => {
+      if (progress < 90) {
+        progress += Math.random() * 3; // smooth increments
+        if (progress > 90) progress = 90;
+        updateUI();
+      }
+    }, 120);
+  }
+
+  // Complete the bar when window fully loaded
+  function finishProgress() {
+    clearInterval(fakeInterval);
+    const complete = setInterval(() => {
+      // Jump smoothly to 100%
+      if (progress < 100) {
+        progress += 2; // step to 100
+        if (progress > 100) progress = 100;
+        updateUI();
+      } else {
+        clearInterval(complete);
+        setTimeout(() => {
+          loader.style.opacity = "0";
+          setTimeout(() => loader.remove(), 700);
+        }, 300);
+      }
+    }, 30);
+    sessionStorage.setItem("indexLoaderShown", "true");
+  }
+
+  startFakeProgress();
+
+  // Complete the bar when window fully loaded
+  window.addEventListener("load", finishProgress);
+</script>
