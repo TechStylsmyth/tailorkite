@@ -72,11 +72,11 @@ import Input from "../../components/Input.astro";
   <!-- Form part -->
   <div class="bg-n-50">
     <div
-      class="container mx-auto flex flex-col flex-wrap gap-20 px-6 py-28 md:py-36 lg:flex-row lg:items-start"
+      class="container mx-auto flex flex-col flex-wrap gap-16 px-6 py-18 md:gap-20 md:py-36 lg:flex-row lg:items-start"
     >
       <!-- Form wrapper -->
-      <div class="flex w-full flex-col gap-12 md:gap-20 xl:w-[42%]">
-        <div class="flex flex-col gap-3">
+      <div class="flex w-full flex-col gap-10 md:gap-20 xl:w-[42%]">
+        <div class="flex flex-col gap-1 md:gap-3">
           <p class="text-lg font-medium md:text-xl lg:text-2xl">
             Got an idea, a question, or just curious?
           </p>
@@ -86,7 +86,7 @@ import Input from "../../components/Input.astro";
         </div>
 
         <!-- Contact form  -->
-        <form class="flex flex-col gap-8">
+        <form class="flex flex-col gap-6 md:gap-8">
           <!-- Name  -->
           <Input id="name" label="Name" />
 
@@ -103,17 +103,17 @@ import Input from "../../components/Input.astro";
           <Button
             variant="solid"
             text="Send Message"
-            extraClasses="!bg-blue-500 !text-n-50 self-end hover:!bg-n-50 hover:!text-blue-500 hover:!border-blue-500"
+            extraClasses="!bg-blue-500 !text-n-50 self-end hover:!bg-n-50 hover:!text-blue-500 hover:!border-blue-500 mt-2"
             rightArrow
           />
         </form>
       </div>
 
       <div
-        class="flex w-full flex-col justify-between gap-20 md:flex-row md:gap-20 lg:flex-1"
+        class="flex w-full flex-col justify-between gap-18 md:flex-row md:gap-20 lg:flex-1"
       >
         <!-- Contact details wrapper -->
-        <div class="flex flex-col gap-11 self-start lg:flex-1 lg:self-center">
+        <div class="flex flex-col gap-10 self-start lg:flex-1 lg:self-center">
           <!-- Mail details -->
           <div>
             <!-- Icon -->
@@ -135,10 +135,12 @@ import Input from "../../components/Input.astro";
             </div>
 
             <!-- Title -->
-            <p class="pb-2 text-lg font-semibold">General inquiries</p>
+            <p class="tex-md font-semibold md:pb-2 md:text-lg">
+              General inquiries
+            </p>
 
             <!-- Text Description -->
-            <p class="text-2xl font-normal">info@stylsmyth.com</p>
+            <p class="text-xl font-normal md:text-2xl">info@stylsmyth.com</p>
           </div>
 
           <!-- Phone details -->
@@ -173,17 +175,17 @@ import Input from "../../components/Input.astro";
             </div>
 
             <!-- Title -->
-            <p class="pb-2 text-lg font-semibold">Phone Number</p>
+            <p class="tex-md font-semibold md:pb-2 md:text-lg">Phone Number</p>
 
             <!-- Text Description -->
-            <p class="text-2xl font-normal">+91 7894561230</p>
+            <p class="text-xl font-normal md:text-2xl">+91 7894561230</p>
           </div>
         </div>
 
         <!-- Location wrapper -->
         <div class="self-center">
           <div class="mb-2.5 flex flex-col gap-8">
-            <p class="text-3xl font-semibold">Office Location</p>
+            <p class="text-2xl font-semibold md:text-3xl">Office Location</p>
             <div class="relative">
               <!-- Building image -->
               <img src="/images/building.png" alt="office" />
@@ -217,8 +219,11 @@ import Input from "../../components/Input.astro";
 
           <!-- Address -->
           <div class="text-n-950 text-center">
-            <p class="text-3xl font-medium">Maker Chambers V</p>
-            <p class="text-xl font-normal">Nariman Point, Mumbai, India</p>
+            <p class="text-2xl font-medium md:text-3xl">Sun Mill Compound</p>
+            <p class="tex-lg font-normal md:text-xl">
+              Todi industrial Estate, 4th floor, B wing, Lower Parel West,
+              Mumbai, Maharashtra - 400013
+            </p>
           </div>
         </div>
       </div>
