@@ -9,9 +9,9 @@ interface Props {
 const { navItems } = Astro.props;
 ---
 
-<nav class="hidden items-center justify-end xl:flex xl:gap-10 xl:gap-18">
+<nav class="hidden items-center justify-end lg:flex lg:gap-10 xl:gap-18">
   <!-- Pages Links -->
-  <ul class="flex items-center text-base font-medium lg:gap-9 xl:gap-14">
+  <ul class="flex items-center text-base font-medium lg:gap-6 xl:gap-14">
     {
       navItems.map((navItem) => (
         <li>
@@ -34,5 +34,7 @@ const { navItems } = Astro.props;
   </ul>
 
   <!-- Button Component -->
-  <Button text="Lets Talk" variant="solid" showRightDot />
+  <a href="/contact-us">
+    <Button text="Contact Us" variant="solid" showRightDot />
+  </a>
 </nav>
