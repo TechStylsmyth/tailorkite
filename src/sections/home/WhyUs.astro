@@ -56,27 +56,31 @@ const items = [
           <BrandLogo variant="default" classes="w-38 md:w-88 lg:w-76" />
           <!-- Asile text -->
           <p class="text-2xl leading-0 font-normal tracking-widest md:text-4xl">
-            Aisle
+            Way
           </p>
         </div>
       </div>
-      <p class="text-3xl leading-20 font-normal md:text-6xl">
-        We’re fast, flexible, and easy to work with — no fluff, just thoughtful,
-        sharp execution.
-      </p>
-      <!-- Section sub header -->
-      <div class="space-y-1 lg:space-y-2">
-        <p class="text-n-950 text-xl leading-tight font-medium md:text-4xl">
-          Why Outsource to StylSmyth?
+      <div class="space-y-16">
+        <p
+          class="text-4xl leading-12 font-normal md:text-6xl md:leading-20 lg:w-[90%]"
+        >
+          We’re fast, flexible, and easy to work with — no fluff, just
+          thoughtful, sharp execution.
         </p>
-        <p class="text-n-950 text-sm font-normal md:text-2xl">
-          Here's how we stack up against an in-house team.
-        </p>
+        <!-- Section sub header -->
+        <div class="space-y-1 lg:space-y-2">
+          <p class="text-n-950 text-2xl leading-tight font-medium md:text-4xl">
+            Why Outsource to StylSmyth?
+          </p>
+          <p class="text-n-950 text-sm font-normal md:text-2xl">
+            Here's how we stack up against an in-house team.
+          </p>
+        </div>
       </div>
     </div>
 
     <!-- Comparison Grid -->
-    <div class="grid gap-8 xl:grid-cols-2">
+    <div class="grid gap-8 lg:grid-cols-2">
       {
         items.map((item) => (
           <ComparisonCard

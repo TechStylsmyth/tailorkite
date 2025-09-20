@@ -12,20 +12,20 @@ const { icon, title, negativePoint, positivePoint } = Astro.props;
 ---
 
 <div
-  class="border-n-200 bg-n-50 relative flex flex-col gap-3 overflow-hidden rounded-3xl border-2 p-5 md:gap-5 md:p-7"
+  class="border-n-200 bg-n-50 relative flex min-h-[250px] flex-col gap-3 overflow-hidden rounded-3xl border-2 px-5 py-6 md:gap-5 md:px-7 md:py-8 lg:min-h-[280px]"
 >
   <!-- Background Icon (watermark) -->
-  <!-- <div
-    class="pointer-events-none absolute -right-[18%] -bottom-[16%] w-[300px] opacity-6"
+  <div
+    class="pointer-events-none absolute -right-[50px] -bottom-[60px] w-[250px] opacity-6 md:-right-[70px] md:-bottom-[90px] md:w-[300px]"
   >
     <img src={icon} alt="" class="w-full" />
-  </div> -->
+  </div>
 
   <!-- Icon and Title -->
   <div class="flex items-center gap-3 md:gap-5">
-    <img src={icon} alt="" class="h-10 w-10 object-contain md:h-12 md:w-12" />
+    <img src={icon} alt="" class="h-8 w-8 object-contain md:h-12 md:w-12" />
     <!-- Card Title -->
-    <p class="text-n-950 text-4xl font-normal">{title}</p>
+    <p class="text-n-950 text-2xl font-medium md:text-4xl">{title}</p>
     <!-- Info icon -->
     <div class="text-n-300">
       <svg
@@ -55,73 +55,79 @@ const { icon, title, negativePoint, positivePoint } = Astro.props;
     </div>
   </div>
 
-  <!-- Negative Point -->
-  <div class="flex items-center gap-5 md:px-10">
-    <div class="text-n-600">
-      <svg
-        width="38"
-        height="38"
-        viewBox="0 0 38 38"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect
-          x="1.3"
-          y="1.3"
-          width="34.4"
-          height="35.4"
-          rx="17.2"
-          stroke="currentColor"
-          stroke-width="2.6"></rect>
-        <path
-          d="M24.5 13L12.5 25M12.5 13L24.5 25"
-          stroke="currentColor"
-          stroke-width="2.6"
-          stroke-linecap="round"
-          stroke-linejoin="round"></path>
-      </svg>
-    </div>
-    <p class="text-n-900 text-xl leading-relaxed font-normal">
-      {negativePoint}
-    </p>
-  </div>
-
-  <!-- Positive Point -->
-  <div class="flex items-center gap-5 md:px-10">
-    <div class="text-blue-500">
-      <svg
-        width="38"
-        height="38"
-        viewBox="0 0 38 38"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g clip-path="url(#clip0_3443_30)">
+  <div class="space-y-2 md:space-y-3">
+    <!-- Negative Point -->
+    <div class="flex items-center gap-5 px-4 md:px-10">
+      <div class="text-n-600">
+        <svg
+          class="size-6 md:size-8"
+          width="38"
+          height="38"
+          viewBox="0 0 38 38"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <rect
             x="1.3"
             y="1.3"
-            width="34.4256"
+            width="34.4"
             height="35.4"
-            rx="17.2128"
-            fill="currentColor"
+            rx="17.2"
             stroke="currentColor"
             stroke-width="2.6"></rect>
           <path
-            d="M10.7179 20.4614L15.9149 26.3075L26.3077 14.6152"
-            stroke="#EBF3FF"
+            d="M24.5 13L12.5 25M12.5 13L24.5 25"
+            stroke="currentColor"
             stroke-width="2.6"
             stroke-linecap="round"
             stroke-linejoin="round"></path>
-        </g>
-        <defs>
-          <clipPath id="clip0_3443_30">
-            <rect width="38" height="38" fill="white"></rect>
-          </clipPath>
-        </defs>
-      </svg>
+        </svg>
+      </div>
+      <p class="text-n-900 text-base leading-relaxed font-normal md:text-lg">
+        {negativePoint}
+      </p>
     </div>
-    <p class="text-xl leading-relaxed font-semibold text-blue-500">
-      {positivePoint}
-    </p>
+
+    <!-- Positive Point -->
+    <div class="flex items-center gap-5 px-4 md:px-10">
+      <div class="text-blue-500">
+        <svg
+          class="size-6 md:size-8"
+          width="38"
+          height="38"
+          viewBox="0 0 38 38"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g clip-path="url(#clip0_3443_30)">
+            <rect
+              x="1.3"
+              y="1.3"
+              width="34.4256"
+              height="35.4"
+              rx="17.2128"
+              fill="currentColor"
+              stroke="currentColor"
+              stroke-width="2.6"></rect>
+            <path
+              d="M10.7179 20.4614L15.9149 26.3075L26.3077 14.6152"
+              stroke="#EBF3FF"
+              stroke-width="2.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </g>
+          <defs>
+            <clipPath id="clip0_3443_30">
+              <rect width="38" height="38" fill="white"></rect>
+            </clipPath>
+          </defs>
+        </svg>
+      </div>
+      <p
+        class="text-base leading-relaxed font-semibold text-blue-500 md:text-lg"
+      >
+        {positivePoint}
+      </p>
+    </div>
   </div>
 </div>
