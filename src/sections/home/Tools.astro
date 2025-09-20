@@ -1,3 +1,121 @@
-<section>
-  <img src="/images/tools.png" alt="Tools" />
+---
+const designSolutions = [
+  { src: "/images/design-solutions/3d.svg", name: "3D" },
+  { src: "/images/design-solutions/ae.svg", name: "After Effects" },
+  { src: "/images/design-solutions/browzwear.svg", name: "Browzwear" },
+  { src: "/images/design-solutions/fermat.svg", name: "Fermat AI" },
+  { src: "/images/design-solutions/illustrator.svg", name: "Illustrator" },
+  { src: "/images/design-solutions/indesign.svg", name: "InDesign" },
+  { src: "/images/design-solutions/lightroom.svg", name: "Lightroom" },
+  { src: "/images/design-solutions/photoshop.svg", name: "Photoshop" },
+  { src: "/images/design-solutions/premiere.svg", name: "Premiere Pro" },
+];
+
+const tradeSolutions = [
+  "/images/trade-solutions/apparel.svg",
+  "/images/trade-solutions/excel.svg",
+  "/images/trade-solutions/exenta.svg",
+  "/images/trade-solutions/fastrak.svg",
+  "/images/trade-solutions/fineline.svg",
+  "/images/trade-solutions/foxpro.svg",
+  "/images/trade-solutions/image 198.svg",
+  "/images/trade-solutions/image 199.svg",
+  "/images/trade-solutions/image 200.svg",
+  "/images/trade-solutions/image 201.svg",
+  "/images/trade-solutions/nexgen.svg",
+  "/images/trade-solutions/ont.svg",
+];
+---
+
+<section class="relative py-24">
+  <div class="container m-auto">
+    <div class="flex flex-col gap-4 pl-8">
+      <p class="text-n-900 text-6xl font-bold">
+        The stack behind the <span class="text-blue-500">STYL</span>
+      </p>
+      <p class="text-n-950 text-xl font-normal">
+        The right tools for the right outcomes.
+      </p>
+    </div>
+
+    <div>
+      <!-- Design Solutions -->
+
+      <!-- Grid Background  -->
+      <!-- <div class="border-n-300 gradient relative flex flex-wrap">
+          {
+            [...Array(14).keys()].map((_, index) => (
+              <div class="border-n-300 h-[200px] w-[200px] border-r border-b" />
+            ))
+          }
+        </div> -->
+
+      <!-- Design Solution  -->
+      <div
+        class="mt-20 flex flex-wrap justify-center px-6 lg:justify-start lg:px-0"
+      >
+        <!-- Design Solutions  -->
+        <div
+          class="flex h-[100px] w-full items-center justify-start lg:h-[200px] lg:w-[400px]"
+        >
+          <!-- Title  -->
+          <p class="title text-3xl font-bold text-blue-500">Design Solutions</p>
+        </div>
+
+        <!-- Loop through images  -->
+        {
+          designSolutions.map((tool) => (
+            <div class="flex h-[150px] w-[150px] flex-col items-center justify-center gap-6 lg:h-[200px] lg:w-[200px]">
+              <img src={tool.src} alt={tool.name} />
+              <p class="text-n-600 text-lg">{tool.name}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Trade Solutions  -->
+      <div
+        class="mt-20 flex flex-wrap justify-center px-6 lg:justify-start lg:px-0"
+      >
+        <!-- Trade Solutions  -->
+        <div
+          class="flex h-[100px] w-full items-center justify-start lg:h-[200px] lg:w-[400px]"
+        >
+          <p class="title text-3xl font-bold text-blue-500">Trade Solutions</p>
+        </div>
+
+        <!-- Loop through Images  -->
+        {
+          tradeSolutions.map((src) => (
+            <div class="flex h-[150px] w-[150px] flex-col items-center justify-center gap-6 lg:h-[200px] lg:w-[200px]">
+              <img src={src} alt="" />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Tools text -->
+  <p
+    class="absolute top-[40%] right-[46px] hidden origin-right -translate-y-1/2 -rotate-90 rotate-[-90deg] text-9xl font-bold text-blue-500 xl:block"
+  >
+    TOOLS
+  </p>
 </section>
+
+<style>
+  .title {
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 45%;
+      height: 5px;
+      background-color: var(--color-blue-500);
+      border-radius: 4px;
+      bottom: 7px;
+      right: -47%;
+    }
+  }
+</style>
