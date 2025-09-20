@@ -23,7 +23,7 @@ const { id, label, type = "text", required = false } = Astro.props;
   <!-- Label -->
   <label
     for={id}
-    class="text-n-500 peer-placeholder-shown:text-n-500 absolute top-0 left-6 -translate-y-1/2 transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-xl peer-focus:top-0 peer-focus:left-0 peer-focus:text-base peer-focus:text-blue-500 md:left-8"
+    class="text-n-500 absolute top-0 left-6 -translate-y-1/2 transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:left-6 peer-placeholder-shown:text-xl peer-focus:top-0 peer-focus:left-0 peer-focus:text-base peer-focus:text-blue-500 peer-[&:not(:placeholder-shown)]:left-0 peer-[&:not(:placeholder-shown)]:text-base md:left-8"
   >
     {label}
   </label>
