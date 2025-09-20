@@ -7,15 +7,9 @@ interface Props {
 }
 
 const { icon, title, alt = title, color } = Astro.props;
-
-const BG: Record<NonNullable<Props["color"]>, string> = {
-  blue: "bg-blue-50",
-  green: "bg-green-50",
-  amber: "bg-amber-50",
-};
 ---
 
-<div class=`flex w-[348px] flex-col gap-4 rounded-3xl ${color} p-10`>
+<div class=`flex w-full h-full flex-col gap-4 rounded-3xl ${color} p-10`>
   <!-- Card icon -->
   <img src={icon} alt={alt} class="size-8 md:size-11" />
   <!-- Card Title -->
