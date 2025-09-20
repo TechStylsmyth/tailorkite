@@ -1,6 +1,32 @@
 ---
+// COMPONENTS //
 import Button from "../../components/Button.astro";
 import Input from "../../components/Input.astro";
+
+// Dummy CMS data
+const contactPageDetails = {
+  banner: {
+    smallText: "IS YOUR IDEA READY TO GO WILD?",
+    title: "Let’s take “getting things done” off your plate.",
+  },
+  // Email + Phone (same style)
+  contactDetails: [
+    {
+      title: "General inquiries",
+      value: "info@stylsmyth.com",
+    },
+    {
+      title: "Phone Number",
+      value: "+91 7894561230",
+    },
+  ],
+  // Office (different block)
+  office: {
+    addressTitle: "Sun Mill Compound",
+    address:
+      "Todi industrial Estate, 4th floor, B wing, Lower Parel West, Mumbai, Maharashtra - 400013",
+  },
+};
 ---
 
 <section>
@@ -20,13 +46,13 @@ import Input from "../../components/Input.astro";
         <p
           class="text-n-50 text-sm font-medium uppercase md:text-base lg:text-xl"
         >
-          IS YOUR IDEA READY TO GO WILD?
+          {contactPageDetails.banner.smallText}
         </p>
         <!-- Title -->
         <h2
           class="text-n-50 text-center text-5xl leading-[110%] font-normal sm:w-[58%] md:w-[70%] md:text-6xl lg:text-8xl"
         >
-          Let’s take “getting things done” off your plate.
+          {contactPageDetails.banner.title}
         </h2>
       </div>
       <!-- Scroll text -->
@@ -113,35 +139,44 @@ import Input from "../../components/Input.astro";
         class="flex w-full flex-col justify-between gap-18 md:flex-row md:gap-20 lg:flex-1"
       >
         <!-- Contact details wrapper -->
-        <div class="flex flex-col gap-10 self-start lg:flex-1 lg:self-center">
+        <div
+          class="flex flex-col gap-10 self-start sm:flex-row md:flex-col lg:flex-1 lg:self-center"
+        >
           <!-- Mail details -->
-          <div>
-            <!-- Icon -->
-            <div class="text-blue-500">
-              <svg
-                class="size-8"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M11.1134 2.00423C9.15311 2.07027 6.66164 2.24018 5.75969 2.36932C3.09417 2.75098 0.941487 4.63086 0.461442 6.99606C0.365675 7.46798 0.172496 9.20425 0.0881144 10.3518C-0.0292686 11.948 -0.0293714 13.0902 0.0878061 14.6644C0.171647 15.7912 0.367731 17.5453 0.461442 18.007C0.860601 19.9737 2.39828 21.6133 4.51747 22.3319C5.17141 22.5536 5.61216 22.636 6.62252 22.7252C10.0629 23.0292 12.2812 23.0734 15.1358 22.8952C16.3939 22.8166 17.7764 22.7002 18.2405 22.6337C20.2125 22.3514 21.9558 21.233 22.9011 19.6439C23.2137 19.1183 23.4308 18.5653 23.5384 18.0201C23.6354 17.5292 23.8259 15.8068 23.9126 14.6382C24.0293 13.0629 24.0292 11.9442 23.9121 10.3518C23.8286 9.21707 23.6333 7.46117 23.5388 6.99606C23.2213 5.43358 22.1658 4.04322 20.6468 3.18651C19.9275 2.78086 19.0595 2.48658 18.2329 2.36824C17.5756 2.27413 15.4023 2.10975 13.9149 2.04164C13.3058 2.01374 11.5333 1.99007 11.1134 2.00423ZM10.4965 3.90526C8.88406 3.96486 6.34794 4.16221 5.78236 4.27217C5.10469 4.4039 4.44792 4.67346 3.90382 5.04319C3.66327 5.20668 3.15845 5.64054 3.15845 5.68379C3.15845 5.71009 4.15987 6.6553 4.81626 7.24858C6.44399 8.7198 8.04492 10.0188 9.59984 11.13C10.5046 11.7766 11.0947 11.9874 12.0001 11.9874C12.9055 11.9874 13.4957 11.7765 14.4003 11.1299C15.9538 10.0195 17.5581 8.71775 19.1839 7.2485C19.8393 6.65627 20.8417 5.71011 20.8417 5.68379C20.8417 5.64054 20.3369 5.20668 20.0964 5.04319C19.6972 4.77196 19.1537 4.51831 18.6699 4.37745C18.219 4.24618 17.6968 4.18096 16.1382 4.06123C13.9459 3.89284 12.1655 3.84363 10.4965 3.90526ZM2.24925 7.48623C2.1889 7.69075 1.98423 9.64422 1.89407 10.8761C1.84292 11.5747 1.85071 13.5675 1.90754 14.3236C1.98842 15.4002 2.15377 16.9512 2.24756 17.5136C2.37517 18.2785 2.79353 19.0124 3.42833 19.5848C4.06117 20.1555 4.88455 20.5564 5.78236 20.7309C6.64568 20.8987 10.2241 21.1262 12.0001 21.1262C13.7761 21.1262 17.3545 20.8987 18.2178 20.7309C19.6747 20.4477 20.886 19.588 21.4551 18.4335C21.6714 17.9947 21.7388 17.7197 21.8428 16.8513C22.216 13.7365 22.2431 11.9386 21.9583 9.17203C21.891 8.51701 21.7635 7.50933 21.7434 7.47275C21.7298 7.44785 21.5839 7.56876 21.2376 7.89198C19.3846 9.62188 17.5651 11.1371 15.7892 12.4292C14.7011 13.2209 14.255 13.4612 13.4657 13.681C12.548 13.9365 11.4521 13.9365 10.5344 13.681C9.75855 13.4649 9.31249 13.227 8.26738 12.4718C6.56654 11.2427 4.61128 9.61724 2.78577 7.91477C2.23751 7.40346 2.26678 7.42685 2.24925 7.48623Z"
-                  fill="currentColor"></path>
-              </svg>
-            </div>
+          {
+            contactPageDetails.contactDetails[0] && (
+              <div>
+                {/* <!-- Icon -->  */}
+                <div class="text-blue-500">
+                  <svg
+                    class="size-8"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M11.1134 2.00423C9.15311 2.07027 6.66164 2.24018 5.75969 2.36932C3.09417 2.75098 0.941487 4.63086 0.461442 6.99606C0.365675 7.46798 0.172496 9.20425 0.0881144 10.3518C-0.0292686 11.948 -0.0293714 13.0902 0.0878061 14.6644C0.171647 15.7912 0.367731 17.5453 0.461442 18.007C0.860601 19.9737 2.39828 21.6133 4.51747 22.3319C5.17141 22.5536 5.61216 22.636 6.62252 22.7252C10.0629 23.0292 12.2812 23.0734 15.1358 22.8952C16.3939 22.8166 17.7764 22.7002 18.2405 22.6337C20.2125 22.3514 21.9558 21.233 22.9011 19.6439C23.2137 19.1183 23.4308 18.5653 23.5384 18.0201C23.6354 17.5292 23.8259 15.8068 23.9126 14.6382C24.0293 13.0629 24.0292 11.9442 23.9121 10.3518C23.8286 9.21707 23.6333 7.46117 23.5388 6.99606C23.2213 5.43358 22.1658 4.04322 20.6468 3.18651C19.9275 2.78086 19.0595 2.48658 18.2329 2.36824C17.5756 2.27413 15.4023 2.10975 13.9149 2.04164C13.3058 2.01374 11.5333 1.99007 11.1134 2.00423ZM10.4965 3.90526C8.88406 3.96486 6.34794 4.16221 5.78236 4.27217C5.10469 4.4039 4.44792 4.67346 3.90382 5.04319C3.66327 5.20668 3.15845 5.64054 3.15845 5.68379C3.15845 5.71009 4.15987 6.6553 4.81626 7.24858C6.44399 8.7198 8.04492 10.0188 9.59984 11.13C10.5046 11.7766 11.0947 11.9874 12.0001 11.9874C12.9055 11.9874 13.4957 11.7765 14.4003 11.1299C15.9538 10.0195 17.5581 8.71775 19.1839 7.2485C19.8393 6.65627 20.8417 5.71011 20.8417 5.68379C20.8417 5.64054 20.3369 5.20668 20.0964 5.04319C19.6972 4.77196 19.1537 4.51831 18.6699 4.37745C18.219 4.24618 17.6968 4.18096 16.1382 4.06123C13.9459 3.89284 12.1655 3.84363 10.4965 3.90526ZM2.24925 7.48623C2.1889 7.69075 1.98423 9.64422 1.89407 10.8761C1.84292 11.5747 1.85071 13.5675 1.90754 14.3236C1.98842 15.4002 2.15377 16.9512 2.24756 17.5136C2.37517 18.2785 2.79353 19.0124 3.42833 19.5848C4.06117 20.1555 4.88455 20.5564 5.78236 20.7309C6.64568 20.8987 10.2241 21.1262 12.0001 21.1262C13.7761 21.1262 17.3545 20.8987 18.2178 20.7309C19.6747 20.4477 20.886 19.588 21.4551 18.4335C21.6714 17.9947 21.7388 17.7197 21.8428 16.8513C22.216 13.7365 22.2431 11.9386 21.9583 9.17203C21.891 8.51701 21.7635 7.50933 21.7434 7.47275C21.7298 7.44785 21.5839 7.56876 21.2376 7.89198C19.3846 9.62188 17.5651 11.1371 15.7892 12.4292C14.7011 13.2209 14.255 13.4612 13.4657 13.681C12.548 13.9365 11.4521 13.9365 10.5344 13.681C9.75855 13.4649 9.31249 13.227 8.26738 12.4718C6.56654 11.2427 4.61128 9.61724 2.78577 7.91477C2.23751 7.40346 2.26678 7.42685 2.24925 7.48623Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </div>
 
-            <!-- Title -->
-            <p class="tex-md font-semibold md:pb-2 md:text-lg">
-              General inquiries
-            </p>
+                {/* <!-- Title -->  */}
+                <p class="tex-md font-semibold md:pb-2 md:text-lg">
+                  {contactPageDetails.contactDetails[0].title}
+                </p>
 
-            <!-- Text Description -->
-            <p class="text-xl font-normal md:text-2xl">info@stylsmyth.com</p>
-          </div>
+                {/* <!-- Text Description -->  */}
+                <p class="text-xl font-normal md:text-2xl">
+                  {contactPageDetails.contactDetails[0].value}
+                </p>
+              </div>
+            )
+          }
 
           <!-- Phone details -->
           <div>
@@ -175,10 +210,14 @@ import Input from "../../components/Input.astro";
             </div>
 
             <!-- Title -->
-            <p class="tex-md font-semibold md:pb-2 md:text-lg">Phone Number</p>
+            <p class="tex-md font-semibold md:pb-2 md:text-lg">
+              {contactPageDetails.contactDetails[1].title}
+            </p>
 
             <!-- Text Description -->
-            <p class="text-xl font-normal md:text-2xl">+91 7894561230</p>
+            <p class="text-xl font-normal md:text-2xl">
+              {contactPageDetails.contactDetails[1].value}
+            </p>
           </div>
         </div>
 
@@ -218,13 +257,18 @@ import Input from "../../components/Input.astro";
           </div>
 
           <!-- Address -->
-          <div class="text-n-950 text-center">
-            <p class="text-2xl font-medium md:text-3xl">Sun Mill Compound</p>
-            <p class="tex-lg font-normal md:text-xl">
-              Todi industrial Estate, 4th floor, B wing, Lower Parel West,
-              Mumbai, Maharashtra - 400013
-            </p>
-          </div>
+          {
+            contactPageDetails.office.address && (
+              <div class="text-n-950 text-center">
+                <p class="text-2xl font-medium md:text-3xl">
+                  {contactPageDetails.office.addressTitle}
+                </p>
+                <p class="tex-lg font-normal md:text-xl">
+                  {contactPageDetails.office.address}
+                </p>
+              </div>
+            )
+          }
         </div>
       </div>
     </div>
