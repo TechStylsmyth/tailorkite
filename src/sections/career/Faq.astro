@@ -1,0 +1,170 @@
+---
+import Accordion from "../../components/Accordian.astro";
+
+const faqData = [
+  {
+    question: "How can I apply for a job at StylSmyth? ",
+    answer:
+      "You can explore current openings on our Careers page and apply directly by submitting your resume. You can also share your CV with us at careers@stylsmyth.com",
+  },
+  {
+    question: "What qualities do you look for in candidates?",
+    answer:
+      "We value creativity, passion, teamwork, and a willingness to learn. Along with relevant skills, we look for individuals who align with our culture of innovation and inclusivity.",
+  },
+  {
+    question: "What does the recruitment process look like? ",
+    answer:
+      "The process usually includes a resume review, an interview (one to two rounds depending on the role), and a skill assessment are applicable. Our HR team will guide you through each step. ",
+  },
+  {
+    question: "Are there opportunities for growth and learning? ",
+    answer: "Are there opportunities for growth and learning? ",
+  },
+];
+---
+
+<section>
+  <div
+    class="container mx-auto flex items-center justify-center gap-40 px-6 py-20"
+  >
+    <!-- Left Side -->
+    <div class="flex flex-col gap-6 md:gap-10 lg:w-1/2">
+      <!-- Texts Wrapper -->
+      <div>
+        <p
+          class="lg:6xl mb-1 text-3xl font-bold md:mb-3 md:text-5xl md:tracking-[4px]"
+        >
+          Got Questions?
+        </p>
+        <p class="text-n-950 text-base font-normal md:text-2xl">
+          No jargon. Just answers.
+        </p>
+      </div>
+
+      <!-- Faq Wrapper -->
+      <div class="faq space-y-4">
+        {
+          faqData.map((faq, i) => (
+            <Accordion
+              question={faq.question}
+              answer={faq.answer}
+              isOpen={i === 0}
+            />
+          ))
+        }
+      </div>
+    </div>
+    <!-- Right side -->
+    <div class="hidden lg:block">
+      <img src="/images/career-faq.png" alt="" class="w-[95%]" />
+    </div>
+  </div>
+
+  <script is:inline>
+    const tagsEl = document.getElementById("faq-tags");
+    const tagEls = Array.from(tagsEl?.children || []);
+    const panels = document.querySelectorAll("[data-faq-panel]");
+
+    const activate = (name) => {
+      // Toggle tag styles
+      tagEls.forEach((el) => {
+        const isActive = el.getAttribute("data-tag") === name;
+        el.classList.toggle("bg-n-950", isActive);
+        el.classList.toggle("text-n-50", isActive);
+        el.classList.toggle("text-n-950", !isActive);
+      });
+
+      // Show matching panel
+      panels.forEach((p) => {
+        const show = p.getAttribute("data-category") === name;
+        p.classList.toggle("hidden", !show);
+        p.classList.toggle("block", show);
+      });
+    };
+
+    // Bind clicks
+    tagEls.forEach((el) => {
+      el.addEventListener("click", () => activate(el.getAttribute("data-tag")));
+    });
+  </script>
+
+  <script is:inline>
+    const initAccordions = () => {
+      const accordions = document.querySelectorAll("[data-accordion]");
+
+      const setOpenState = (acc, open) => {
+        const content = acc.querySelector("[data-accordion-content]");
+        const arrow = acc.querySelector("[data-accordion-arrow]");
+        if (!content || !arrow) return;
+
+        acc.setAttribute("data-open", open ? "true" : "false");
+
+        if (open) {
+          // From current height to target, then set to its actual height
+          const target = content.scrollHeight;
+          requestAnimationFrame(() => {
+            content.style.height = target + "px";
+          });
+          arrow.classList.add("rotate-180");
+        } else {
+          // If currently auto, fix to pixel value first, then collapse
+          const current = content.scrollHeight;
+          content.style.height = current + "px";
+          requestAnimationFrame(() => {
+            content.style.height = "0px";
+          });
+          arrow.classList.remove("rotate-180");
+        }
+      };
+
+      // Initialize and bind events
+      accordions.forEach((acc) => {
+        const btn = acc.querySelector("button");
+        const content = acc.querySelector("[data-accordion-content]");
+        if (!btn || !content) return;
+
+        const isOpen = acc.getAttribute("data-open") === "true";
+        // Set initial height
+        content.style.height = isOpen ? "auto" : "0px";
+        const arrow = acc.querySelector("[data-accordion-arrow]");
+        if (arrow) {
+          arrow.classList.toggle("rotate-180", isOpen);
+        }
+
+        btn.addEventListener("click", () => {
+          const currentlyOpen = acc.getAttribute("data-open") === "true";
+          // Close others (accordion group behavior)
+          document.querySelectorAll("[data-accordion]").forEach((other) => {
+            if (other !== acc && other.getAttribute("data-open") === "true") {
+              setOpenState(other, false);
+            }
+          });
+          // Toggle current
+          setOpenState(acc, !currentlyOpen);
+        });
+      });
+
+      // Keep heights accurate on resize for open items
+      window.addEventListener("resize", () => {
+        document
+          .querySelectorAll('[data-accordion][data-open="true"]')
+          .forEach((acc) => {
+            const content = acc.querySelector("[data-accordion-content]");
+            if (content) {
+              // If set to auto, keep it; if numeric during animation, update target
+              if (content.style.height !== "auto") {
+                content.style.height = content.scrollHeight + "px";
+              }
+            }
+          });
+      });
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initAccordions);
+    } else {
+      initAccordions();
+    }
+  </script>
+</section>
