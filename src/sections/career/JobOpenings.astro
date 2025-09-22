@@ -1,0 +1,146 @@
+---
+import JobOpeningCard from "../../components/JobOpeningCard.astro";
+
+const jobs = [
+  { department: "Production", role: "Operations Manager", location: "Mumbai" },
+  { department: "IT", role: "Frontend Engineer", location: "Pune" },
+  {
+    department: "Production",
+    role: "Marketing Manager (LDN)",
+    location: "Pune",
+  },
+  { department: "Design", role: "Graphic Designer", location: "Remote" },
+
+  {
+    department: "Production",
+    role: "Digital Producer / Project Manager (LDN)",
+    location: "Mumbai",
+  },
+];
+
+const tags = [
+  { id: 1, name: "All" },
+  { id: 2, name: "Production" },
+  { id: 3, name: "Design" },
+  { id: 4, name: "IT" },
+];
+---
+
+<section>
+  <div
+    class="container mx-auto flex flex-col gap-9 px-6 py-12 md:gap-12 md:py-24 lg:px-14"
+  >
+    <!-- Section title wrapper -->
+    <div>
+      <!-- Title -->
+      <p class="text-3xl font-semibold text-blue-500 md:text-5xl">
+        We’re Hiring
+      </p>
+      <!-- Subtitle -->
+      <p class="text-2xl font-medium md:text-4xl">
+        Thinkers, Makers, and Movers
+      </p>
+    </div>
+
+    <!-- Tags and title wrapper -->
+    <div class="space-y-3">
+      <p class="text-n-400 text-base font-medium">Filter by Department</p>
+      <!-- Tags -->
+      <div id="job-tags" class="flex flex-wrap gap-3 md:gap-6">
+        {
+          tags.map((tag, i) => (
+            <button
+              type="button"
+              data-tag={tag.name}
+              class={`border-n-950 rounded-3xl border px-5 py-2 text-sm font-normal transition-colors duration-200 md:px-6 md:py-2.5 lg:text-lg ${i === 0 ? "bg-n-950 text-n-50" : "text-n-950 hover:bg-n-950 hover:text-n-50"}`}
+              aria-pressed={i === 0 ? "true" : "false"}
+            >
+              {tag.name}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Jobs -->
+    <div id="jobs" class="flex h-full flex-wrap gap-4 md:gap-8">
+      {
+        jobs.map((job) => (
+          <div
+            class="job lg: w-full sm:w-[46%] lg:w-[30%] xl:w-[23%]"
+            data-dept={job.department}
+          >
+            {/* Job Opening Card component */}
+            <JobOpeningCard
+              department={job.department}
+              role={job.role}
+              location={job.location}
+            />
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Bottom title wrapper -->
+    <div class="space-y-2 md:space-y-4">
+      <!-- Main text -->
+      <p
+        class="w-full text-2xl leading-tight font-semibold text-blue-500 md:w-2/3 md:text-4xl lg:text-5xl"
+      >
+        Didn’t find what you were looking for ?
+      </p>
+      <!-- Subtext -->
+      <p class="text-base font-normal md:text-2xl">
+        Send us your resume anyway. Fill in the form below.
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    // Collect all tag buttons inside #job-tags
+    const tagButtons = Array.from(
+      document.querySelectorAll("#job-tags [data-tag]")
+    );
+
+    // Collect all job card elements inside #jobs
+    const jobCards = Array.from(document.querySelectorAll("#jobs .job"));
+
+    // Set one tag as active
+    function setActive(btn: any) {
+      tagButtons.forEach((b) => {
+        const isActive = b === btn;
+        b.setAttribute("aria-pressed", isActive ? "true" : "false");
+        // Toggle Tailwind classes for styling active/inactive buttons
+        b.classList.toggle("bg-n-950", isActive);
+        b.classList.toggle("text-n-50", isActive);
+        b.classList.toggle("text-n-950", !isActive);
+      });
+    }
+
+    // Show only the job cards that match the selected tag
+    function filter(tag: any) {
+      // Show everything
+      const showAll = tag === "All";
+      jobCards.forEach((card: any) => {
+        const dept = card.dataset.dept;
+        const match = showAll || dept === tag;
+
+        // Display job card if it matches, hide if not
+        card.style.display = match ? "" : "none";
+      });
+    }
+
+    // Attach click event to each tag button
+    tagButtons.forEach((btn: any) => {
+      btn.addEventListener("click", () => {
+        setActive(btn);
+        filter(btn.dataset.tag);
+      });
+    });
+
+    // On page load: show all jobs by default
+    filter("All");
+  })();
+</script>
