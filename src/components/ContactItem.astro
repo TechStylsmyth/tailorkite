@@ -1,0 +1,58 @@
+---
+interface Props {
+  label: string; // e.g., CALL US, EMAIL US, VISIT US
+  phone?: string;
+  email?: string;
+  address?: string;
+
+  className?: string;
+}
+
+const {
+  label,
+  phone,
+  email,
+  address,
+
+  className = "",
+} = Astro.props as Props;
+
+const value = phone ?? email ?? address ?? "";
+const isPhone = Boolean(phone);
+const isEmail = Boolean(email);
+const href = isPhone
+  ? `tel:${value.replace(/\s+/g, "")}`
+  : isEmail
+    ? `mailto:${value}`
+    : undefined;
+---
+
+<div class={`flex flex-col items-center gap-8  ${className}`}>
+  <div class="flex w-full shrink-0 flex-col items-center gap-2.5">
+    <div class="relative size-11 md:size-12 lg:size-13">
+      <div
+        class="flex size-full items-center justify-center rounded-2xl bg-blue-500"
+      >
+        <slot name="icon" />
+      </div>
+    </div>
+    <div class="text-n-600 leading-normal font-medium lg:text-xl">
+      {label}
+    </div>
+  </div>
+
+  <div
+    class="flex w-full max-w-[300px] shrink-0 flex-col items-center justify-center gap-3.5"
+  >
+    {
+      href ? (
+        <a href={href} class="text-n-950 text-center break-words lg:text-lg">
+          {value}
+        </a>
+      ) : (
+        <div class="text-n-950 text-center break-words lg:text-lg">{value}</div>
+      )
+    }
+    <div class="bg-n-700 h-0.5 w-28 md:w-28 lg:w-32"></div>
+  </div>
+</div>
