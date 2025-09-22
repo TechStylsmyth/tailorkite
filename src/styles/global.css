@@ -86,3 +86,54 @@ body {
     stroke-dashoffset: 0;
   }
 }
+
+
+@layer base {
+  /* Hide native file UI (button + filename) */
+  input[type="file"] {
+    @apply w-full cursor-pointer;
+    color: transparent !important;  
+  }
+
+  /* Default label state for file inputs */
+  input[type="file"] + label {
+    left: 24px !important;         
+    top: 1.25rem !important;        
+    font-size: 20px !important;
+    transform: none !important;    
+    color: #64748b;                 
+    transition: all 0.2s ease;      /* smooth animation */
+  }
+
+  /* Float label when file is selected (JS adds .has-file) */
+  input[type="file"].has-file + label {
+    left: 0 !important;
+    top: 0 !important;
+    font-size: 1rem !important;    
+    transform: translateY(-50%) !important;
+    color: #1d4ed8 !important;    
+  }
+
+  /* Float label when file input is focused */
+  input[type="file"]:focus + label {
+    left: 0 !important;
+    top: 0 !important;
+    font-size: 1rem !important;
+    /* transform: translateY(-50%) !important; */
+    color: #1d4ed8 !important;
+  }
+
+  /* OPTIONAL: show filename (JS sets data-file-name on the label) */
+  input[type="file"].has-file + label::after {
+    content: attr(data-file-name);
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;            
+    color: #64748b;                 
+  }
+
+  /* Focus underline color for file input */
+  input[type="file"]:focus {
+    outline: none;
+  }
+}
