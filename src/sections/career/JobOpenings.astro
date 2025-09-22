@@ -28,7 +28,7 @@ const tags = [
 
 <section>
   <div
-    class="container mx-auto flex flex-col gap-9 px-6 py-12 md:gap-12 md:py-24 lg:px-14"
+    class="container mx-auto flex flex-col gap-9 px-6 py-12 md:gap-12 md:py-24 lg:px-0"
   >
     <!-- Section title wrapper -->
     <div>
@@ -46,13 +46,13 @@ const tags = [
     <div class="space-y-3">
       <p class="text-n-400 text-base font-medium">Filter by Department</p>
       <!-- Tags -->
-      <div id="job-tags" class="flex flex-wrap gap-3 md:gap-6">
+      <div id="job-tags" class="flex flex-wrap gap-3 xl:gap-5">
         {
           tags.map((tag, i) => (
             <button
               type="button"
               data-tag={tag.name}
-              class={`border-n-950 rounded-3xl border px-5 py-2 text-sm font-normal transition-colors duration-200 md:px-6 md:py-2.5 lg:text-lg ${i === 0 ? "bg-n-950 text-n-50" : "text-n-950 hover:bg-n-950 hover:text-n-50"}`}
+              class={`border-n-950 cursor-pointer rounded-3xl border px-5 py-2 text-sm font-normal transition-colors duration-200 md:px-6 md:py-2.5 lg:text-lg ${i === 0 ? "bg-n-950 text-n-50" : "text-n-950 hover:bg-n-950 hover:text-n-50"}`}
               aria-pressed={i === 0 ? "true" : "false"}
             >
               {tag.name}
@@ -63,11 +63,11 @@ const tags = [
     </div>
 
     <!-- Jobs -->
-    <div id="jobs" class="flex h-full flex-wrap gap-4 md:gap-8">
+    <div id="jobs" class="flex h-full flex-wrap gap-4 md:gap-6">
       {
         jobs.map((job) => (
           <div
-            class="job lg: w-full sm:w-[46%] lg:w-[30%] xl:w-[23%]"
+            class="job w-full sm:w-[46%] lg:w-[30%] xl:w-[23%]"
             data-dept={job.department}
           >
             {/* Job Opening Card component */}
@@ -85,12 +85,14 @@ const tags = [
     <div class="space-y-2 md:space-y-4">
       <!-- Main text -->
       <p
-        class="w-full text-2xl leading-tight font-semibold text-blue-500 md:w-2/3 md:text-4xl lg:text-5xl"
+        class="w-full text-2xl leading-tight font-semibold text-blue-500 md:text-4xl lg:text-5xl"
       >
-        Didn’t find what you were looking for ?
+        Didn’t find what you
+        <br />
+        were looking for ?
       </p>
       <!-- Subtext -->
-      <p class="text-base font-normal md:text-2xl">
+      <p class="text-n-900 text-base font-normal md:text-2xl">
         Send us your resume anyway. Fill in the form below.
       </p>
     </div>
