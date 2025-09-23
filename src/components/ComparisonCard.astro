@@ -12,11 +12,11 @@ const { icon, title, negativePoint, positivePoint } = Astro.props;
 ---
 
 <div
-  class="border-n-200 bg-n-50 relative flex min-h-[250px] flex-col gap-3 overflow-hidden rounded-3xl border-2 px-5 py-6 md:gap-5 md:px-7 md:py-8 lg:min-h-[280px]"
+  class="border-n-200 bg-n-50 relative flex flex-col gap-3 overflow-hidden rounded-3xl border-2 px-5 py-6 md:gap-5 md:px-7 md:py-8"
 >
   <!-- Background Icon (watermark) -->
   <div
-    class="pointer-events-none absolute -right-[50px] -bottom-[60px] w-[250px] opacity-6 md:-right-[70px] md:-bottom-[90px] md:w-[300px]"
+    class="pointer-events-none absolute -right-[50px] -bottom-[60px] w-[180px] opacity-6 md:-right-[70px] md:-bottom-[90px] md:w-[250px]"
   >
     <img src={icon} alt="" class="w-full" />
   </div>
