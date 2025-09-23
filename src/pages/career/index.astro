@@ -1,6 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import Faq from "../../sections/Career/Faq.astro";
+import Faq from "../../sections/career/Faq.astro";
 ---
 
 <Layout>
@@ -10,3 +10,82 @@ import Faq from "../../sections/Career/Faq.astro";
   <img src="/images/career-form.png" alt="Career" />
   <Faq />
 </Layout>
+
+<script is:inline>
+  const initAccordions = () => {
+    const accordions = document.querySelectorAll("[data-accordion]");
+
+    const setOpenState = (acc, open) => {
+      const content = acc.querySelector("[data-accordion-content]");
+      const arrow = acc.querySelector("[data-accordion-arrow]");
+      if (!content || !arrow) return;
+
+      acc.setAttribute("data-open", open ? "true" : "false");
+
+      if (open) {
+        // From current height to target, then set to its actual height
+        const target = content.scrollHeight;
+        requestAnimationFrame(() => {
+          content.style.height = target + "px";
+        });
+        arrow.classList.add("rotate-180");
+      } else {
+        // If currently auto, fix to pixel value first, then collapse
+        const current = content.scrollHeight;
+        content.style.height = current + "px";
+        requestAnimationFrame(() => {
+          content.style.height = "0px";
+        });
+        arrow.classList.remove("rotate-180");
+      }
+    };
+
+    // Initialize and bind events
+    accordions.forEach((acc) => {
+      const btn = acc.querySelector("button");
+      const content = acc.querySelector("[data-accordion-content]");
+      if (!btn || !content) return;
+
+      const isOpen = acc.getAttribute("data-open") === "true";
+      // Set initial height
+      content.style.height = isOpen ? "auto" : "0px";
+      const arrow = acc.querySelector("[data-accordion-arrow]");
+      if (arrow) {
+        arrow.classList.toggle("rotate-180", isOpen);
+      }
+
+      btn.addEventListener("click", () => {
+        const currentlyOpen = acc.getAttribute("data-open") === "true";
+        // Close others (accordion group behavior)
+        document.querySelectorAll("[data-accordion]").forEach((other) => {
+          if (other !== acc && other.getAttribute("data-open") === "true") {
+            setOpenState(other, false);
+          }
+        });
+        // Toggle current
+        setOpenState(acc, !currentlyOpen);
+      });
+    });
+
+    // Keep heights accurate on resize for open items
+    window.addEventListener("resize", () => {
+      document
+        .querySelectorAll('[data-accordion][data-open="true"]')
+        .forEach((acc) => {
+          const content = acc.querySelector("[data-accordion-content]");
+          if (content) {
+            // If set to auto, keep it; if numeric during animation, update target
+            if (content.style.height !== "auto") {
+              content.style.height = content.scrollHeight + "px";
+            }
+          }
+        });
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initAccordions);
+  } else {
+    initAccordions();
+  }
+</script>
