@@ -4,6 +4,11 @@ import Input from "../../components/Input.astro";
 
 // Dummy CMS data
 const contactPageDetails = {
+  // Form top title
+  formIntro: {
+    small: "Want to drive efficiency? Want us to handle the mundane tasks?",
+    big: "We’re always listening.",
+  },
   // Email + Phone (same style)
   contactDetails: [
     {
@@ -50,10 +55,10 @@ const contactPageDetails = {
           <p
             class="lg::w-[45%] text-md w-full font-medium md:w-[80%] md:text-xl lg:text-2xl"
           >
-            Want to drive efficiency? Want us to handle the mundane tasks?
+            {contactPageDetails.formIntro.small}
           </p>
           <p class="text-xl font-semibold md:text-2xl lg:text-3xl">
-            We’re always listening.
+            {contactPageDetails.formIntro.big}
           </p>
         </div>
         <!-- Form part -->
