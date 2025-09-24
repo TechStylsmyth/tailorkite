@@ -86,3 +86,12 @@ body {
     stroke-dashoffset: 0;
   }
 }
+
+
+@layer base {
+  /* Hide native file UI (button + filename) */
+  input[type="file"] {
+    @apply w-full cursor-pointer;
+    color: transparent !important;  
+  }
+}
