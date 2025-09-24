@@ -1,12 +1,14 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import ContactForm from "../../sections/career/ContactForm.astro";
 import Faq from "../../sections/career/Faq.astro";
+import JobOpenings from "../../sections/career/JobOpenings.astro";
 ---
 
 <Layout>
   <img src="/images/career-hero.png" alt="Career" />
   <img src="/images/career-work-with-us.png" alt="Career" />
-  <img src="/images/career-open-roles.png" alt="Career" />
-  <img src="/images/career-form.png" alt="Career" />
+  <JobOpenings />
+  <ContactForm />
   <Faq />
 </Layout>
