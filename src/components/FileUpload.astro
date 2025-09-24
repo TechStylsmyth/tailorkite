@@ -1,0 +1,70 @@
+---
+interface Props {
+  id: string;
+  label: string;
+  required?: boolean;
+  accept?: string;
+  multiple?: boolean;
+}
+
+const {
+  id,
+  label,
+  required = false,
+  accept = "",
+  multiple = false,
+} = Astro.props;
+---
+
+<div id={`${id}-root`} class="group relative w-full">
+  <!-- Real file input (covers the whole container, invisible) -->
+  <input
+    id={id}
+    name={id}
+    type="file"
+    required={required}
+    accept={accept}
+    {multiple}
+    class="peer border-n-500 text-n-800 w-full cursor-pointer border-b bg-transparent px-0 py-2 text-xl placeholder-transparent focus:border-blue-500 focus:outline-none md:py-4"
+  />
+
+  <div class="text-n-800 absolute bottom-0 py-2 text-lg md:py-4 md:text-xl">
+    <span id={`${id}-filename`} aria-live="polite"></span>
+  </div>
+
+  <!-- Floating label (same behavior as your text input) -->
+  <label
+    for={id}
+    class="text-n-500 group-[.has-value]:text-n-500 absolute top-5 left-6 -translate-y-1/2 text-base transition-all group-[.has-value]:top-0 group-[.has-value]:left-0 group-[.has-value]:text-base md:left-8 md:text-xl"
+  >
+    {label}
+  </label>
+</div>
+
+<script is:inline define:vars={{ id }}>
+  // Simulate placeholder-shown: add/remove .has-value on the wrapper
+  const root = document.getElementById(`${id}-root`);
+  const input = document.getElementById(id);
+  const filename = document.getElementById(`${id}-filename`);
+
+  const update = () => {
+    const files = input?.files;
+    const hasValue = !!files && files.length > 0;
+
+    if (root) root.classList.toggle("has-value", hasValue);
+
+    if (filename) {
+      filename.textContent = hasValue
+        ? files.length === 1
+          ? files[0].name
+          : `${files.length} files selected`
+        : ""; // keep empty so the label sits like a placeholder
+    }
+  };
+
+  if (input) {
+    update(); // initialize (in case of form repopulation)
+    input.addEventListener("change", update);
+    input.addEventListener("blur", update);
+  }
+</script>
