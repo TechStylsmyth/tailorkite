@@ -10,21 +10,25 @@ const { department, role, location } = Astro.props;
 ---
 
 <div
-  class="group border-n-200 bg-n-50 hover:text-n-50 flex h-full w-full cursor-pointer flex-col gap-3 rounded-3xl border p-8 transition hover:bg-blue-500 md:p-10"
+  class="group border-n-200 bg-n-50 hover:text-n-50 flex h-full w-full cursor-pointer flex-col justify-between gap-8 rounded-3xl border p-8 transition hover:bg-blue-500 md:p-10"
 >
-  <!-- Department -->
-  <p
-    class="text-n-950 group-hover:text-n-50 text-sm font-bold tracking-wide uppercase"
-  >
-    {department}
-  </p>
-
-  <!-- Role + Location -->
-  <div class="flex flex-col gap-1">
-    <p class="text-n-800 group-hover:text-n-50 text-xl font-medium md:text-2xl">
-      {role}
+  <div class="space-y-3">
+    <!-- Department -->
+    <p
+      class="text-n-950 group-hover:text-n-50 text-sm font-bold tracking-wide uppercase"
+    >
+      {department}
     </p>
-    <p class="text-n-600 group-hover:text-n-50 text-base">{location}</p>
+
+    <!-- Role + Location -->
+    <div class="space-y-1">
+      <p
+        class="text-n-800 group-hover:text-n-50 text-xl font-medium md:text-2xl"
+      >
+        {role}
+      </p>
+      <p class="text-n-600 group-hover:text-n-50 text-base">{location}</p>
+    </div>
   </div>
 
   <!-- Right arrow icon -->
