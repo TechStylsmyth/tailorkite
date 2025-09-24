@@ -1,17 +1,15 @@
 ---
 // OTHERS //
 import Layout from "../../layouts/Layout.astro";
-
-// SECTIONS //
+import ContactForm from "../../sections/career/ContactForm.astro";
+import Faq from "../../sections/career/Faq.astro";
+import JobOpenings from "../../sections/career/JobOpenings.astro";
 import WhyWorkWithUs from "../../sections/career/WhyWorkWithUs.astro";
 ---
 
 <Layout>
-  <section>
-    <img src="/images/career-hero.png" alt="Career" />
-    <WhyWorkWithUs />
-    <img src="/images/career-open-roles.png" alt="Career" />
-    <img src="/images/career-form.png" alt="Career" />
-    <img src="/images/career-faq.png" alt="Career" />
-  </section>
+  <WhyWorkWithUs />
+  <JobOpenings />
+  <ContactForm />
+  <Faq />
 </Layout>
