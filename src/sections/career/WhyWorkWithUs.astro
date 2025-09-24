@@ -1,7 +1,8 @@
 ---
+// COMPONENTS //
 import WhyUsCard from "../../components/WhyUsCard.astro";
 
-const whyUsData = [
+const whyUsDetails = [
   {
     title: "Built for Creators",
     description:
@@ -48,7 +49,7 @@ const whyUsData = [
     <!-- Cards Component -->
     <div class="flex flex-wrap gap-4">
       {
-        whyUsData.map((item) => (
+        whyUsDetails.map((item) => (
           <div class="w-full lg:w-[47%] xl:w-[31%]">
             <WhyUsCard
               title={item.title}
