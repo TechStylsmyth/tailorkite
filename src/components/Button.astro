@@ -23,7 +23,7 @@ const {
 
 // Common class
 const baseClasses =
-  "h-[55px] flex items-center justify-center rounded-4xl text-base font-medium py-2.5 px-8 cursor-pointer flex gap-2 items-baseline transition-colors duration-200";
+  " flex items-center justify-center rounded-4xl text-sm md:text-base font-medium py-2 px- md:py-3.5 md:px-8 cursor-pointer flex gap-2 items-baseline transition-colors duration-200";
 
 // Variant base classes
 const variants = {
@@ -44,7 +44,7 @@ const classes = `${baseClasses} ${variants[variant]} ${extraClasses}`;
   {showLeftDot && <span class="size-2 rounded-full bg-current" />}
 
   <!-- Main Button with text -->
-  <button onclick={onClick} class="flex gap-2.5">
+  <button onclick={onClick} class="cursor-pointer flex gap-2.5">
     {text}
     <!-- Right Arrow -->
     {

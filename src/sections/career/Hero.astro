@@ -1,0 +1,47 @@
+---
+// COMPONENTS //
+import Button from "../../components/Button.astro";
+
+const heroContent = {
+  title: {
+    topText: "Your Career in",
+    highlightedText: "Design + Data",
+    bottomText: "Starts here",
+  },
+};
+---
+
+<section class="relative flex h-[55vh] w-full flex-col xl:h-[calc(100vh-95px)]">
+  <div class="relative container mx-auto flex flex-1 items-center px-6">
+    <div class="flex flex-col gap-10 md:gap-20">
+      <!-- Upper Title  -->
+      <div
+        class="text-n-950 text-4xl leading-10 font-bold tracking-tight md:text-5xl md:leading-14 lg:text-7xl lg:leading-[88px]"
+      >
+        <p>{heroContent.title.topText}</p>
+        <p class="text-blue-500">{heroContent.title.highlightedText}</p>
+        <p>{heroContent.title.bottomText}</p>
+      </div>
+
+      <!-- Button -->
+      <div class="w-[180px] md:w-[230px]">
+        <Button variant="outline" text="View Open Roles" showLeftDot />
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll to explore text bar -->
+  <div
+    class="flex h-[80px] w-full items-center justify-between px-3 text-xs font-normal sm:px-12 md:text-sm lg:text-base"
+  >
+    <span class="hidden text-xs md:block md:text-3xl">+</span>
+    <span class="text-xs md:text-3xl">+</span>
+    <span class="text-xs md:text-3xl">+</span>
+    <!-- Text -->
+    <p class="text-n-800 tracking-widest">SCROLL TO EXPLORE</p>
+
+    <span class="hidden text-xs md:block md:text-3xl">+</span>
+    <span class="text-xs md:text-3xl">+</span>
+    <span class="text-xs md:text-3xl">+</span>
+  </div>
+</section>
