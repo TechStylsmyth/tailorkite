@@ -1,0 +1,22 @@
+---
+interface Props {
+  icon: string;
+  title: string;
+  alt?: string;
+  color: string;
+  description?: string;
+}
+
+const { icon, title, alt = title, color, description } = Astro.props;
+---
+
+<div class=`flex w-full h-full flex-col gap-6 rounded-3xl ${color} p-4`>
+  <!-- Card icon -->
+  <img src={icon} alt={alt} class="size-8 md:size-10" />
+  <div class="flex flex-col justify-between">
+    <!-- Card Title -->
+    <p class="text-lg font-semibold md:text-xl">{title}</p>
+
+    {description && <p class="mt-10">{description}</p>}
+  </div>
+</div>
