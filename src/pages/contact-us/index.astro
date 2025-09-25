@@ -1,11 +1,14 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import Enquire from "../../sections/contact/Enquire.astro";
+import Hero from "../../sections/contact-us/Hero.astro";
+import Enquire from "../../sections/contact-us/Enquire.astro";
 ---
 
 <Layout>
-  <section>
-    <img src="/images/contact-hero.png" alt="Contact Us" />
+  <div
+    class="bg-cover bg-center bg-no-repeat md:bg-[url('/images/lines.png')]"
+  >
+    <Hero />
     <Enquire />
-  </section>
+  </div>
 </Layout>
