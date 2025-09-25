@@ -9,7 +9,7 @@ interface Props {
 const { id, label, type = "text", required = false } = Astro.props;
 ---
 
-<div class="relative w-full">
+<div class="bg-n-50 relative w-full">
   <!-- Input field -->
   <input
     id={id}
@@ -17,13 +17,13 @@ const { id, label, type = "text", required = false } = Astro.props;
     type={type}
     required={required}
     placeholder=" "
-    class="peer border-n-500 text-n-800 w-full border-b bg-transparent px-0 py-3 text-xl placeholder-transparent focus:border-blue-500 focus:outline-none md:py-4"
+    class="peer border-n-500 text-n-800 w-full border-b bg-transparent px-0 py-2 text-lg placeholder-transparent focus:border-blue-500 focus:outline-none md:py-4 md:text-xl"
   />
 
   <!-- Label -->
   <label
     for={id}
-    class="text-n-500 absolute top-0 left-6 -translate-y-1/2 transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:left-6 peer-placeholder-shown:text-xl peer-focus:top-0 peer-focus:left-0 peer-focus:text-base peer-focus:text-blue-500 peer-[&:not(:placeholder-shown)]:left-0 peer-[&:not(:placeholder-shown)]:text-base md:left-8"
+    class="text-n-500 absolute top-0 left-6 -translate-y-1/2 transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:left-0 peer-focus:text-base peer-focus:text-blue-500 peer-[&:not(:placeholder-shown)]:left-0 peer-[&:not(:placeholder-shown)]:text-base md:left-8 md:peer-placeholder-shown:text-xl"
   >
     {label}
   </label>

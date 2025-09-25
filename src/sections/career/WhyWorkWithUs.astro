@@ -1,0 +1,65 @@
+---
+// COMPONENTS //
+import WhyUsCard from "../../components/WhyUsCard.astro";
+
+const whyUsDetails = [
+  {
+    title: "Built for Creators",
+    description:
+      "A workspace that respects your craft and rewards your execution.",
+    image: "/images/globe.png",
+    alt: "Globe illustration",
+  },
+  {
+    title: "Collaborative by Nature",
+    description:
+      "Work with teams that support your growth and value your voice.",
+    image: "/images/globe.png",
+    alt: "Team collaboration",
+  },
+  {
+    title: "Growth Driven",
+    description:
+      "Opportunities and tools to accelerate your career trajectory.",
+    image: "/images/globe.png",
+    alt: "Rocket illustration",
+  },
+];
+---
+
+<section>
+  <div
+    class="container mx-auto flex flex-col gap-10 px-6 py-16 md:gap-14 md:py-24 lg:gap-18"
+  >
+    <!-- Heading -->
+    <div class="space-y-4 md:space-y-6 lg:space-y-7">
+      <!-- Title -->
+      <p
+        class="w-full text-3xl font-bold tracking-wider text-blue-500 md:w-[80%] md:text-4xl lg:w-[80%] lg:text-6xl"
+      >
+        With us you don’t just work, you Grow
+      </p>
+      <!-- Subtitle -->
+      <p class="w-full text-sm font-normal md:w-[70%] md:text-xl lg:w-[80%]">
+        We give you the runway to grow, the tools to deliver, and the teams to
+        back you.
+      </p>
+    </div>
+
+    <!-- Cards Component -->
+    <div class="flex flex-wrap gap-4">
+      {
+        whyUsDetails.map((item) => (
+          <div class="w-full lg:w-[47%] xl:w-[31%]">
+            <WhyUsCard
+              title={item.title}
+              description={item.description}
+              image={item.image}
+              alt={item.alt}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
