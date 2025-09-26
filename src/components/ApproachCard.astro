@@ -1,0 +1,14 @@
+---
+const { title, description,icon } = Astro.props;
+---
+
+<div>
+  <div class="mb-2 md:mb-4">
+    <img src={icon} alt="Approach Icon">
+  </div>
+  <p class="mb-1 text-lg md:mb-3 md:text-2xl font-semibold">{title}</p>
+
+  <p class="text-n-600 text-sm md:text-base">
+    {description}
+  </p>
+</div>
