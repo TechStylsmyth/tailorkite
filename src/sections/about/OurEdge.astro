@@ -1,6 +1,7 @@
 ---
 // COMPONENTS //
 import EdgeCard from "../../components/EdgeCard.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
 
 const colors = ["bg-blue-50", "bg-n-100", "bg-n-200"];
 
@@ -44,16 +45,7 @@ const edgeDetails = {
 <section class="m-auto">
   <div class="container mx-auto space-y-11 px-6 py-8 md:py-24 lg:space-y-22">
     <!-- Heading -->
-    <div class="flex flex-col">
-      <p class="text-3xl font-bold text-blue-500 md:text-6xl">
-        {edgeDetails.highlightedText}
-      </p>
-      <p
-        class="text-n-700 mt-2 w-[70%] max-w-3xl text-base md:mt-3 md:text-xl lg:mt-5 lg:w-[40%]"
-      >
-        {edgeDetails.description}
-      </p>
-    </div>
+    <SectionHeading {...edgeDetails} />
 
     <div class="flex flex-wrap gap-3">
       {
