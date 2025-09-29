@@ -18,6 +18,8 @@ const tradeServices = [
   { icon: "/icons/input.svg", title: "Import and Logistics Management" },
   { icon: "/icons/buy-sell.svg", title: "E-commerce and Content Marketing" },
 ];
+
+const { showArrow = false } = Astro.props;
 ---
 
 <section>
@@ -26,7 +28,7 @@ const tradeServices = [
   >
     <!-- Section title wrapper -->
     <div class="space-y-1 md:space-y-3">
-      <p class="text-4xl font-semibold text-blue-500 md:text-7xl">
+      <p class="text-4xl font-semibold text-blue-500 md:text-6xl 2xl:text-7xl">
         What We Do?
       </p>
       <p
@@ -41,17 +43,28 @@ const tradeServices = [
     <div class="flex flex-col gap-18 xl:flex-row xl:gap-5">
       <!-- Design solutions -->
       <div class="flex w-full flex-col gap-10 md:gap-16 xl:w-1/2">
-        <p class="text-3xl font-medium md:text-5xl">Design Solutions</p>
+        <p class="text-2xl font-medium md:text-3xl">Design Solutions</p>
         <div class="flex flex-wrap gap-3">
           {
             designServices.map((service, serviceIndex) => (
               <div class="w-full sm:w-[48%]">
                 {/* // Service card component */}
-                <ServiceCard
-                  icon={service.icon}
-                  title={service.title}
-                  color={colors[serviceIndex % colors.length]}
-                />
+                {showArrow ? (
+                  <a href="/services/service-consumption?id=1">
+                    <ServiceCard
+                      icon={service.icon}
+                      title={service.title}
+                      color={colors[serviceIndex % colors.length]}
+                      showArrow={showArrow}
+                    />
+                  </a>
+                ) : (
+                  <ServiceCard
+                    icon={service.icon}
+                    title={service.title}
+                    color={colors[serviceIndex % colors.length]}
+                  />
+                )}
               </div>
             ))
           }
@@ -59,17 +72,27 @@ const tradeServices = [
       </div>
       <!-- Trade solutions -->
       <div class="flex w-full flex-col gap-10 md:gap-16 xl:w-1/2">
-        <p class="text-3xl font-medium md:text-5xl">Trade Solutions</p>
+        <p class="text-2xl font-medium md:text-3xl">Trade Solutions</p>
         <div class="flex flex-wrap gap-3">
           {
             tradeServices.map((service, serviceIndex) => (
               <div class="w-full sm:w-[48%]">
-                {/* // Service card component */}
-                <ServiceCard
-                  icon={service.icon}
-                  title={service.title}
-                  color={colors[serviceIndex % colors.length]}
-                />
+                {showArrow ? (
+                  <a href="/services/service-consumption?id=2">
+                    <ServiceCard
+                      icon={service.icon}
+                      title={service.title}
+                      color={colors[serviceIndex % colors.length]}
+                      showArrow={showArrow}
+                    />
+                  </a>
+                ) : (
+                  <ServiceCard
+                    icon={service.icon}
+                    title={service.title}
+                    color={colors[serviceIndex % colors.length]}
+                  />
+                )}
               </div>
             ))
           }

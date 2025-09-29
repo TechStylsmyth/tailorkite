@@ -1,0 +1,17 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Description from "../../../sections/service-consumption/Description.astro";
+import Hero from "../../../sections/service-consumption/Hero.astro";
+
+export const prerender = false;
+
+const serviceId = Astro.url.searchParams.get("id");
+
+console.log("Service ID:", serviceId);
+---
+
+<!-- Render service details here -->
+<Layout>
+  <Hero />
+  <Description />
+</Layout>
