@@ -3,7 +3,7 @@ export interface Service {
   name: string;
   icon: string;
   category_id: string;
-  photos: { id: number; image_url: string }[];
+  photos: { url: string; caption?: string }[];
   before_after: {
     id: number;
     before_image_url: string;
