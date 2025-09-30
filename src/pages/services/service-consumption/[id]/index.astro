@@ -11,6 +11,7 @@ import Layout from "../../../../layouts/Layout.astro";
 // SECTIONS //
 import Description from "../../../../sections/service-consumption/Description.astro";
 import Hero from "../../../../sections/service-consumption/Hero.astro";
+import BeforeAfter from "../../../../sections/service-consumption/BeforeAfter.astro";
 
 export const prerender = false;
 
@@ -25,8 +26,8 @@ let servicesConsumption: Service = {
   category_id: "",
   photos: [],
   before_after: [],
-  image_urls: [],
-  pointers: [],
+  description_image_urls: [],
+  description_pointers: [],
 };
 
 try {
@@ -53,9 +54,10 @@ try {
     servicesConsumption && (
       <>
         <Hero title={servicesConsumption.name} />
-        {servicesConsumption.pointers && (
+        {servicesConsumption.description_pointers && (
           <Description serviceConsumption={servicesConsumption} />
         )}
+        <BeforeAfter beforeAfterItems={servicesConsumption.before_after} />
       </>
     )
   }

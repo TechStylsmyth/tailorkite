@@ -7,7 +7,7 @@ const { serviceConsumption } = Astro.props as {
   serviceConsumption: Service;
 };
 
-const filledImages = [...(serviceConsumption.image_urls || [])];
+const filledImages = [...(serviceConsumption.description_image_urls || [])];
 while (filledImages.length < 4) {
   filledImages.push({
     id: filledImages.length + 1,
@@ -50,8 +50,8 @@ while (filledImages.length < 4) {
       <div class="flex flex-col gap-10 pl-5 md:gap-14 xl:pl-10">
         <ul class="flex flex-col gap-5">
           {
-            serviceConsumption.pointers &&
-              serviceConsumption.pointers.map((point) => (
+            serviceConsumption.description_pointers &&
+              serviceConsumption.description_pointers.map((point) => (
                 <li class="flex items-center gap-3 md:gap-6">
                   <span class="mt-1 size-3 flex-shrink-0 rounded-full bg-blue-500 md:size-4" />
                   <span class="text-n-950 text-lg font-medium md:text-2xl">
