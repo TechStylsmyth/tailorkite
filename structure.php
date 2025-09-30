@@ -43,13 +43,13 @@ $structure = (object) [
                 "name" => "",
                 "icon" => "",
                 "category_id" => "",
-                "image_urls" => array(
+                "description_image_urls" => array(
                     (object) [
                         "id" => "",
                         "image_url" => ""
                     ]
                 ),
-                "pointers" => array(
+                "description_pointers" => array(
                     (object) [
                         "id" => "",
                         "description_point" => ""

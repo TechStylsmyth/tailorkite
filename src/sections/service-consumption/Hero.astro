@@ -6,7 +6,7 @@ const { title } = Astro.props;
   <div class="relative container mx-auto flex flex-1 items-center px-6">
     <!-- Upper Title  -->
     <div
-      class="text-n-950 text-4xl leading-10 font-bold tracking-tight w-[80%] sm:w-[70%] md:w-[55%] md:text-5xl md:leading-14 lg:text-7xl lg:leading-[88px] xl:w-[45%] 2xl:w-[40%]"
+      class="text-n-950 w-[80%] text-4xl leading-10 font-bold tracking-tight sm:w-[70%] md:w-[55%] md:text-5xl md:leading-14 lg:text-7xl lg:leading-[88px] xl:w-[45%] 2xl:w-[40%]"
     >
       <p>
         {title}
@@ -14,7 +14,7 @@ const { title } = Astro.props;
     </div>
   </div>
 
-  <div class="absolute right-0 bottom-0">
+  <div class="absolute right-0 bottom-15 md:bottom-0">
     <img src="/icons/service-consumption.svg" alt="" />
   </div>
 
