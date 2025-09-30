@@ -8,6 +8,7 @@ interface Props {
   showRightDot?: boolean;
   extraClasses?: string;
   rightArrow?: boolean;
+  type?: "button" | "submit" | "reset";
 }
 
 // Default values
@@ -19,6 +20,7 @@ const {
   variant = "solid",
   extraClasses = "",
   rightArrow = false,
+  type = "button",
 } = Astro.props;
 
 // Common class
@@ -44,7 +46,7 @@ const classes = `${baseClasses} ${variants[variant]} ${extraClasses}`;
   {showLeftDot && <span class="size-2 rounded-full bg-current" />}
 
   <!-- Main Button with text -->
-  <button onclick={onClick} class="flex cursor-pointer gap-2.5">
+  <button onclick={onClick} class="flex cursor-pointer gap-2.5" type={type}>
     {text}
     <!-- Right Arrow -->
     {
