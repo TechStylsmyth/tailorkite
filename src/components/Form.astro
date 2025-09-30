@@ -15,7 +15,7 @@ import Button from "./Button.astro";
     rightArrow
     type="submit"
   />
-  <div id="form-message" class="mt-2 text-sm text-red-500"></div>
+  <div id="form-message" class="mt-2 text-red-500"></div>
 </form>
 
 <script is:inline>
@@ -46,7 +46,7 @@ import Button from "./Button.astro";
     // API call
     try {
       const res = await fetch(
-        "https://api.pixoloproductions.com/styl-smyth/contact.php",
+        "https://api.pixoloproductions.com/styl-smyth/contact/index.php",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
