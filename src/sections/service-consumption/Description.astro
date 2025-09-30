@@ -1,30 +1,13 @@
 ---
 // COMPONENTS //
 import Button from "../../components/Button.astro";
+import type { Service } from "../../types/services";
 
-const item = {
-  id: 1,
-  name: "Marketing Collateral",
-  icon: "",
-  category_id: "design",
-  description: {
-    image_urls: [
-      { id: 1, image_url: "/images/service-desc.png" },
-      { id: 2, image_url: "/images/service-desc.png" },
-    ],
-    pointers: [
-      { id: 1, description_point: "Design Adaptation" },
-      { id: 2, description_point: "Layout Design" },
-      { id: 3, description_point: "Image Retouching / Editing / Ediitin" },
-      { id: 3, description_point: "Image Retouching / Editing" },
-      { id: 3, description_point: "Image Retouching / Editing" },
-      { id: 3, description_point: "Image Retouching / Editing" },
-      { id: 3, description_point: "Image Retouching / Editing" },
-    ],
-  },
+const { serviceConsumption } = Astro.props as {
+  serviceConsumption: Service;
 };
 
-const filledImages = [...item.description.image_urls];
+const filledImages = [...(serviceConsumption.image_urls || [])];
 while (filledImages.length < 4) {
   filledImages.push({
     id: filledImages.length + 1,
@@ -54,11 +37,11 @@ while (filledImages.length < 4) {
 
     <!-- Text + Pointers -->
     <div
-      class="flex w-full flex-col gap-6 md:gap-12 lg:w-1/2 lg:items-center lg:pt-10 xl:w-[40%]"
+      class="flex w-full flex-col gap-6 md:gap-12 lg:w-1/2 lg:pt-10 xl:w-[40%]"
     >
       <div class="self-start md:space-y-1">
-        <h2 class="text-n-950 text-2xl font-bold md:text-4xl">
-          {item.name}
+        <h2 class="text-n-950 text-2xl leading-11 font-bold md:text-4xl">
+          {serviceConsumption.name}
         </h2>
         <p class="text-n-700 font-normal md:text-xl">
           Areas Stylsmith can help
@@ -67,14 +50,15 @@ while (filledImages.length < 4) {
       <div class="flex flex-col gap-10 pl-5 md:gap-14 xl:pl-10">
         <ul class="flex flex-col gap-5">
           {
-            item.description.pointers.map((point) => (
-              <li class="flex items-center gap-3 md:gap-6">
-                <span class="mt-1 size-3 flex-shrink-0 rounded-full bg-blue-500 md:size-4" />
-                <span class="text-n-950 text-lg font-medium md:text-2xl">
-                  {point.description_point}
-                </span>
-              </li>
-            ))
+            serviceConsumption.pointers &&
+              serviceConsumption.pointers.map((point) => (
+                <li class="flex items-center gap-3 md:gap-6">
+                  <span class="mt-1 size-3 flex-shrink-0 rounded-full bg-blue-500 md:size-4" />
+                  <span class="text-n-950 text-lg font-medium md:text-2xl">
+                    {point.description_point}
+                  </span>
+                </li>
+              ))
           }
         </ul>
 

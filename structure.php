@@ -1,427 +1,418 @@
 <?php
-$structure = [
-    "contact_info" => [
-        "primary_email" => "",
-        "phone_number" => "",
-        "address" => "",
-        "career_email" => "",
-        "career_phone_number" => "",
-        "social_media" => [
-            "instagram" => "",
-            "linkedin"  => "",
-            "x"         => ""
+$structure = (object) [
+    "meta" => (object) [
+        "contact_info" => (object) [
+            "primary_email" => "",
+            "phone_number" => "",
+            "address" => "",
+            "career_email" => "",
+            "career_phone_number" => "",
+            "social_media" => (object) [
+                "instagram" => "",
+                "linkedin" => "",
+                "x" => ""
+            ]
         ]
     ],
-
-    "services_info" => [
-        "categories" => [
-            [
-                "id"   => 1,
+    "faq_info" => (object) [
+        "categories" => array(
+            (object) [
+                "id" => "",
                 "name" => ""
             ]
-        ],
+        ),
+        "frequently_asked_questions" => array(
+            (object) [
+                "question" => "",
+                "answer" => "",
+                "category_id" => ""
+            ]
+        )
+    ],
+    "services_info" => (object) [
+        "categories" => array(
+            (object) [
+                "id" => "",
+                "name" => ""
+            ]
+        ),
 
-        "services" => [
-            [
-                "id"          => 1,
-                "name"        => "",
-                "icon"        => "",
+        "services" => array(
+            (object) [
+                "id" => "",
+                "name" => "",
+                "icon" => "",
                 "category_id" => "",
-                "description" => [
-                    "image_urls" => [
-                        [
-                            "id"        => 1,
-                            "image_url" => ""
-                        ]
-                    ],
-                    "pointers" => [
-                        [
-                            "id"                => 1,
-                            "description_point" => ""
-                        ]
+                "image_urls" => array(
+                    (object) [
+                        "id" => "",
+                        "image_url" => ""
                     ]
-                ],
-                "photos" => [
-                    [
-                        "url"     => "",
+                ),
+                "pointers" => array(
+                    (object) [
+                        "id" => "",
+                        "description_point" => ""
+                    ]
+                )
+                ,
+                "photos" => array(
+                    (object) [
+                        "url" => "",
                         "caption" => ""
                     ]
-                ],
-                "before_after" => [
-                    [
+                ),
+                "before_after" => array(
+                    (object) [
                         "before_url" => "",
-                        "after_url"  => "",
-                        "caption"    => ""
+                        "after_url" => "",
+                        "caption" => ""
                     ]
-                ]
+                )
             ]
-        ]
+        )
     ],
 
-    "home_page" => [
-        "meta" => [
-            "title"       => "",
+    "home_page" => (object) [
+        "meta" => (object) [
+            "title" => "",
             "description" => "",
-            "canonical"   => "https://stylsmyth.com/staffing",
-            "keywords"    => [""],
-            "meta" => [
-                [
-                    "name"    => "viewport",
-                    "content" => "width=device-width, initial-scale=1"
-                ],
-                [
-                    "name"    => "robots",
-                    "content" => "index, follow"
-                ],
-                [
-                    "name"    => "author",
-                    "content" => "STYL Group"
+            "canonical" => "",
+            "keywords" => array(
+                ""
+            ),
+            "meta" => array(
+                (object) [
+                    "name" => "",
+                    "content" => ""
                 ]
+            ),
+
+            "og" => (object) [
+                "title" => "",
+                "description" => "",
+                "type" => "",
+                "url" => "",
+                "image" => ""
             ],
 
-            "og" => [
-                "title"       => "Styl SMYTH – Fashion Staffing Reimagined",
-                "description" => "Apple-like simplicity meets fashion staffing. Build your remote team with Styl SMYTH.",
-                "type"        => "website",
-                "url"         => "https://stylsmyth.com/staffing",
-                "image"       => "https://stylsmyth.com/og-image.jpg"
+            "twitter" => (object) [
+                "card" => "",
+                "title" => "",
+                "description" => "",
+                "image" => "",
+                "site" => ""
             ],
 
-            "twitter" => [
-                "card"        => "summary_large_image",
-                "title"       => "Styl SMYTH - Fashion Staffing Reimagined",
-                "description" => "Apple-like simplicity meets fashion staffing. Build your remote team with Styl SMYTH.",
-                "image"       => "https://stylsmyth.com/twitter-card.jpg",
-                "site"        => "@stylsmyth"
-            ],
-
-            "structuredData" => [
-                "@context" => "https://schema.org",
-                "@type"    => "Organization",
-                "name"     => "Styl SMYTH",
-                "url"      => "https://stylsmyth.com",
-                "logo"     => "https://stylsmyth.com/logo.png",
-                "sameAs"   => [
-                    "https://www.linkedin.com/company/stylsmyth",
-                    "https://twitter.com/stylsmyth"
-                ]
+            "structured_data" => (object) [
+                "context" => "",
+                "type" => "",
+                "name" => "",
+                "url" => "",
+                "logo" => "",
+                "same_as" => array(
+                    "",
+                    ""
+                )
             ]
         ],
 
-        "stats" => [
-            "numbers" => [
-                [
-                    "name"        => "Experienced Employees",
-                    "description" => "From global brands to fast-growing startups — our people know how to get it done.",
-                    "number"      => 150,
-                    "suffix"      => "%"
+        "stats" => (object) [
+            "numbers" => array(
+                (object) [
+                    "name" => "",
+                    "description" => "",
+                    "number" => "",
+                    "suffix" => ""
                 ]
-            ]
+            )
         ]
     ],
 
-    "career_page" => [
-        "meta" => [
-            "title"       => "",
+    "career_page" => (object) [
+        "meta" => (object) [
+            "title" => "",
             "description" => "",
-            "canonical"   => "https://stylsmyth.com/staffing",
-            "keywords"    => [""],
-            "meta" => [
-                [
-                    "name"    => "viewport",
-                    "content" => "width=device-width, initial-scale=1"
-                ],
-                [
-                    "name"    => "robots",
-                    "content" => "index, follow"
-                ],
-                [
-                    "name"    => "author",
-                    "content" => "STYL Group"
+            "canonical" => "",
+            "keywords" => array(
+                ""
+            ),
+            "meta" => array(
+                (object) [
+                    "name" => "",
+                    "content" => ""
                 ]
+            ),
+
+            "og" => (object) [
+                "title" => "",
+                "description" => "",
+                "type" => "",
+                "url" => "",
+                "image" => ""
             ],
 
-            "og" => [
-                "title"       => "Styl SMYTH – Fashion Staffing Reimagined",
-                "description" => "Apple-like simplicity meets fashion staffing. Build your remote team with Styl SMYTH.",
-                "type"        => "website",
-                "url"         => "https://stylsmyth.com/staffing",
-                "image"       => "https://stylsmyth.com/og-image.jpg"
+            "twitter" => (object) [
+                "card" => "",
+                "title" => "",
+                "description" => "",
+                "image" => "",
+                "site" => ""
             ],
 
-            "twitter" => [
-                "card"        => "summary_large_image",
-                "title"       => "Styl SMYTH - Fashion Staffing Reimagined",
-                "description" => "Apple-like simplicity meets fashion staffing. Build your remote team with Styl SMYTH.",
-                "image"       => "https://stylsmyth.com/twitter-card.jpg",
-                "site"        => "@stylsmyth"
-            ],
-
-            "structuredData" => [
-                "@context" => "https://schema.org",
-                "@type"    => "Organization",
-                "name"     => "Styl SMYTH",
-                "url"      => "https://stylsmyth.com",
-                "logo"     => "https://stylsmyth.com/logo.png",
-                "sameAs"   => [
-                    "https://www.linkedin.com/company/stylsmyth",
-                    "https://twitter.com/stylsmyth"
-                ]
+            "structured_data" => (object) [
+                "context" => "",
+                "type" => "",
+                "name" => "",
+                "url" => "",
+                "logo" => "",
+                "same_as" => array(
+                    "",
+                    ""
+                )
             ]
         ],
 
-        "categories" => [
-            [
-                "id"   => 1,
+        "categories" => array(
+            (object) [
+                "id" => "",
                 "name" => ""
             ]
-        ],
+        ),
 
-        "openings" => [
-            [
-                "category"     => "",
-                "title"        => "",
-                "location"     => "",
+        "openings" => array(
+            (object) [
+                "category" => "",
+                "title" => "",
+                "location" => "",
                 "job_post_url" => ""
             ]
-        ],
+        ),
 
-        "frequently_asked_questions" => [
-            [
+        "frequently_asked_questions" => array(
+            (object) [
                 "question" => "",
-                "answer"   => ""
+                "answer" => ""
             ]
-        ]
+        ),
     ],
 
-    "about_page" => [
-        "meta" => [
-            "title"       => "",
+    "about_page" => (object) [
+        "meta" => (object) [
+            "title" => "",
             "description" => "",
-            "canonical"   => "https://stylsmyth.com/staffing",
-            "keywords"    => [""],
-            "meta" => [
-                [
-                    "name"    => "viewport",
-                    "content" => "width=device-width, initial-scale=1"
-                ],
-                [
-                    "name"    => "robots",
-                    "content" => "index, follow"
-                ],
-                [
-                    "name"    => "author",
-                    "content" => "STYL Group"
+            "canonical" => "",
+            "keywords" => array(
+                ""
+            ),
+            "meta" => array(
+                (object) [
+                    "name" => "",
+                    "content" => ""
                 ]
+            ),
+
+            "og" => (object) [
+                "title" => "",
+                "description" => "",
+                "type" => "",
+                "url" => "",
+                "image" => ""
             ],
 
-            "og" => [
-                "title"       => "Styl SMYTH – Fashion Staffing Reimagined",
-                "description" => "Apple-like simplicity meets fashion staffing. Build your remote team with Styl SMYTH.",
-                "type"        => "website",
-                "url"         => "https://stylsmyth.com/staffing",
-                "image"       => "https://stylsmyth.com/og-image.jpg"
+            "twitter" => (object) [
+                "card" => "",
+                "title" => "",
+                "description" => "",
+                "image" => "",
+                "site" => ""
             ],
 
-            "twitter" => [
-                "card"        => "summary_large_image",
-                "title"       => "Styl SMYTH - Fashion Staffing Reimagined",
-                "description" => "Apple-like simplicity meets fashion staffing. Build your remote team with Styl SMYTH.",
-                "image"       => "https://stylsmyth.com/twitter-card.jpg",
-                "site"        => "@stylsmyth"
-            ],
-
-            "structuredData" => [
-                "@context" => "https://schema.org",
-                "@type"    => "Organization",
-                "name"     => "Styl SMYTH",
-                "url"      => "https://stylsmyth.com",
-                "logo"     => "https://stylsmyth.com/logo.png",
-                "sameAs"   => [
-                    "https://www.linkedin.com/company/stylsmyth",
-                    "https://twitter.com/stylsmyth"
-                ]
+            "structured_data" => (object) [
+                "context" => "",
+                "type" => "",
+                "name" => "",
+                "url" => "",
+                "logo" => "",
+                "same_as" => array(
+                    ""
+                )
             ]
         ],
 
-        "team_members" => [
-            [
-                "name"        => "",
+        "team_members" => array(
+            (object) [
+                "name" => "",
                 "designation" => "",
-                "linkedin"    => "",
-                "x"           => "",
-                "photo_url"   => ""
+                "linkedin" => "",
+                "x" => "",
+                "photo_url" => ""
             ]
-        ]
+        )
+
     ],
 
-    "life_at_styl_page" => [
-        "meta" => [
-            "title"       => "",
+    "life_at_styl_page" => (object) [
+        "meta" => (object) [
+            "title" => "",
             "description" => "",
-            "canonical"   => "https://stylsmyth.com/staffing",
-            "keywords"    => [""],
-            "meta" => [
-                [
-                    "name"    => "viewport",
-                    "content" => "width=device-width, initial-scale=1"
-                ],
-                [
-                    "name"    => "robots",
-                    "content" => "index, follow"
-                ],
-                [
-                    "name"    => "author",
-                    "content" => "STYL Group"
+            "canonical" => "",
+            "keywords" => array(
+                ""
+            ),
+            "meta" => array(
+                (object) [
+                    "name" => "",
+                    "content" => ""
                 ]
+            ),
+
+            "og" => (object) [
+                "title" => "",
+                "description" => "",
+                "type" => "",
+                "url" => "",
+                "image" => ""
             ],
 
-            "og" => [
-                "title"       => "Styl SMYTH – Fashion Staffing Reimagined",
-                "description" => "Apple-like simplicity meets fashion staffing. Build your remote team with Styl SMYTH.",
-                "type"        => "website",
-                "url"         => "https://stylsmyth.com/staffing",
-                "image"       => "https://stylsmyth.com/og-image.jpg"
+            "twitter" => (object) [
+                "card" => "",
+                "title" => "",
+                "description" => "",
+                "image" => "",
+                "site" => ""
             ],
 
-            "twitter" => [
-                "card"        => "summary_large_image",
-                "title"       => "Styl SMYTH - Fashion Staffing Reimagined",
-                "description" => "Apple-like simplicity meets fashion staffing. Build your remote team with Styl SMYTH.",
-                "image"       => "https://stylsmyth.com/twitter-card.jpg",
-                "site"        => "@stylsmyth"
-            ],
-
-            "structuredData" => [
-                "@context" => "https://schema.org",
-                "@type"    => "Organization",
-                "name"     => "Styl SMYTH",
-                "url"      => "https://stylsmyth.com",
-                "logo"     => "https://stylsmyth.com/logo.png",
-                "sameAs"   => [
-                    "https://www.linkedin.com/company/stylsmyth",
-                    "https://twitter.com/stylsmyth"
-                ]
+            "structured_data" => (object) [
+                "context" => "",
+                "type" => "",
+                "name" => "",
+                "url" => "",
+                "logo" => "",
+                "same_as" => array(
+                    ""
+                )
             ]
         ],
 
-        "moments" => [
-            [
-                "year"      => "2025",
+        "moments" => array(
+            (object) [
+                "year" => "",
                 "photo_url" => "",
-                "title"     => "",
+                "title" => "",
                 "sub_title" => ""
             ]
-        ],
+        ),
 
-        "testimonials" => [
-            [
-                "name"        => "",
+        "testimonials" => array(
+            (object) [
+                "name" => "",
                 "designation" => "",
-                "message"     => ""
+                "message" => ""
+            ]
+        ),
+
+        "stats" => (object) [
+            "numbers" => array(
+                (object) [
+                    "name" => "",
+                    "description" => "",
+                    "number" => "",
+                    "suffix" => ""
+                ]
+            )
+        ]
+    ],
+
+    "services_page" => (object) [
+        "meta" => (object) [
+            "title" => "",
+            "description" => "",
+            "canonical" => "",
+            "keywords" => array(
+                ""
+            ),
+            "meta" => array(
+                (object) [
+                    "name" => "",
+                    "content" => ""
+                ]
+            ),
+
+            "og" => (object) [
+                "title" => "",
+                "description" => "",
+                "type" => "",
+                "url" => "",
+                "image" => ""
+            ],
+
+            "twitter" => (object) [
+                "card" => "",
+                "title" => "",
+                "description" => "",
+                "image" => "",
+                "site" => ""
+            ],
+
+            "structured_data" => (object) [
+                "context" => "",
+                "type" => "",
+                "name" => "",
+                "url" => "",
+                "logo" => "",
+                "same_as" => array(
+                    ""
+                )
             ]
         ]
     ],
 
-    "services_page" => [
-        "meta" => [
-            "title"       => "",
+    "contact-page" => (object) [
+        "meta" => (object) [
+            "title" => "",
             "description" => "",
-            "canonical"   => "https://stylsmyth.com/staffing",
-            "keywords"    => [""],
-            "meta" => [
-                [
-                    "name"    => "viewport",
-                    "content" => "width=device-width, initial-scale=1"
-                ],
-                [
-                    "name"    => "robots",
-                    "content" => "index, follow"
-                ],
-                [
-                    "name"    => "author",
-                    "content" => "STYL Group"
+            "canonical" => "",
+            "keywords" => array(
+                ""
+            ),
+            "meta" => array(
+                (object) [
+                    "name" => "",
+                    "content" => ""
                 ]
+            ),
+
+            "og" => (object) [
+                "title" => "",
+                "description" => "",
+                "type" => "",
+                "url" => "",
+                "image" => ""
             ],
 
-            "og" => [
-                "title"       => "Styl SMYTH – Fashion Staffing Reimagined",
-                "description" => "Apple-like simplicity meets fashion staffing. Build your remote team with Styl SMYTH.",
-                "type"        => "website",
-                "url"         => "https://stylsmyth.com/staffing",
-                "image"       => "https://stylsmyth.com/og-image.jpg"
+            "twitter" => (object) [
+                "card" => "",
+                "title" => "",
+                "description" => "",
+                "image" => "",
+                "site" => ""
             ],
 
-            "twitter" => [
-                "card"        => "summary_large_image",
-                "title"       => "Styl SMYTH - Fashion Staffing Reimagined",
-                "description" => "Apple-like simplicity meets fashion staffing. Build your remote team with Styl SMYTH.",
-                "image"       => "https://stylsmyth.com/twitter-card.jpg",
-                "site"        => "@stylsmyth"
-            ],
+            "structured_data" => (object) [
+                "context" => "",
+                "type" => "",
+                "name" => "",
+                "url" => "",
+                "logo" => "",
+                "same_as" => array(
+                    ""
+                )
 
-            "structuredData" => [
-                "@context" => "https://schema.org",
-                "@type"    => "Organization",
-                "name"     => "Styl SMYTH",
-                "url"      => "https://stylsmyth.com",
-                "logo"     => "https://stylsmyth.com/logo.png",
-                "sameAs"   => [
-                    "https://www.linkedin.com/company/stylsmyth",
-                    "https://twitter.com/stylsmyth"
-                ]
             ]
         ]
-    ],
 
-    "contact-page" => [
-        "meta" => [
-            "title"       => "",
-            "description" => "",
-            "canonical"   => "https://stylsmyth.com/staffing",
-            "keywords"    => [""],
-            "meta" => [
-                [
-                    "name"    => "viewport",
-                    "content" => "width=device-width, initial-scale=1"
-                ],
-                [
-                    "name"    => "robots",
-                    "content" => "index, follow"
-                ],
-                [
-                    "name"    => "author",
-                    "content" => "STYL Group"
-                ]
-            ],
 
-            "og" => [
-                "title"       => "Styl SMYTH – Fashion Staffing Reimagined",
-                "description" => "Apple-like simplicity meets fashion staffing. Build your remote team with Styl SMYTH.",
-                "type"        => "website",
-                "url"         => "https://stylsmyth.com/staffing",
-                "image"       => "https://stylsmyth.com/og-image.jpg"
-            ],
 
-            "twitter" => [
-                "card"        => "summary_large_image",
-                "title"       => "Styl SMYTH - Fashion Staffing Reimagined",
-                "description" => "Apple-like simplicity meets fashion staffing. Build your remote team with Styl SMYTH.",
-                "image"       => "https://stylsmyth.com/twitter-card.jpg",
-                "site"        => "@stylsmyth"
-            ],
-
-            "structuredData" => [
-                "@context" => "https://schema.org",
-                "@type"    => "Organization",
-                "name"     => "Styl SMYTH",
-                "url"      => "https://stylsmyth.com",
-                "logo"     => "https://stylsmyth.com/logo.png",
-                "sameAs"   => [
-                    "https://www.linkedin.com/company/stylsmyth",
-                    "https://twitter.com/stylsmyth"
-                ]
-            ]
-        ]
     ]
 ];
