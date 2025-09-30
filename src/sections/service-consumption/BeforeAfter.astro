@@ -1,0 +1,44 @@
+---
+import BeforeAfterCard from "../../components/BeforeAfterCard.astro";
+
+export interface BeforeAfterItem {
+  before_url: string;
+  after_url: string;
+  caption?: string;
+}
+const { beforeAfterItems = [] } = Astro.props as {
+  beforeAfterItems: BeforeAfterItem[];
+};
+---
+
+<section class="m-auto my-12">
+  <div class="container mx-auto max-w-7xl px-6">
+    <!-- Title + description -->
+    <div class="">
+      <p
+        class="text-n-950 text-3xl leading-none font-bold md:text-4xl md:tracking-[-2px] lg:text-6xl"
+      >
+        From Concept to <span class="text-blue-500">Clarity</span>
+      </p>
+
+      <p
+        class="text-n-700 mt-2 w-[90%] text-lg leading-normal font-normal md:mt-3 md:w-[70%] md:text-xl lg:w-[40%]"
+      >
+        Precision editing that brings your brand to life, one detail at a time
+      </p>
+    </div>
+
+    <!-- Grid -->
+    <div class="mt-10 flex flex-col gap-10 md:mt-16 md:gap-16">
+      {
+        beforeAfterItems.map((beforeAfterItem) => (
+          <BeforeAfterCard
+            caption={beforeAfterItem.caption}
+            before={{ src: beforeAfterItem.before_url, text: "Before" }}
+            after={{ src: beforeAfterItem.after_url, text: "After" }}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
