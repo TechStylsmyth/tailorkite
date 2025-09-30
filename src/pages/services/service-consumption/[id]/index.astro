@@ -1,0 +1,62 @@
+---
+// TYPES //
+import type { Service } from "../../../../types/services";
+
+// CONSTANTS //
+import { API_URL } from "../../../../constants";
+
+// OTHERS //
+import Layout from "../../../../layouts/Layout.astro";
+
+// SECTIONS //
+import Description from "../../../../sections/service-consumption/Description.astro";
+import Hero from "../../../../sections/service-consumption/Hero.astro";
+
+export const prerender = false;
+
+// Take the id from the URL
+const { id } = Astro.params;
+
+// Fetch the service details based on the id
+let servicesConsumption: Service = {
+  name: "",
+  icon: "",
+  id: "",
+  category_id: "",
+  photos: [],
+  before_after: [],
+  image_urls: [],
+  pointers: [],
+};
+
+try {
+  const res = await fetch(API_URL);
+  const json = await res.json();
+  servicesConsumption = json?.data?.services_info.services?.find(
+    (s: Service) => s.id === id,
+  ) ?? {
+    name: "",
+    icon: "",
+    id: "",
+    category_id: "",
+    photos: [],
+    before_after: [],
+  };
+} catch (e) {
+  console.error(e);
+}
+---
+
+<!-- Render service details here -->
+<Layout>
+  {
+    servicesConsumption && (
+      <>
+        <Hero title={servicesConsumption.name} />
+        {servicesConsumption.pointers && (
+          <Description serviceConsumption={servicesConsumption} />
+        )}
+      </>
+    )
+  }
+</Layout>

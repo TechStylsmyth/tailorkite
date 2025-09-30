@@ -4,14 +4,40 @@ interface Props {
   title: string;
   alt?: string;
   color: string;
+  showArrow?: boolean;
 }
 
-const { icon, title, alt = title, color } = Astro.props;
+const { icon, title, alt = title, color, showArrow = false } = Astro.props;
 ---
 
-<div class=`flex w-full h-full flex-col gap-4 rounded-3xl ${color} p-10`>
-  <!-- Card icon -->
-  <img src={icon} alt={alt} class="size-8 md:size-11" />
-  <!-- Card Title -->
-  <p class="text-lg font-semibold md:text-2xl">{title}</p>
+<div
+  class=`flex w-full h-full flex-col gap-6 2xl:gap-8 justify-between rounded-3xl ${color} px-6 py-10 cursor-pointer`
+>
+  <div class="flex h-full flex-col gap-4">
+    <!-- Card icon -->
+    <img src={`/icons/${icon}.svg`} alt={alt} class="size-8 lg:size-9 2xl:size-11" />
+    <!-- Card Title -->
+    <p class="text-lg font-semibold md:text-xl 2xl:text-2xl">{title}</p>
+  </div>
+
+  {
+    showArrow && (
+      <div class="self-end">
+        <svg
+          width="28"
+          height="35"
+          viewBox="0 0 28 35"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M18.3116 27.6436C18.5747 27.5427 19.448 26.9611 20.0756 26.4687C21.0941 25.6697 21.9738 24.8193 22.9139 23.7247C24.4293 21.9602 25.528 20.2531 26.3633 18.3647C26.7345 17.5256 26.7186 17.3886 26.101 16.1081C25.2908 14.4282 24.2917 12.9191 22.9691 11.3777C21.5885 9.76863 20.3 8.62156 18.8126 7.67737C18.2427 7.31565 18.0499 7.26664 17.718 7.39918C17.4767 7.49552 17.3155 7.63831 17.1917 7.86537C16.996 8.2241 16.9697 8.67465 17.1227 9.04523C17.2338 9.3144 17.3874 9.47448 17.7543 9.70333C19.9013 11.0423 22.025 13.283 23.5887 15.8592L23.8607 16.3072L13.0151 16.3238C3.74376 16.3379 2.15534 16.3472 2.07157 16.3874C1.92278 16.4588 1.78006 16.5726 1.66422 16.7122C1.33668 17.1069 1.30983 17.8043 1.60517 18.2466C1.71233 18.4071 1.92753 18.5964 2.06961 18.655C2.14837 18.6875 4.46968 18.6998 13.0151 18.713L23.8607 18.7297L23.5887 19.1777C22.7023 20.638 21.6166 22.0163 20.4256 23.1935C19.5158 24.0926 18.6734 24.7631 17.6705 25.3865C17.2364 25.6563 17.0507 25.9667 17.0295 26.4583C17.0204 26.6685 17.0296 26.7636 17.0716 26.8933C17.1989 27.2861 17.3952 27.5126 17.7172 27.6379C17.9296 27.7207 18.1064 27.7224 18.3116 27.6436Z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+    )
+  }
 </div>
