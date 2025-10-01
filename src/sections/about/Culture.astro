@@ -1,0 +1,14 @@
+---
+import CultureAndPeopleCard from "../../components/CultureAndPeopleCard.astro";
+---
+
+<div class="flex flex-wrap gap-3">
+  {
+    [0, 1, 2, 3].map(() => (
+      <div class="w-full sm:w-[47%] lg:w-[24%]">
+        {/* // Service card component */}
+        <CultureAndPeopleCard />
+      </div>
+    ))
+  }
+</div>
