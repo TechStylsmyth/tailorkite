@@ -1,0 +1,134 @@
+---
+import EventsCard from "../../components/EventsCard.astro";
+
+const tags = [
+  { id: 1, name: "2022" },
+  { id: 2, name: "2023" },
+  { id: 3, name: "2024" },
+  { id: 4, name: "2025" },
+];
+
+// Example events data with titles and images
+const events = [
+  {
+    id: 1,
+    year: "2022",
+    title: "Annual Meetup",
+    photo_url: "/images/Events.png",
+    sub_title: "Our first big event of 2022.",
+  },
+  {
+    id: 2,
+    year: "2022",
+    title: "Summer Party",
+    photo_url: "/images/Events.png",
+    sub_title: "Celebrating summer together.",
+  },
+  {
+    id: 3,
+    year: "2023",
+    title: "Spring Workshop",
+    photo_url: "/images/Events.png",
+    sub_title: "Learning and growing in 2023.",
+  },
+  {
+    id: 4,
+    year: "2023",
+    title: "Hackathon",
+    photo_url: "/images/Events.png",
+    sub_title: "Team coding challenge.",
+  },
+  {
+    id: 5,
+    year: "2024",
+    title: "Charity Run",
+    photo_url: "/images/Events.png",
+    sub_title: "Giving back to the community.",
+  },
+  {
+    id: 6,
+    year: "2025",
+    title: "Innovation Summit",
+    photo_url: "/images/Events.png",
+    sub_title: "Showcasing new ideas.",
+  },
+];
+---
+
+<section class="mb-20 md:mb-12">
+  <div class="container mx-auto px-6 py-8 md:pt-24">
+    <div class="mb-8 flex flex-col gap-2 md:mb-12 md:gap-4 lg:mb-16">
+      <p class="text-3xl font-bold text-blue-500 md:text-4xl lg:text-5xl">
+        Moments That Move Us
+      </p>
+      <p class="text-n-700 w-[90%] md:w-[75%] lg:text-lg">
+        Snapshots of celebration, learning, and everything in between.
+      </p>
+    </div>
+
+    <!-- Tags -->
+    <div id="year-tags" class="flex flex-wrap gap-3 xl:gap-5">
+      {
+        tags.map((tag, i) => (
+          <button
+            type="button"
+            data-tag={tag.name}
+            class={`border-n-950 cursor-pointer rounded-3xl border px-5 py-2 text-sm font-normal transition-colors duration-200 md:px-6 md:py-2.5 lg:text-lg ${i === 0 ? "bg-n-950 text-n-50" : "text-n-950 hover:bg-n-950 hover:text-n-50"}`}
+            aria-pressed={i === 0 ? "true" : "false"}
+          >
+            {tag.name}
+          </button>
+        ))
+      }
+    </div>
+
+    <div class="mt-6" id="events-gallery">
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+        {
+          events.map((event) => (
+            <div class="event-card" data-year={event.year}>
+              <EventsCard {...event} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    const tagButtons = Array.from(
+      document.querySelectorAll("#year-tags [data-tag]"),
+    );
+    const eventCards = Array.from(
+      document.querySelectorAll("#events-gallery .event-card"),
+    );
+
+    function setActive(btn) {
+      tagButtons.forEach((b) => {
+        const isActive = b === btn;
+        b.setAttribute("aria-pressed", isActive ? "true" : "false");
+        b.classList.toggle("bg-n-950", isActive);
+        b.classList.toggle("text-n-50", isActive);
+        b.classList.toggle("text-n-950", !isActive);
+      });
+    }
+
+    function filter(year) {
+      eventCards.forEach((card) => {
+        card.style.display = card.dataset.year === year ? "" : "none";
+      });
+    }
+
+    tagButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        setActive(btn);
+        filter(btn.dataset.tag);
+      });
+    });
+
+    // Show first year by default
+    filter(tagButtons[0]?.dataset.tag);
+  })();
+</script>
