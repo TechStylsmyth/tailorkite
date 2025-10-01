@@ -1,29 +1,21 @@
 ---
 // COMPONENTS //
 import JobOpeningCard from "../../components/JobOpeningCard.astro";
+import type { OpeningsData } from "../../types/career";
 
-const jobs = [
-  { department: "Production", role: "Operations Manager", location: "Mumbai" },
-  { department: "IT", role: "Frontend Engineer", location: "Pune" },
-  {
-    department: "Production",
-    role: "Marketing Manager (LDN)",
-    location: "Pune",
-  },
-  { department: "Design", role: "Graphic Designer", location: "Remote" },
-  {
-    department: "Production",
-    role: "Digital Producer / Project Manager (LDN)",
-    location: "Mumbai",
-  },
-];
+const { openings, categories } = Astro.props as {
+  openings: OpeningsData[];
+  categories: { id: string; name: string }[];
+};
 
-const tags = [
-  { id: 1, name: "All" },
-  { id: 2, name: "Production" },
-  { id: 3, name: "Design" },
-  { id: 4, name: "IT" },
-];
+// Map openings to their categories using category key
+const jobs = openings.map((opening) => {
+  const category = categories.find((cat) => cat.id === opening.category);
+  return {
+    ...opening,
+    department: category ? category.name : "Other",
+  };
+});
 ---
 
 <section>
@@ -47,17 +39,26 @@ const tags = [
       <p class="text-n-400 text-base font-medium">Filter by Department</p>
       <!-- Tags -->
       <div id="job-tags" class="flex flex-wrap gap-3 xl:gap-5">
+        <button
+          type="button"
+          data-tag="All"
+          class="border-n-950 bg-n-950 text-n-50 cursor-pointer rounded-3xl border px-5 py-2 text-sm font-normal transition-colors duration-200 md:px-6 md:py-2.5 lg:text-lg"
+          aria-pressed="true"
+        >
+          All
+        </button>
         {
-          tags.map((tag, i) => (
-            <button
-              type="button"
-              data-tag={tag.name}
-              class={`border-n-950 cursor-pointer rounded-3xl border px-5 py-2 text-sm font-normal transition-colors duration-200 md:px-6 md:py-2.5 lg:text-lg ${i === 0 ? "bg-n-950 text-n-50" : "text-n-950 hover:bg-n-950 hover:text-n-50"}`}
-              aria-pressed={i === 0 ? "true" : "false"}
-            >
-              {tag.name}
-            </button>
-          ))
+          categories &&
+            categories.map((category) => (
+              <button
+                type="button"
+                data-tag={category.name}
+                class="border-n-950 text-n-950 hover:bg-n-950 hover:text-n-50 cursor-pointer rounded-3xl border px-5 py-2 text-sm font-normal transition-colors duration-200 md:px-6 md:py-2.5 lg:text-lg"
+                aria-pressed="false"
+              >
+                {category.name}
+              </button>
+            ))
         }
       </div>
     </div>
@@ -65,19 +66,23 @@ const tags = [
     <!-- Jobs -->
     <div id="jobs" class="flex h-full flex-wrap gap-4 md:gap-6">
       {
-        jobs.map((job) => (
-          <div
-            class="job w-full sm:w-[46%] lg:w-[38%] xl:w-[23%]"
-            data-dept={job.department}
-          >
-            {/* Job Opening Card component */}
-            <JobOpeningCard
-              department={job.department}
-              role={job.role}
-              location={job.location}
-            />
-          </div>
-        ))
+        jobs &&
+          jobs.map((job) => (
+            <a
+              href={job.job_post_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="job block w-full sm:w-[46%] lg:w-[38%] xl:w-[23%]"
+              data-dept={job.department}
+            >
+              {/* Job Opening Card component */}
+              <JobOpeningCard
+                department={job.department}
+                role={job.title}
+                location={job.location}
+              />
+            </a>
+          ))
       }
     </div>
 
@@ -103,7 +108,7 @@ const tags = [
   (function () {
     // Collect all tag buttons inside #job-tags
     const tagButtons = Array.from(
-      document.querySelectorAll("#job-tags [data-tag]")
+      document.querySelectorAll("#job-tags [data-tag]"),
     );
 
     // Collect all job card elements inside #jobs

@@ -9,12 +9,44 @@ import Faq from "../../sections/career/Faq.astro";
 import JobOpenings from "../../sections/career/JobOpenings.astro";
 import WhyWorkWithUs from "../../sections/career/WhyWorkWithUs.astro";
 
+// TYPES //
+import type { CareerInfo } from "../../types/career";
+import { API_URL } from "../../constants";
+
+let careerInfo: CareerInfo = {
+  categories: [],
+  openings: [],
+  frequently_asked_questions: [],
+};
+try {
+  const res = await fetch(API_URL);
+  const json = await res.json();
+  careerInfo = json?.data?.career_page ?? {
+    categories: [],
+    openings: [],
+    frequently_asked_questions: [],
+  };
+} catch (e) {
+  console.error(e);
+}
 ---
 
 <Layout>
   <Hero />
   <WhyWorkWithUs />
-  <JobOpenings />
+  {
+    careerInfo.openings && careerInfo.categories && (
+      <JobOpenings
+        openings={careerInfo.openings}
+        categories={careerInfo.categories}
+      />
+    )
+  }
+  {
+    careerInfo.frequently_asked_questions && (
+      <Faq faqs={careerInfo.frequently_asked_questions} />
+    )
+  }
   <ContactForm />
   <Faq />
 </Layout>
