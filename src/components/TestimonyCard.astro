@@ -1,0 +1,21 @@
+---
+import Profile from "./Profile.astro";
+
+// Props from parent
+const { text, employees } = Astro.props;
+---
+
+<div class="bg-n-100 gap-9 space-y-9 rounded-3xl px-8 py-10">
+  <!-- Text  -->
+  <p class="text-n-700 text-base font-normal">{text}</p>
+  <!-- Profile card component  -->
+  {
+    employees.map((employee: any) => (
+      <Profile
+        image={employee.image}
+        name={employee.name}
+        designation={employee.designation}
+      />
+    ))
+  }
+</div>
