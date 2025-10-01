@@ -1,0 +1,68 @@
+---
+import Input from "./Input.astro";
+import Button from "./Button.astro";
+---
+
+<form id="contact-form" class="flex flex-col gap-6 md:gap-8">
+  <Input id="name" label="Name" required />
+  <Input id="phone" label="Phone number" type="tel" required />
+  <Input id="email" label="Email" type="email" required />
+  <Input id="message" label="Text" required />
+  <Button
+    variant="solid"
+    text="Send Message"
+    extraClasses="!bg-blue-500 !text-n-50 self-end hover:!bg-n-50 hover:!text-blue-500 hover:!border-blue-500 mt-2"
+    rightArrow
+    type="submit"
+  />
+  <div id="form-message" class="mt-2 text-red-500"></div>
+</form>
+
+<script is:inline>
+  const form = document.getElementById("contact-form");
+  const messageDiv = document.getElementById("form-message");
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    messageDiv.textContent = "";
+
+    console.log("Form submitted");
+
+    const name = form.name.value.trim();
+    const contact = form.phone.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+
+    // Simple validation
+    if (!name || !contact || !email || !message) {
+      messageDiv.textContent = "All fields are required.";
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      messageDiv.textContent = "Please enter a valid email address.";
+      return;
+    }
+
+    // API call
+    try {
+      const res = await fetch(
+        "https://api.pixoloproductions.com/styl-smyth/contact/index.php",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, contact, email, message }),
+        },
+      );
+      if (res.ok) {
+        messageDiv.textContent = "Thank you! We'll get back to you soon.";
+        messageDiv.classList.remove("text-red-500");
+        messageDiv.classList.add("text-green-500");
+        form.reset();
+      } else {
+        messageDiv.textContent = "Something went wrong. Please try again.";
+      }
+    } catch {
+      messageDiv.textContent = "Network error. Please try again.";
+    }
+  });
+</script>
