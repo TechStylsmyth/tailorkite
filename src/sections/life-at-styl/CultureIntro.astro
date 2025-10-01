@@ -1,0 +1,59 @@
+---
+import CultureCard from "../../components/CultureCard.astro";
+
+const whyUsDetails = [
+  {
+    title: "Inclusivity",
+    description:
+      "Diversity is our strength. We embrace people from all walks of life, backgrounds, and perspectives. At StylSmyth, everyone’s voice matters, and inclusivity is embedded in the way we work, grow, and succeed together.",
+    image: "/images/globe.png",
+    alt: "Globe illustration",
+  },
+  {
+    title: "Opportunity for Growth",
+    description:
+      "From day one, employees are given a platform to showcase their abilities and take on challenges that lead to growth. We believe in nurturing talent, offering career progression, and recognizing contributions at every level.",
+    image: "/images/globe.png",
+    alt: "Team collaboration",
+  },
+  {
+    title: "Importance to mental Well-being",
+    description:
+      "We recognize that mental health is as important as physical health. Our policies and initiatives are designed to create a healthy work-life balance, reduce stress, and ensure employees feel supported, heard, and cared for.",
+    image: "/images/globe.png",
+    alt: "Rocket illustration",
+  },
+];
+---
+
+<section class="mb-20 md:mb-12">
+  <div class="container mx-auto px-6 py-8 md:py-24">
+    <p
+      class="mb-2 text-3xl font-bold text-blue-500 md:mb-4 md:text-4xl lg:text-5xl lg:leading-[50px]"
+    >
+      More than a Workplace
+    </p>
+    <p class="text-n-700 w-[90%] md:w-[75%] lg:text-lg lg:leading-7">
+      We foster a positive and dynamic work environment where innovation and
+      creativity are encouraged. We celebrate achievements, support
+      collaboration, and ensure that every team member feels connected to the
+      company’s vision.
+    </p>
+
+    <!-- Cards Component -->
+    <div class="mt-16 flex flex-wrap gap-3.5">
+      {
+        whyUsDetails.map((item) => (
+          <div class="w-full lg:w-[47%] xl:w-[32%]">
+            <CultureCard
+              title={item.title}
+              description={item.description}
+              image={item.image}
+              alt={item.alt}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
