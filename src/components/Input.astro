@@ -4,16 +4,17 @@ interface Props {
   label: string;
   type?: string;
   required?: boolean;
+  name?: string;
 }
 
-const { id, label, type = "text", required = false } = Astro.props;
+const { id, label, type = "text", required = false, name } = Astro.props;
 ---
 
 <div class="bg-n-50 relative w-full">
   <!-- Input field -->
   <input
     id={id}
-    name={id}
+    name={name}
     type={type}
     required={required}
     placeholder=" "
