@@ -1,0 +1,174 @@
+---
+import SectionHeading from "../../components/SectionHeading.astro";
+import TestimonyCard from "../../components/TestimonyCard.astro";
+
+const testmonyDetails = {
+  highlightedText: "The STYL Edge",
+  description:
+    "We give you the runway to grow, the tools to deliver, and the teams to back you.",
+
+  testimonials: [
+    {
+      text: "My experience after college was just one year when I met Avi Sonpal (Founder). Since then, my journey at StylSmyth has been incredible, from starting as a Graphic Designer to handling License and now managing a team. Their faith in me has been the driving force behind my growth.",
+      employee: {
+        image: "/images/profile-image.png",
+        name: "Hetal Doshi",
+        designation: "Senior Manager",
+      },
+    },
+    {
+      text: "StylSmyth has given me opportunities to explore multiple areas and grow with constant support from peers and mentors.",
+      employee: {
+        image: "/images/profile-image.png",
+        name: "Raj Mehta",
+        designation: "Project Lead",
+      },
+    },
+    {
+      text: "The management’s support and trust allowed me to transition from a junior role into a position where I now lead a creative team. It has been an empowering journey.",
+      employee: {
+        image: "/images/profile-image.png",
+        name: "Priya Shah",
+        designation: "Designer",
+      },
+    },
+    {
+      text: "The management’s support and trust allowed me to transition from a junior role into a position where I now lead a creative team. It has been an empowering journey.",
+      employee: {
+        image: "/images/profile-image.png",
+        name: "Priya Shah",
+        designation: "Designer",
+      },
+    },
+  ],
+};
+// Unique IDs to avoid collisions with other sliders
+const uid = "embla-testimonials";
+const prevId = "embla-testimonials-prev";
+const nextId = "embla-testimonials-next";
+---
+
+<section class="tb-slider mb-20 md:mb-12">
+  <div class="container mx-auto px-6 py-8 md:pt-24">
+    <div class="mb-8 flex flex-col gap-2 md:mb-12 md:gap-4 lg:mb-16">
+      <!-- Title -->
+      <p class="text-3xl font-bold md:text-4xl lg:text-5xl">
+        <span class="font-bold text-blue-500">Employee</span> Testimonials
+      </p>
+
+      <!-- Description -->
+      <p class="text-n-700 w-[90%] md:w-[75%] lg:text-lg">
+        Hear from the minds and hearts that power STYLSMYTH, every single day.
+      </p>
+    </div>
+
+    <!-- Embla viewport -->
+    <div id={uid} class="overflow-hidden">
+      <!-- Embla container -->
+      <div class="flex items-stretch gap-7">
+        {
+          testmonyDetails.testimonials.map((testimonial) => (
+            <div class="tb-slide">
+              <TestimonyCard
+                text={testimonial.text}
+                employee={testimonial.employee}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Prev / Next buttons -->
+    <div class="flex justify-end gap-5 pt-5">
+      <button
+        id={prevId}
+        aria-label="Previous"
+        class="border-n-300 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border"
+        type="button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="9"
+          height="14"
+          viewBox="0 0 9 14"
+          fill="none"
+        >
+          <path
+            d="M7.70607 2.37423C8.28595 2.05208 8.49499 1.3212 8.17296 0.741288C7.85081 0.161414 7.11993 -0.0476322 6.54002 0.274399C5.58614 0.804332 4.15889 1.7217 2.95272 2.77777C2.3505 3.30506 1.76775 3.89734 1.32682 4.52215C0.899117 5.12824 0.516212 5.89024 0.516212 6.72991C0.516212 7.56958 0.899117 8.33157 1.32682 8.93766C1.76775 9.56248 2.3505 10.1547 2.95272 10.682C4.15889 11.7381 5.58614 12.6555 6.54002 13.1854C7.11993 13.5074 7.85081 13.2984 8.17296 12.7185C8.49499 12.1386 8.28595 11.4077 7.70607 11.0856C6.85817 10.6145 5.5824 9.7901 4.53639 8.87431C4.0127 8.41579 3.58158 7.96454 3.29057 7.55224C2.98626 7.12101 2.9187 6.85123 2.9187 6.72991C2.9187 6.60858 2.98626 6.3388 3.29057 5.90757C3.58158 5.49527 4.0127 5.04402 4.53639 4.5855C5.5824 3.66972 6.85817 2.8453 7.70607 2.37423Z"
+            fill="#324158"></path>
+        </svg>
+      </button>
+      <button
+        id={nextId}
+        aria-label="Next"
+        class="border-n-300 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border"
+        type="button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="9"
+          height="14"
+          viewBox="0 0 9 14"
+          fill="none"
+        >
+          <path
+            d="M1.12401 2.37618C0.544132 2.05403 0.335086 1.32315 0.657116 0.743241C0.979269 0.163367 1.71015 -0.0456791 2.29006 0.276352C3.24394 0.806285 4.67118 1.72365 5.87736 2.77972C6.47958 3.30702 7.06233 3.89929 7.50326 4.52411C7.93096 5.1302 8.31387 5.89219 8.31387 6.73186C8.31387 7.57153 7.93096 8.33352 7.50326 8.93961C7.06233 9.56443 6.47958 10.1567 5.87736 10.684C4.67118 11.7401 3.24394 12.6574 2.29006 13.1874C1.71015 13.5094 0.979269 13.3004 0.657116 12.7205C0.335086 12.1406 0.544132 11.4097 1.12401 11.0875C1.97191 10.6165 3.24768 9.79205 4.29369 8.87627C4.81738 8.41775 5.2485 7.96649 5.53951 7.55419C5.84382 7.12296 5.91138 6.85318 5.91138 6.73186C5.91138 6.61053 5.84382 6.34076 5.53951 5.90952C5.2485 5.49723 4.81738 5.04597 4.29369 4.58745C3.24768 3.67167 1.97191 2.84725 1.12401 2.37618Z"
+            fill="#324158"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  import EmblaCarousel from "embla-carousel";
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const viewport = document.getElementById("embla-testimonials");
+    if (!viewport) return;
+    const embla = EmblaCarousel(viewport, {
+      align: "start",
+      loop: false,
+      containScroll: "trimSnaps",
+      dragFree: true,
+    });
+
+    const prevBtn = document.getElementById("embla-testimonials-prev");
+    const nextBtn = document.getElementById("embla-testimonials-next");
+
+    if (prevBtn) prevBtn.addEventListener("click", () => embla.scrollPrev());
+    if (nextBtn) nextBtn.addEventListener("click", () => embla.scrollNext());
+  });
+</script>
+
+<style>
+  /* Match gap-7 (28px) and control slides + peek responsively */
+  .tb-slider {
+    --slides: 1;
+    --gap: 28px;
+    --peek: 56px;
+  }
+
+  @media (min-width: 640px) {
+    .tb-slider {
+      --slides: 2;
+      --peek: 56px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .tb-slider {
+      --slides: 3;
+      --peek: 60px; /* show a little of the 4th */
+    }
+  }
+
+  .tb-slide {
+    flex: 0 0
+      calc(
+        (100% - (var(--gap) * (var(--slides) - 1)) - var(--peek)) /
+          var(--slides)
+      );
+  }
+</style>
