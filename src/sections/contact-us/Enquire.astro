@@ -1,5 +1,6 @@
 ---
-import Button from "../../components/Button.astro";
+// COMPONENTS //
+import Form from "../../components/Form.astro";
 import Input from "../../components/Input.astro";
 
 // Dummy CMS data
@@ -69,27 +70,7 @@ const contactPageDetails = {
             <!-- Form wrapper -->
             <div class="flex w-full flex-col gap-10 md:gap-20 xl:w-[42%]">
               <!-- Contact form  -->
-              <form class="flex flex-col gap-6 md:gap-8">
-                <!-- Name  -->
-                <Input id="name" label="Name" />
-
-                <!-- Phone no -->
-                <Input id="phone" label="Phone number" type="tel" />
-
-                <!-- Email -->
-                <Input id="email" label="Email" type="email" />
-
-                <!-- Message -->
-                <Input id="message" label="Text" />
-
-                <!-- Submit Button -->
-                <Button
-                  variant="solid"
-                  text="Send Message"
-                  extraClasses="!bg-blue-500 !text-n-50 self-end hover:!bg-n-50 hover:!text-blue-500 hover:!border-blue-500 mt-2"
-                  rightArrow
-                />
-              </form>
+              <Form />
             </div>
 
             <div

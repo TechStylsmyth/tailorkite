@@ -11,7 +11,9 @@
     "deploy:preview": "dotenv -e .env.deploy.local -- sh -c \"vercel pull --yes --environment=preview --scope $VERCEL_SCOPE --token $VERCEL_TOKEN && vercel build --scope $VERCEL_SCOPE --token $VERCEL_TOKEN && vercel deploy --prebuilt --scope $VERCEL_SCOPE --token $VERCEL_TOKEN\""
   },
   "dependencies": {
+    "@astrojs/vercel": "^8.2.8",
     "@tailwindcss/vite": "^4.1.13",
+    "embla-carousel": "^8.6.0",
     "tailwindcss": "^4.1.13"
   },
   "devDependencies": {

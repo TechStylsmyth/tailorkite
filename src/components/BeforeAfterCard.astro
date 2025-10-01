@@ -1,0 +1,69 @@
+---
+export interface Side {
+  src: string;
+  text?: string; // overlay label (e.g., "Before", "After")
+  alt?: string;
+}
+
+export interface Props {
+  before: Side;
+  after: Side;
+  heightClass?: string; // e.g., "h-[450px]"
+  class?: string; // optional wrapper classes
+  caption?: string; // optional caption below the images
+}
+
+const {
+  before,
+  after,
+  heightClass = "h-[300px] lg:h-[350px] xl:h-[400px]",
+  class: className = "",
+  caption = "",
+} = Astro.props;
+---
+
+<div class="space-y-4">
+  {caption && <p class="text-n-700 font-medium">{caption}</p>}
+
+  <!-- Before and After Images -->
+  {
+    before && after && (
+      <div class={`grid grid-cols-1 gap-6 md:grid-cols-2 ${className}`}>
+        <div
+          class={`relative ${heightClass} bg-n-950 overflow-hidden rounded-3xl`}
+        >
+          <img
+            src={before.src}
+            alt={before.alt ?? before.text ?? "Before"}
+            loading="lazy"
+            decoding="async"
+            class="h-full w-full object-cover"
+          />
+          {(before.text ?? "Before") && (
+            <div class="text-n-50 absolute bottom-6 left-9 rounded-full text-xl font-medium">
+              {before.text ?? "Before"}
+            </div>
+          )}
+        </div>
+
+        {/* After pic  */}
+        <div
+          class={`relative ${heightClass} bg-n-950 overflow-hidden rounded-3xl`}
+        >
+          <img
+            src={after.src}
+            alt={after.alt ?? after.text ?? "After"}
+            loading="lazy"
+            decoding="async"
+            class="h-full w-full object-cover"
+          />
+          {(after.text ?? "After") && (
+            <div class="text-n-50 absolute right-9 bottom-6 rounded-full text-xl font-medium">
+              {after.text ?? "After"}
+            </div>
+          )}
+        </div>
+      </div>
+    )
+  }
+</div>

@@ -14,30 +14,21 @@ const teamDetails = {
       role: "Sr. Manager",
       field: "Product Delivery",
       image: "/images/team-members/member1.png",
-      links: [
-        { href: "https://linkedin.com" },
-        { href: "https://linkedin.com" },
-      ],
+      links: [{ href: "https://linkedin.com" }],
     },
     {
       name: "Poojaa Somaiya",
       role: "Sr. Manager",
       field: "Design Solutions",
       image: "/images/team-members/member3.png",
-      links: [
-        { href: "https://linkedin.com" },
-        { href: "https://linkedin.com" },
-      ],
+      links: [{ href: "https://linkedin.com" }],
     },
     {
       name: "Shubham Shanghrajka",
       role: "Sr. Manager",
       field: "Operations",
       image: "/images/team-members/member2.png",
-      links: [
-        { href: "https://linkedin.com" },
-        { href: "https://linkedin.com" },
-      ],
+      links: [{ href: "https://linkedin.com" }],
     },
   ],
 };
@@ -53,7 +44,7 @@ const teamDetails = {
       {
         teamDetails.teamMembers.map((member) => (
           // Team Card
-          <div class="w-full md:w-[45%] lg:w-[30%] h-full">
+          <div class="h-full w-full md:w-[45%] lg:w-[30%]">
             <TeamCard {...member} />
           </div>
         ))

@@ -1,8 +1,30 @@
 ---
+// TYPES //
+import type { ServicesInfo } from "../../types/services";
+
+// SERVICES //
+import Hero from "../../sections/services/Hero.astro";
+
+// CONSTANTS //
+import { API_URL } from "../../constants";
+
+// OTHERS //
 import Layout from "../../layouts/Layout.astro";
+
+// SECTIONS //
+import Services from "../../sections/home/Services.astro";
+
+let servicesInfo: ServicesInfo = { categories: [], services: [] };
+try {
+  const res = await fetch(API_URL);
+  const json = await res.json();
+  servicesInfo = json?.data?.services_info ?? { categories: [], services: [] };
+} catch (e) {
+  console.error(e);
+}
 ---
 
 <Layout>
-  <img src="/images/service-hero.png" alt="" />
-  <img src="/images/service-list.png" alt="" />
+  <Hero />
+  {servicesInfo && <Services servicesInfo={servicesInfo} showArrow />}
 </Layout>
