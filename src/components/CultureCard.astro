@@ -10,22 +10,26 @@ const { title, description, image, alt = "" } = Astro.props;
 ---
 
 <div class="bg-n-100 h-full w-full rounded-2xl p-2 md:px-3.5 md:py-2.5">
-  <div class="flex justify-between gap-6">
+  <div class="flex h-full justify-between gap-6">
     <!-- Left: Texts -->
-    <div class="flex flex-1 flex-col justify-between gap-10">
+    <div class="flex flex-1 flex-col justify-between gap-2 md:gap-4">
       <!-- Card title -->
-      <p class="text-n-950 word-wrap text-lg font-semibold md:text-xl">
+      <p class="text-n-950 text-lg leading-6 font-semibold">
         {title}
       </p>
       <!-- Card Description -->
-      <p class="text-n-700 text-xs font-normal md:text-base">
+      <p class="text-n-700 text-xs leading-4 font-normal">
         {description}
       </p>
     </div>
 
     <!-- Right: Image -->
-    <div class="flex w-[100px] items-center justify-center md:w-[174px]">
-      <img src={image} alt={alt} class="max-w-full rounded-lg" />
+    <div class="h-full w-[100px] md:w-[140px]">
+      <img
+        src={image}
+        alt={alt}
+        class="h-full w-full rounded-lg object-cover"
+      />
     </div>
   </div>
 </div>
