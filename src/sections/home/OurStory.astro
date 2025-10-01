@@ -3,15 +3,14 @@
 import Button from "../../components/Button.astro";
 
 // Section data
-const whoWeAreDetails = {
-  title: "Who We Are ?",
+const ourStoryDetails = {
+  title: "Our Story",
   description:
-    "STYLSMYTH is a specialized staffing solutions company for the fashion industry, providing full-time remote teams that seamlessly integrate into your business.",
+    "STYLSMYTH was created with a simple vision - to bridge the efficiency gap for global fashion and Lifestyle brands. ",
   para1:
-    "Our model helps fashion companies overseas scale operations efficiently — at a fraction of the cost.",
+    "OWhile design and operational needs grew rapidly, companies struggled with rising costs, attrition, and limited scalability. We stepped in to offer a smarter model: dedicated, full-time remote teams that operate like your in-house department, but without the overhead.",
   para2:
-    "We operate and manage your dedicated team from our offices, ensuring smooth delivery and performance without the hassle of hiring or infrastructure. With STYLSMYTH, you get the flexibility of a remote workforce with the control and consistency of an in-house team.",
-  buttonText: "Explore STYL Smyth",
+    "From design to data-driven operations, STYLSMYTH has become the trusted partner for some of the world’s biggest fashion retailers, helping them scale faster, reduce costs, and focus on creativity and growth.",
   backgroundImage: "/images/background.png",
 };
 ---
@@ -21,7 +20,7 @@ const whoWeAreDetails = {
   <div
     class="absolute top-1/2 z-1 -translate-y-1/2 scale-[3] md:scale-[2] xl:scale-[1]"
   >
-    <img src={whoWeAreDetails.backgroundImage} alt="background" />
+    <img src={ourStoryDetails.backgroundImage} alt="background" />
   </div>
 
   <!-- Content container  -->
@@ -34,11 +33,11 @@ const whoWeAreDetails = {
     >
       <!-- Title -->
       <p class="text-4xl font-semibold text-nowrap md:text-6xl">
-        {whoWeAreDetails.title}
+        {ourStoryDetails.title}
       </p>
 
       <!-- Image  -->
-      <img src="/icons/who-we-are.svg" alt="" class="w-30 md:w-60" />
+      <img src="/icons/our-story.svg" alt="" class="w-30 md:w-60" />
     </div>
 
     <!-- Content Wrapper -->
@@ -46,21 +45,18 @@ const whoWeAreDetails = {
       <p
         class="text-2xl font-medium md:text-3xl md:leading-10 lg:text-4xl lg:leading-12"
       >
-        {whoWeAreDetails.description}
+        {ourStoryDetails.description}
       </p>
 
       <!-- Supporting paragraphs -->
       <div
         class="text-n-700 space-y-6 text-base font-normal md:space-y-12 md:text-lg md:leading-10 lg:text-2xl lg:leading-11"
       >
-        <p>{whoWeAreDetails.para1}</p>
+        <p>{ourStoryDetails.para1}</p>
         <p>
-          {whoWeAreDetails.para2}
+          {ourStoryDetails.para2}
         </p>
       </div>
-
-      <!-- Button component -->
-      <Button text={whoWeAreDetails.buttonText} variant="outline" showLeftDot />
     </div>
   </div>
 </section>
