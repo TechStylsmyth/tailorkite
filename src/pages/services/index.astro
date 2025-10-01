@@ -13,6 +13,9 @@ import Layout from "../../layouts/Layout.astro";
 
 // SECTIONS //
 import Services from "../../sections/home/Services.astro";
+import OurApproach from "../../sections/services/OurApproach.astro";
+import Faq from "../../sections/home/Faq.astro";
+import Tools from "../../sections/services/Tools.astro";
 
 let servicesInfo: ServicesInfo = { categories: [], services: [] };
 try {
@@ -27,4 +30,7 @@ try {
 <Layout>
   <Hero />
   {servicesInfo && <Services servicesInfo={servicesInfo} showArrow />}
+  <OurApproach />
+  <Tools />
+  <Faq />
 </Layout>
