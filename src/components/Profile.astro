@@ -1,0 +1,16 @@
+---
+const { image, name, designation } = Astro.props;
+---
+
+<div class="flex gap-5">
+  <!-- Profile image -->
+  <div class="bg-n-800 rounded-full border-0">
+    <img src={image} alt="" class="object-contain" />
+  </div>
+  <div class="flex flex-col">
+    <!-- Name  -->
+    <p class="text-n-950 text-xl font-medium">{name}</p>
+    <!-- Designation -->
+    <p class="text-n-700 text-base font-normal">{designation}</p>
+  </div>
+</div>
