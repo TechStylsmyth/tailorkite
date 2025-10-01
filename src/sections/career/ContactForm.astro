@@ -28,26 +28,54 @@ const contactPageDetails = {
           We’re not just hiring. We’re building futures.
         </p>
         <!-- Contact form  -->
-        <form class="flex flex-col gap-8 md:gap-10">
+        <form
+          id="careerForm"
+          class="flex flex-col gap-8 md:gap-10"
+          enctype="multipart/form-data"
+        >
           <div class="space-y-10 md:space-y-22">
             <!-- Name  -->
-            <Input id="name" label="Full Name*" />
+            <Input
+              id="full_name"
+              label="Full Name*"
+              name="full_name"
+              required
+            />
+
             <div class="flex flex-col gap-10 md:flex-row md:gap-18">
               <!-- Phone no -->
-              <Input id="phone" label="Phone number*" type="tel" />
+              <Input
+                id="phone"
+                label="Phone number*"
+                name="phone"
+                type="tel"
+                required
+              />
 
               <!-- Email -->
-              <Input id="email" label="Email*" type="email" />
+              <Input
+                id="email"
+                label="Email*"
+                name="email"
+                type="email"
+                required
+              />
             </div>
 
             <!-- Upload CV -->
-            <FileUpload id="myfile" label="Upload CV" accept=".pdf" />
+            <FileUpload
+              id="cv"
+              label="Upload CV"
+              name="cv"
+              accept=".pdf,.doc,.docx"
+              required
+            />
 
             <!-- Linkedin -->
-            <Input id="linkedin" label="Linkedin*" />
+            <Input id="linkedin" label="Linkedin*" name="linkedin" required />
 
             <!-- Additional comment -->
-            <Input id="comment" label="Additional comment" />
+            <Input id="message" label="Message" name="message" required />
           </div>
 
           <!-- Submit Button -->
@@ -55,7 +83,10 @@ const contactPageDetails = {
             variant="solid"
             text="Apply Now"
             extraClasses="!bg-blue-500 !text-n-50 self-start hover:!bg-n-50 hover:!text-blue-500 hover:!border-blue-500"
+            type="submit"
           />
+
+          <div id="form-message" class="mt-2 text-red-500"></div>
         </form>
       </div>
 
@@ -152,3 +183,48 @@ const contactPageDetails = {
     </div>
   </div>
 </section>
+
+<script is:inline>
+  const form = document.getElementById("careerForm");
+  const messageDiv = document.getElementById("form-message");
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    messageDiv.textContent = "";
+
+    const formData = new FormData(form);
+
+    // Basic validation (HTML required already covers most)
+    if (
+      !form.full_name.value.trim() ||
+      !form.email.value.trim() ||
+      !form.phone.value.trim() ||
+      !form.linkedin.value.trim() ||
+      !form.cv.files.length
+    ) {
+      messageDiv.textContent = "All fields are required.";
+      return;
+    }
+
+    try {
+      const res = await fetch(
+        "https://api.pixoloproductions.com/styl-smyth/career.php",
+        {
+          method: "POST",
+          body: formData,
+        },
+      );
+      if (res.ok) {
+        messageDiv.textContent =
+          "Thank you! Your application has been submitted.";
+        messageDiv.classList.remove("text-red-500");
+        messageDiv.classList.add("text-green-500");
+        form.reset();
+      } else {
+        messageDiv.textContent = "Something went wrong. Please try again.";
+      }
+    } catch {
+      messageDiv.textContent = "Network error. Please try again.";
+    }
+  });
+</script>

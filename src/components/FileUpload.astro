@@ -5,6 +5,7 @@ interface Props {
   required?: boolean;
   accept?: string;
   multiple?: boolean;
+  name?: string; // added name prop for form submission
 }
 
 const {
@@ -13,6 +14,7 @@ const {
   required = false,
   accept = "",
   multiple = false,
+  name = id,
 } = Astro.props;
 ---
 
@@ -20,7 +22,7 @@ const {
   <!-- Real file input (covers the whole container, invisible) -->
   <input
     id={id}
-    name={id}
+    name={name}
     type="file"
     required={required}
     accept={accept}
