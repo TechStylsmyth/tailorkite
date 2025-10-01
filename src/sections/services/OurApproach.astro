@@ -10,19 +10,19 @@ const ourApproachDetails = {
     "We combine the flexibility of outsourcing with the control of in-house teams.",
   approaches: [
     {
-      icon:"/icons/info-desk.svg",
+      icon: "/icons/info-desk.svg",
       title: "Built Around Your Brand.",
       description:
         "Every client has a dedicated team aligned with their brand.",
     },
     {
-      icon:"/icons/workflow.svg",
+      icon: "/icons/workflow.svg",
       title: "Operational Peace of Mind, Built In.",
       description:
         "We manage infrastructure, HR, and delivery — ensuring zero downtime and predictable outcomes.",
     },
     {
-      icon:"/icons/partnership.svg",
+      icon: "/icons/partnership.svg",
       title: "Here for the Long Haul.",
       description: "We focus on long-term partnerships, not one-off projects.",
     },
@@ -52,11 +52,48 @@ const ourApproachDetails = {
     </div>
   </div>
 
-  <div class="flex items-center justify-center">
-    <p
-      class="bg-[radial-gradient(50%_50%_at_50%_50%,#000_0%,#F1F5F9_100%)] bg-clip-text text-[32px] leading-none font-medium whitespace-nowrap text-transparent sm:text-[60px] md:text-[80px] lg:text-[100px] xl:text-[120px] 2xl:text-[160px]"
-    >
-      Your Growth is Automated
-    </p>
+  <div class="scroll-container">
+    <div class="scroll-content">
+      <p
+        class="text-[32px] leading-normal font-medium whitespace-nowrap text-black sm:text-[60px] md:text-[80px] lg:text-[100px] xl:text-[120px] 2xl:text-[160px]"
+      >
+        Outsource. Control. Align. Thrive.&nbsp;&nbsp;&nbsp;
+      </p>
+      <p
+        class="text-[32px] leading-normal font-medium whitespace-nowrap text-black sm:text-[60px] md:text-[80px] lg:text-[100px] xl:text-[120px] 2xl:text-[160px]"
+      >
+        Outsource. Control. Align. Thrive.&nbsp;&nbsp;&nbsp;
+      </p>
+    </div>
   </div>
 </section>
+<style>
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .scroll-container {
+    @apply relative overflow-hidden whitespace-nowrap;
+  }
+
+  .scroll-container::after {
+    content: "";
+    position: absolute;
+    inset: 0; /* full cover */
+    pointer-events: none;
+    z-index: 10;
+    background: linear-gradient(to right, #ffffff, transparent, #ffffff);
+    opacity: 0.5; /* adjust intensity */
+  }
+
+  .scroll-content {
+    @apply relative inline-flex;
+    animation: scroll-left 15s linear infinite;
+    z-index: 5; /* keep text below gradient */
+  }
+</style>
