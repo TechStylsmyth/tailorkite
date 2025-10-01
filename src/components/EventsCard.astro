@@ -1,0 +1,19 @@
+---
+const { photo_url, title, sub_title } = Astro.props;
+---
+
+<div class="overflow-hidden rounded-3xl">
+  <img
+    src={photo_url}
+    alt={title}
+    class="h-[250px] w-full object-cover sm:h-[300px] md:h-[250px] xl:h-[300px] 2xl:h-[350px]"
+  />
+  <div class="bg-n-50 bg-n-100 space-y-2 px-6 py-6 md:space-y-3 md:px-8">
+    <p class="text-xl font-semibold lg:text-2xl">
+      {title}
+    </p>
+    <p class="text-n-700 lg:text-lg 2xl:text-xl">
+      {sub_title}
+    </p>
+  </div>
+</div>
