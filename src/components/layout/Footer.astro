@@ -1,5 +1,5 @@
 ---
-
+import { footerMenuItems } from "../../constants";
 ---
 
 <!-- Footer -->
@@ -43,12 +43,18 @@
         <ul
           class="flex flex-wrap justify-center gap-x-12 gap-y-3 sm:gap-6 md:gap-9"
         >
-          <li><a href="/">Who we are</a></li>
-          <li><a href="/services">What we do</a></li>
-          <li><a href="/about">Why us</a></li>
-          <li><a href="/life-at-styl">Life at STYL</a></li>
-          <li><a href="/career">Career</a></li>
-          <li><a href="/contact-us">Contact</a></li>
+          {
+            footerMenuItems.map((item) => (
+              <li class="relative">
+                <a href={item.href}>
+                  {item.name}
+                  {Astro.url.pathname === item.href && (
+                    <span class="bg-n-50 absolute -right-3 bottom-[4px] size-1.5 rounded-full" />
+                  )}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
 

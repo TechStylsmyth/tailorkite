@@ -1,44 +1,16 @@
 ---
+// TYPES //
+import type { Stats } from "../../types/home";
+
+// COMPONENTS //
 import BrandLogo from "../../components/BrandLogo.astro";
 
-// Dummy Data
-const statsContent = [
-  {
-    number: "150+",
-    title: "Experienced Employees",
-    description:
-      "From global brands to fast-growing startups — our people know how to get it done.",
-  },
-  {
-    number: "50+",
-    title: "Global Clients",
-    description:
-      "Partnering with businesses worldwide to deliver impactful solutions.",
-  },
-  {
-    number: "10%",
-    title: "Industry Experience",
-    description:
-      "A decade of proven expertise across multiple sectors and domains.",
-  },
-  {
-    number: "25+",
-    title: "Award-Winning Projects",
-    description:
-      "Recognized for innovation, creativity, and measurable impact across industries.",
-  },
-  {
-    number: "98%",
-    title: "Client Satisfaction",
-    description:
-      "Building long-term partnerships with a commitment to excellence and trust.",
-  },
-];
+const { stats } = Astro.props as { stats: Stats };
 ---
 
 <section class="bg-n-50 w-full">
   <div
-    class="container mx-auto flex flex-col gap-6 px-6 py-9 md:gap-7 md:py-24 lg:gap-16"
+    class="inner-container container mx-auto flex flex-col gap-6 md:gap-7 lg:gap-16"
   >
     <div class="flex flex-col gap-4 lg:gap-7">
       <div class="flex items-baseline gap-1 md:gap-1.5">
@@ -72,34 +44,36 @@ const statsContent = [
     <!-- Stats List -->
     <div class="mx-auto flex w-full flex-col gap-3.5 sm:gap-0 lg:w-5/6">
       {
-        statsContent.map((statItem) => (
-          <div
-            class="text-n-500 flex items-center justify-between border-b border-dashed py-4 md:px-2.5 md:py-7 lg:px-5 lg:py-9"
-            style=" border-image: repeating-linear-gradient(to right, currentColor 0, currentColor 5px, transparent 5px, transparent 10px) 1;"
-          >
-            {/* Stats number */}
-            <p class="text-n-950 w-1/5 text-center text-2xl font-normal md:w-1/6 md:text-3xl lg:text-5xl">
-              <span class="stat-count" data-target={statItem.number}>
-                0
-              </span>
-            </p>
-            {/* Stats title */}
-            <p class="text-n-950 w-2/5 text-center text-sm font-normal md:w-2/4 md:text-base lg:text-xl">
-              {statItem.title}
-            </p>
-            {/* Stats description */}
-            <p class="text-n-500 hidden text-xs leading-loose font-normal sm:block sm:w-1/3 md:w-1/2 lg:text-base">
-              {statItem.description}
-            </p>
-          </div>
-        ))
+        stats.numbers &&
+          stats.numbers.length > 0 &&
+          stats.numbers.map((statItem) => (
+            <div
+              class="text-n-500 flex items-center justify-between border-b border-dashed py-4 md:px-2.5 md:py-7 lg:px-5 lg:py-9"
+              style=" border-image: repeating-linear-gradient(to right, currentColor 0, currentColor 5px, transparent 5px, transparent 10px) 1;"
+            >
+              {/* Stats number */}
+              <p class="text-n-950 w-1/5 text-center text-2xl font-normal md:w-1/6 md:text-3xl lg:text-5xl">
+                <span class="stat-count" data-target={statItem.number}>
+                  0
+                </span>
+                <span>{statItem.suffix}</span>
+              </p>
+              {/* Stats title */}
+              <p class="text-n-950 w-2/5 text-center text-sm font-normal md:w-2/4 md:text-base lg:text-xl">
+                {statItem.name}
+              </p>
+              {/* Stats description */}
+              <p class="text-n-500 hidden text-xs leading-loose font-normal sm:block sm:w-1/3 md:w-1/2 lg:text-base">
+                {statItem.description}
+              </p>
+            </div>
+          ))
       }
     </div>
   </div>
 
   <script is:inline type="module">
     import { animate } from "https://cdn.jsdelivr.net/npm/motion@12.23.12/+esm";
-
     // Get all counters
     const counters = Array.from(document.querySelectorAll(".stat-count"));
 
@@ -111,14 +85,13 @@ const statsContent = [
         .trim()
         .match(/^(\d+)(.*)$/);
       const end = match ? parseInt(match[1], 10) : 0;
-      const suffix = match ? match[2] : "";
 
       // Animate
       animate(0, end, {
         duration: 2,
         easing: "circOut",
         onUpdate: (latest) => {
-          el.textContent = Math.round(latest) + suffix;
+          el.textContent = Math.round(latest);
         },
       });
     };
