@@ -1,0 +1,31 @@
+---
+const {
+  icon = "👥",
+  title = "Synergy at the Core",
+  points = ["Empower individuals", "Succeed as one", "Amplify strength"],
+  bgText = "S",
+} = Astro.props;
+---
+
+<div
+  class="bg-n-100 relative h-full space-y-6 overflow-hidden rounded-2xl px-4 py-8"
+>
+  <img src=`/icons/${icon}.svg` alt="" class="h-[32px] w-[32px]" />
+
+  <p class="text-n-800 text-xl font-bold md:text-2xl">{title}</p>
+
+  <ul class="flex flex-col gap-2 pl-4">
+    {
+      points.map((point: string) => (
+        <li class="flex items-center gap-2">
+          <span class="mt-1 size-1 flex-shrink-0 rounded-full bg-blue-500 md:size-2" />
+          <span class="text-n-700 md:text-lg">{point}</span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="absolute right-0 -bottom-5">
+    <img src=`/images/${bgText}.png` alt="" />
+  </div>
+</div>
