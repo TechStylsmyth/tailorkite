@@ -5,7 +5,9 @@ import Button from "../../components/Button.astro";
 <section>
   <!-- Top banner part -->
   <div
+    id="parallax-hero"
     class="relative w-full bg-[url('/images/styl-contact.png')] bg-cover bg-center xl:h-screen"
+    style="background-position: center calc(50% + var(--bg-offset, 0px));"
   >
     <!-- Overlay -->
     <div class="absolute inset-0 bg-blue-500/70"></div>
@@ -21,6 +23,7 @@ import Button from "../../components/Button.astro";
         >
           READY TO DO THE BEST WORK OF YOUR LIFE?
         </p>
+
         <!-- Title -->
         <p
           class="text-n-50 text-center text-4xl leading-[115%] font-normal md:text-6xl lg:w-[70%] lg:text-7xl"
@@ -35,3 +38,41 @@ import Button from "../../components/Button.astro";
     </div>
   </div>
 </section>
+
+<style>
+  #parallax-hero {
+    will-change: background-position;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #parallax-hero {
+      background-position: center;
+    }
+  }
+</style>
+
+<script is:inline type="module">
+  import {
+    animate,
+    scroll,
+  } from "https://cdn.jsdelivr.net/npm/motion@12.23.12/+esm";
+
+  const el = document.getElementById("parallax-hero");
+  const prefersReduced = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  if (el && !prefersReduced) {
+    // Animate CSS var from -100px → +100px as the section scrolls through the viewport
+    const parallaxAnim = animate(
+      el,
+      { "--bg-offset": ["-80px", "80px"] }, // tweak range for more/less effect
+      { easing: "linear" }
+    );
+
+    // Drive animation with scroll progress of this section
+    scroll(parallaxAnim, {
+      target: el,
+      offset: ["start end", "end start"], // start when section enters, end when it leaves
+    });
+  }
+</script>

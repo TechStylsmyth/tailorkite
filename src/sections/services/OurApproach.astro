@@ -57,12 +57,12 @@ const ourApproachDetails = {
       <p
         class="text-[32px] leading-normal font-medium whitespace-nowrap text-black sm:text-[60px] md:text-[80px] lg:text-[100px] xl:text-[120px] 2xl:text-[160px]"
       >
-        Outsource. Control. Align. Thrive.&nbsp;&nbsp;&nbsp;
+        Outsource Control Align Thrive&nbsp;&nbsp;&nbsp;
       </p>
       <p
         class="text-[32px] leading-normal font-medium whitespace-nowrap text-black sm:text-[60px] md:text-[80px] lg:text-[100px] xl:text-[120px] 2xl:text-[160px]"
       >
-        Outsource. Control. Align. Thrive.&nbsp;&nbsp;&nbsp;
+        Outsource Control Align Thrive&nbsp;&nbsp;&nbsp;
       </p>
     </div>
   </div>
@@ -87,8 +87,14 @@ const ourApproachDetails = {
     inset: 0; /* full cover */
     pointer-events: none;
     z-index: 10;
-    background: linear-gradient(to right, #ffffff, transparent, #ffffff);
-    opacity: 0.5; /* adjust intensity */
+    background: linear-gradient(
+      to right,
+      var(--color-n-50) 5%,
+      transparent 30%,
+      transparent 50%,
+      transparent 70%,
+      var(--color-n-50) 95%
+    );
   }
 
   .scroll-content {

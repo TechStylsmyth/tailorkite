@@ -150,7 +150,7 @@ const isHomePage = Astro.url.pathname === "/";
 
     document.addEventListener("DOMContentLoaded", () => {
       document
-        .querySelectorAll(".fade-in, .scale-in")
+        .querySelectorAll(".fade-in, .scale-in, .card-anim")
         .forEach((el) => observer.observe(el));
     });
   </script>

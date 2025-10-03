@@ -50,7 +50,10 @@ const edgeDetails = {
     <div class="flex flex-wrap gap-3">
       {
         edgeDetails.edges.map((edge, serviceIndex) => (
-          <div class="w-full sm:w-[47%] lg:w-[24%] 2xl:w-[18%]">
+          <div
+            class="card-anim card-bottom w-full sm:w-[47%] lg:w-[24%] 2xl:w-[18%]"
+            style={`--delay: ${serviceIndex * 0.2}s`}
+          >
             {/* // Service card component */}
             <EdgeCard
               icon={edge.icon}
