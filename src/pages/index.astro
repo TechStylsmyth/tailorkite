@@ -6,17 +6,42 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../sections/home/Hero.astro";
 import Stats from "../sections/home/Stats.astro";
 import ContactUs from "../sections/home/ContactUs.astro";
-import Services from "../sections/home/Services.astro";
 import FAQ from "../sections/home/Faq.astro";
 import WhoAreWe from "../sections/home/WhoAreWe.astro";
 import OurStory from "../sections/home/OurStory.astro";
+import { API_URL } from "../constants";
+import type { HomeInfo, FaqInfo } from "../types/home";
+
+let homeInfo: HomeInfo = {
+  stats: {
+    numbers: [],
+  },
+};
+
+let faqInfo: FaqInfo = { categories: [], frequently_asked_questions: [] };
+
+try {
+  const res = await fetch(API_URL);
+  const json = await res.json();
+  homeInfo = json?.data?.home_page ?? {
+    stats: {
+      numbers: [],
+    },
+  };
+  faqInfo = json?.data?.faq_info ?? {
+    categories: [],
+    frequently_asked_questions: [],
+  };
+} catch (e) {
+  console.error(e);
+}
 ---
 
 <Layout>
   <Hero />
   <OurStory />
   <WhoAreWe />
-  <Stats />
-  <FAQ />
+  {homeInfo.stats && <Stats stats={homeInfo.stats} />}
+  {faqInfo.frequently_asked_questions && <FAQ faqInfo={faqInfo} />}
   <ContactUs />
 </Layout>
