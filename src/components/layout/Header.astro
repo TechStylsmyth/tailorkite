@@ -1,18 +1,13 @@
 ---
 // IMPORT //
+// CONSTANTS //
+import { menuItems } from "../../constants";
+
+// OTHERS //
 import BrandLogo from "../BrandLogo.astro";
 import Hamburger from "../Hamburger.astro";
 import Navbar from "../Navbar.astro";
 import MobileMenu from "./MobileMenu.astro";
-
-// DATA //
-const baseItems = [
-  { name: "Who we are", href: "/", active: true },
-  { name: "What we do", href: "/services" },
-  { name: "Why us", href: "/about" },
-  { name: "Life at STYL", href: "/life-at-styl" },
-  { name: "Career", href: "/career" },
-];
 
 // Normalize a path (removes trailing slash except for "/")
 function normalizePath(path: string): string {
@@ -27,7 +22,7 @@ function normalizePath(path: string): string {
 const currentPath = normalizePath(Astro.url.pathname);
 
 // Add active to current page path
-const navItemWithActive = baseItems.map((item) => {
+const navItemWithActive = menuItems.map((item) => {
   const itemPath = normalizePath(item.href);
 
   // Marks active if path matches
