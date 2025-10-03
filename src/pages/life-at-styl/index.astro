@@ -5,12 +5,33 @@ import CultureIntro from "../../sections/life-at-styl/CultureIntro.astro";
 import EventsGallery from "../../sections/life-at-styl/EventsGallery.astro";
 import Testimonial from "../../sections/life-at-styl/Testimonial.astro";
 import ContactUs from "../../sections/life-at-styl/ContactUs.astro";
+import { API_URL } from "../../constants";
+import type { LifeAtStylInfo } from "../../types/life-at-styl";
+
+let lifeAtStylInfo: LifeAtStylInfo = {
+  moments: [],
+  testimonials: [],
+};
+try {
+  const res = await fetch(API_URL);
+  const json = await res.json();
+  lifeAtStylInfo = json?.data?.life_at_styl_page ?? {
+    moments: [],
+    testimonials: [],
+  };
+} catch (e) {
+  console.error(e);
+}
 ---
 
 <Layout>
   <Hero />
   <CultureIntro />
-  <EventsGallery />
-  <Testimonial />
+  {lifeAtStylInfo.moments && <EventsGallery moments={lifeAtStylInfo.moments} />}
+  {
+    lifeAtStylInfo.testimonials && (
+      <Testimonial testimonials={lifeAtStylInfo.testimonials} />
+    )
+  }
   <ContactUs />
 </Layout>

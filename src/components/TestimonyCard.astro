@@ -2,18 +2,14 @@
 import Profile from "./Profile.astro";
 
 // Props from parent
-const { text, employee } = Astro.props;
+const { message, name, designation } = Astro.props;
 ---
 
 <div
   class="bg-n-100 flex h-full flex-col justify-between gap-9 rounded-3xl px-8 py-10"
 >
   <!-- Text  -->
-  <p class="text-n-700 text-sm font-normal md:text-base">{text}</p>
+  <p class="text-n-700 text-sm font-normal md:text-base">{message}</p>
   <!-- Profile card component  -->
-  <Profile
-    image={employee.image}
-    name={employee.name}
-    designation={employee.designation}
-  />
+  <Profile image={"/images/user.png"} name={name} designation={designation} />
 </div>
