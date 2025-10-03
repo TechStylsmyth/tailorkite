@@ -23,7 +23,7 @@ const jobs = openings.map((opening) => {
     class="container mx-auto flex flex-col gap-9 px-6 py-12 md:gap-12 md:py-24 lg:px-14 xl:px-8"
   >
     <!-- Section title wrapper -->
-    <div>
+    <div class="fade-in">
       <!-- Title -->
       <p class="text-3xl font-semibold text-blue-500 md:text-5xl">
         We’re Hiring
@@ -35,7 +35,7 @@ const jobs = openings.map((opening) => {
     </div>
 
     <!-- Tags and title wrapper -->
-    <div class="space-y-3">
+    <div class="fade-in space-y-3">
       <p class="text-n-400 text-base font-medium">Filter by Department</p>
       <!-- Tags -->
       <div id="job-tags" class="flex flex-wrap gap-3 xl:gap-5">
@@ -67,13 +67,14 @@ const jobs = openings.map((opening) => {
     <div id="jobs" class="flex h-full flex-wrap gap-4 md:gap-6">
       {
         jobs &&
-          jobs.map((job) => (
+          jobs.map((job, index) => (
             <a
               href={job.job_post_url}
               target="_blank"
               rel="noopener noreferrer"
-              class="job block w-full sm:w-[46%] lg:w-[38%] xl:w-[23%]"
+              class="card-anim card-bottom job block w-full sm:w-[46%] lg:w-[38%] xl:w-[23%]"
               data-dept={job.department}
+              style={`--delay: ${index * 0.2}s`}
             >
               {/* Job Opening Card component */}
               <JobOpeningCard
@@ -108,7 +109,7 @@ const jobs = openings.map((opening) => {
   (function () {
     // Collect all tag buttons inside #job-tags
     const tagButtons = Array.from(
-      document.querySelectorAll("#job-tags [data-tag]"),
+      document.querySelectorAll("#job-tags [data-tag]")
     );
 
     // Collect all job card elements inside #jobs
