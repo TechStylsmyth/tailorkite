@@ -64,8 +64,11 @@ const whyUsDetails = [
     <!-- Cards Component -->
     <div class="mt-16 flex flex-wrap gap-3.5">
       {
-        whyUsDetails.map((item) => (
-          <div class="w-full lg:w-[47%] xl:w-[32%]">
+        whyUsDetails.map((item, index) => (
+          <div
+            class="card-anim card-bottom w-full lg:w-[47%] xl:w-[32%]"
+            style={`--delay: ${index * 0.1}s`}
+          >
             <CultureCard
               title={item.title}
               description={item.description}

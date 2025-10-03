@@ -1,0 +1,69 @@
+---
+// COMPONENTS //
+import EdgeCard from "../../components/EdgeCard.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+
+const colors = ["bg-blue-50", "bg-n-100", "bg-n-200"];
+
+const edgeDetails = {
+  highlightedText: "The STYL Edge",
+  description:
+    "We give you the runway to grow, the tools to deliver, and the teams to back you.",
+  edges: [
+    {
+      icon: "/icons/price-tag.svg",
+      title: "Cost Efficiency",
+      description: "Up to 50% lower costs without compromising quality.",
+    },
+    {
+      icon: "/icons/pattern.svg",
+      title: "Import and Logistics Management",
+      description: "Pre-agreed deliverables, zero downtime.",
+    },
+    {
+      icon: "/icons/focus-center.svg",
+      title: "E-commerce and Content Marketing",
+      description:
+        "Design expertise and operational excellence under one roof. One stop shop",
+    },
+    {
+      icon: "/icons/scale.svg",
+      title: "Scalability",
+      description:
+        " Expand teams quickly without worrying about attrition or infrastructure.",
+    },
+    {
+      icon: "/icons/earth.svg",
+      title: "Trusted by Global Brands",
+      description:
+        "Partnerships with leading retailers, brands and wholesalers.",
+    },
+  ],
+};
+---
+
+<section class="m-auto">
+  <div class="inner-container container mx-auto space-y-11 lg:space-y-22">
+    <!-- Heading -->
+    <SectionHeading {...edgeDetails} />
+
+    <div class="flex flex-wrap gap-3">
+      {
+        edgeDetails.edges.map((edge, serviceIndex) => (
+          <div
+            class="card-anim card-bottom w-full sm:w-[47%] lg:w-[24%] 2xl:w-[18%]"
+            style={`--delay: ${serviceIndex * 0.1}s`}
+          >
+            {/* // Service card component */}
+            <EdgeCard
+              icon={edge.icon}
+              title={edge.title}
+              description={edge.description}
+              color={colors[serviceIndex % colors.length]}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

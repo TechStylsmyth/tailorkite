@@ -31,9 +31,11 @@ const href = isPhone
       : undefined;
 ---
 
-<div class={`flex flex-col items-center gap-8  ${className}`}>
+<div class={`group flex flex-col items-center gap-8  ${className}`}>
   <div class="flex w-full shrink-0 flex-col items-center gap-2.5">
-    <div class="relative size-11 md:size-12 lg:size-13">
+    <div
+      class="relative size-11 origin-bottom transition-transform duration-300 group-hover:-translate-y-4 md:size-12 lg:size-13"
+    >
       <div
         class="flex size-full items-center justify-center rounded-2xl bg-blue-500"
       >
