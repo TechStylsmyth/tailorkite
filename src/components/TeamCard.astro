@@ -30,7 +30,12 @@ const { name, role, field, image, links = [] } = Astro.props;
     <div class="mt-4 flex gap-3">
       {
         links.map((link: any) => (
-          <a href={link.href} target="_blank" rel="noopener noreferrer">
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="transition-transform duration-200 hover:scale-108"
+          >
             <div class="bg-n-800 flex h-8 w-8 items-center justify-center rounded-full p-2 md:h-11 md:w-11">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
