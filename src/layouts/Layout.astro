@@ -29,7 +29,7 @@ const isHomePage = Astro.url.pathname === "/";
   </head>
   <body>
     <!-- Loader -->
-    {isHomePage && <Loading />}
+    <Loading />
 
     <!-- Main content -->
     <main>
@@ -46,16 +46,14 @@ const isHomePage = Astro.url.pathname === "/";
   </body>
 
   <script is:inline>
-    if (window.location.pathname === "/") {
-      const loader = document.querySelector("#loading-screen");
-      const hasLoadedBefore = sessionStorage.getItem("indexLoaderShown");
+    const loader = document.querySelector("#loading-screen");
+    const hasLoadedBefore = sessionStorage.getItem("indexLoaderShown");
 
-      if (hasLoadedBefore && loader) {
-        // skip instantly if already loaded
-        loader.style.display = "none";
-      } else {
-        loader.style.display = "flex";
-      }
+    if (hasLoadedBefore && loader) {
+      // skip instantly if already loaded
+      loader.style.display = "none";
+    } else {
+      loader.style.display = "flex";
     }
   </script>
 
@@ -145,7 +143,7 @@ const isHomePage = Astro.url.pathname === "/";
           if (entry.isIntersecting) entry.target.classList.add("in-view");
         });
       },
-      { threshold: 0.2 } // reveal when 20% visible
+      { threshold: 0.2 }, // reveal when 20% visible
     );
 
     document.addEventListener("DOMContentLoaded", () => {
