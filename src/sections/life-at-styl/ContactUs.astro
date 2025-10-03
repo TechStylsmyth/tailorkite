@@ -58,15 +58,15 @@ import Button from "../../components/Button.astro";
 
   const el = document.getElementById("parallax-hero");
   const prefersReduced = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
+    "(prefers-reduced-motion: reduce)",
   ).matches;
 
   if (el && !prefersReduced) {
-    // Animate CSS var from -100px → +100px as the section scrolls through the viewport
+    // Animate CSS var from -120px → +120px as the section scrolls through the viewport
     const parallaxAnim = animate(
       el,
-      { "--bg-offset": ["-80px", "80px"] }, // tweak range for more/less effect
-      { easing: "linear" }
+      { "--bg-offset": ["-120px", "120px"] }, // tweak range for more/less effect
+      { easing: "linear" },
     );
 
     // Drive animation with scroll progress of this section
