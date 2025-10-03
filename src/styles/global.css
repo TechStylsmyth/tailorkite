@@ -168,6 +168,28 @@ body {
   }
 }
 
+
+@keyframes limit-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.bouncy-limited {
+  animation: limit-bounce 1s ease-in-out 3; /* 👈 runs exactly 3 times */
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bouncy-limited {
+    animation: none;
+  }
+}
+
+
 /* Base animation setup */
 .card-anim {
   opacity: 0;
