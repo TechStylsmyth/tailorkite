@@ -59,7 +59,10 @@ const tradeServices = (servicesInfo?.services ?? []).filter(
         <div class="flex flex-wrap gap-3">
           {
             designServices.map((service: Service, serviceIndex: number) => (
-              <div class="w-full sm:w-[48%]">
+              <div
+                class="card-anim card-bottom w-full sm:w-[48%]"
+                style={`--delay: ${serviceIndex * 0.1}s`}
+              >
                 {showArrow ? (
                   /* if you want to route by category, keep ?category=1; if by service, use ?id={service.id} */
                   <a href={`/services/service-consumption/${service.id}`}>
