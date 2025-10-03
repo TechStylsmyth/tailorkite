@@ -1,17 +1,18 @@
 ---
+import BrandLogo from "../../components/BrandLogo.astro";
 import CultureAndPeopleCard from "../../components/CultureAndPeopleCard.astro";
 
-const synergyData = {
+const cultureDetails = {
   section: "Synergy",
   cards: [
     {
-      icon: "👥", // replace with svg or component
+      icon: "Teamwork",
       title: "Synergy at the Core",
       points: ["Empower individuals", "Succeed as one", "Amplify strength"],
       bgText: "S",
     },
     {
-      icon: "📈",
+      icon: "DecentWorkAndEconomicGrowth",
       title: "Tenancy for Excellence",
       points: [
         "Pursue perfection with purpose",
@@ -21,7 +22,7 @@ const synergyData = {
       bgText: "T",
     },
     {
-      icon: "💡",
+      icon: "CollaborationsIdea",
       title: "Yearning for Innovation",
       points: [
         "Adapt quickly",
@@ -31,7 +32,7 @@ const synergyData = {
       bgText: "Y",
     },
     {
-      icon: "🤝",
+      icon: "BusinessHandshake",
       title: "Loyal Partnerships",
       points: [
         "Collaborate deeply",
@@ -48,10 +49,39 @@ const synergyData = {
   <div
     class="container mx-auto flex flex-col gap-8 px-6 py-12 md:gap-14 md:py-24"
   >
+    <!-- Section title wrapper -->
+    <div class="w-full space-y-6 md:space-y-12 lg:space-y-14">
+      <div>
+        <p class="text-2xl font-light tracking-widest uppercase md:text-4xl">
+          The
+        </p>
+        <div
+          class="flex flex-col flex-wrap items-baseline gap-1 md:flex-row md:flex-nowrap md:gap-3 md:gap-5"
+        >
+          <!-- Brand logo -->
+          <BrandLogo variant="default" classes="w-38 md:w-88 lg:w-76" />
+          <!-- Asile text -->
+          <p
+            class="self-end text-2xl font-light md:text-4xl lg:tracking-widest"
+          >
+            CULTURE & PEOPLE
+          </p>
+        </div>
+      </div>
+      <div class="space-y-16">
+        <p
+          class="text-2xl font-light md:text-4xl md:leading-12 lg:w-[80%] lg:text-6xl lg:leading-[69px]"
+        >
+          Rooted in values, driven by people — our culture is where tradition
+          meets tomorrow.
+        </p>
+      </div>
+    </div>
+
     <div class="flex flex-wrap gap-3">
       {
-        synergyData.cards.map((cultureItem) => (
-          <div class="w-full sm:w-[47%] lg:w-[24%]">
+        cultureDetails.cards.map((cultureItem) => (
+          <div class="w-full sm:w-[47%] lg:w-[32%] 2xl:w-[24%]">
             {/* // Service card component */}
             <CultureAndPeopleCard {...cultureItem} />
           </div>
