@@ -20,7 +20,7 @@ const jobs = openings.map((opening) => {
 
 <section>
   <div
-    class="container mx-auto flex flex-col gap-9 px-6 py-12 md:gap-12 md:py-24 lg:px-14 xl:px-8"
+    class="inner-container container mx-auto flex flex-col gap-9 md:gap-12 lg:px-14 xl:px-8"
   >
     <!-- Section title wrapper -->
     <div class="fade-in">
@@ -107,7 +107,7 @@ const jobs = openings.map((opening) => {
   (function () {
     // Collect all tag buttons inside #job-tags
     const tagButtons = Array.from(
-      document.querySelectorAll("#job-tags [data-tag]")
+      document.querySelectorAll("#job-tags [data-tag]"),
     );
 
     // Collect all job card elements inside #jobs

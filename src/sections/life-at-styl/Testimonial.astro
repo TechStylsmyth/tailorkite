@@ -1,55 +1,17 @@
 ---
-import SectionHeading from "../../components/SectionHeading.astro";
 import TestimonyCard from "../../components/TestimonyCard.astro";
+import type { Testimonials } from "../../types/life-at-styl";
 
-const testmonyDetails = {
-  highlightedText: "The STYL Edge",
-  description:
-    "We give you the runway to grow, the tools to deliver, and the teams to back you.",
+const { testimonials } = Astro.props as { testimonials: Testimonials[] };
 
-  testimonials: [
-    {
-      text: "My experience after college was just one year when I met Avi Sonpal (Founder). Since then, my journey at StylSmyth has been incredible, from starting as a Graphic Designer to handling License and now managing a team. Their faith in me has been the driving force behind my growth.",
-      employee: {
-        image: "/images/profile-image.png",
-        name: "Hetal Doshi",
-        designation: "Senior Manager",
-      },
-    },
-    {
-      text: "StylSmyth has given me opportunities to explore multiple areas and grow with constant support from peers and mentors.",
-      employee: {
-        image: "/images/profile-image.png",
-        name: "Raj Mehta",
-        designation: "Project Lead",
-      },
-    },
-    {
-      text: "The management’s support and trust allowed me to transition from a junior role into a position where I now lead a creative team. It has been an empowering journey.",
-      employee: {
-        image: "/images/profile-image.png",
-        name: "Priya Shah",
-        designation: "Designer",
-      },
-    },
-    {
-      text: "The management’s support and trust allowed me to transition from a junior role into a position where I now lead a creative team. It has been an empowering journey.",
-      employee: {
-        image: "/images/profile-image.png",
-        name: "Priya Shah",
-        designation: "Designer",
-      },
-    },
-  ],
-};
 // Unique IDs to avoid collisions with other sliders
 const uid = "embla-testimonials";
 const prevId = "embla-testimonials-prev";
 const nextId = "embla-testimonials-next";
 ---
 
-<section class="tb-slider mb-20 md:mb-12">
-  <div class="container mx-auto px-6 py-8 md:pt-24">
+<section class="tb-slider">
+  <div class="inner-container container mx-auto">
     <div class="mb-8 flex flex-col gap-2 md:mb-12 md:gap-4 lg:mb-16">
       <!-- Title -->
       <p class="text-3xl font-bold md:text-4xl lg:text-5xl">
@@ -67,11 +29,12 @@ const nextId = "embla-testimonials-next";
       <!-- Embla container -->
       <div class="flex items-stretch gap-7">
         {
-          testmonyDetails.testimonials.map((testimonial) => (
+          testimonials.map((testimonial) => (
             <div class="tb-slide">
               <TestimonyCard
-                text={testimonial.text}
-                employee={testimonial.employee}
+                message={testimonial.message}
+                name={testimonial.name}
+                designation={testimonial.designation}
               />
             </div>
           ))

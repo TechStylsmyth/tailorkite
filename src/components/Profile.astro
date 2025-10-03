@@ -5,7 +5,7 @@ const { image, name, designation } = Astro.props;
 <div class="flex gap-3 md:gap-5">
   <!-- Profile image -->
   <div
-    class="bg-n-800 h-[40px] w-[40px] rounded-full border-0 md:h-[50px] md:w-[50px]"
+    class="bg-n-800 h-[40px] w-[40px] overflow-hidden rounded-full md:h-[50px] md:w-[50px]"
   >
     <img src={image} alt="" class="object-contain" />
   </div>

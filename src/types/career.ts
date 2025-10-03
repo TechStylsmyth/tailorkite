@@ -14,4 +14,5 @@ export interface OpeningsData {
 export interface FAQ {
   question: string;
   answer: string;
+  category_id?: string;
 }

@@ -1,62 +1,16 @@
 ---
 import EventsCard from "../../components/EventsCard.astro";
+import type { Moments } from "../../types/life-at-styl";
 
-const tags = [
-  { id: 1, name: "2022" },
-  { id: 2, name: "2023" },
-  { id: 3, name: "2024" },
-  { id: 4, name: "2025" },
-];
+const { moments } = Astro.props as { moments: Moments[] };
 
-// Example events data with titles and images
-const events = [
-  {
-    id: 1,
-    year: "2022",
-    title: "Annual Meetup",
-    photo_url: "/images/Events.png",
-    sub_title: "Our first big event of 2022.",
-  },
-  {
-    id: 2,
-    year: "2022",
-    title: "Summer Party",
-    photo_url: "/images/Events.png",
-    sub_title: "Celebrating summer together.",
-  },
-  {
-    id: 3,
-    year: "2023",
-    title: "Spring Workshop",
-    photo_url: "/images/Events.png",
-    sub_title: "Learning and growing in 2023.",
-  },
-  {
-    id: 4,
-    year: "2023",
-    title: "Hackathon",
-    photo_url: "/images/Events.png",
-    sub_title: "Team coding challenge.",
-  },
-  {
-    id: 5,
-    year: "2024",
-    title: "Charity Run",
-    photo_url: "/images/Events.png",
-    sub_title: "Giving back to the community.",
-  },
-  {
-    id: 6,
-    year: "2025",
-    title: "Innovation Summit",
-    photo_url: "/images/Events.png",
-    sub_title: "Showcasing new ideas.",
-  },
-];
+const tags = moments.map((moment) => ({
+  name: moment.year,
+}));
 ---
 
-<section class="mb-20 md:mb-12">
-  <div class="container mx-auto px-6 py-8 md:pt-24">
+<section class="">
+  <div class="inner-container container mx-auto">
     <div class="mb-8 flex flex-col gap-2 md:mb-12 md:gap-4 lg:mb-16">
       <p class="text-3xl font-bold text-blue-500 md:text-4xl lg:text-5xl">
         Moments That Move Us
@@ -85,7 +39,7 @@ const events = [
     <div class="mt-6" id="events-gallery">
       <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
         {
-          events.map((event) => (
+          moments.map((event) => (
             <div class="event-card" data-year={event.year}>
               <EventsCard {...event} />
             </div>
@@ -99,10 +53,10 @@ const events = [
 <script is:inline>
   (function () {
     const tagButtons = Array.from(
-      document.querySelectorAll("#year-tags [data-tag]"),
+      document.querySelectorAll("#year-tags [data-tag]")
     );
     const eventCards = Array.from(
-      document.querySelectorAll("#events-gallery .event-card"),
+      document.querySelectorAll("#events-gallery .event-card")
     );
 
     function setActive(btn) {
