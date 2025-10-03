@@ -3,7 +3,7 @@
 import type { ServicesInfo } from "../../types/services";
 
 // SERVICES //
-import Hero from "../../sections/services/Hero.astro";
+import Hero from "../../sections/what-we-do/Hero.astro";
 
 // CONSTANTS //
 import { API_URL } from "../../constants";
@@ -12,10 +12,10 @@ import { API_URL } from "../../constants";
 import Layout from "../../layouts/Layout.astro";
 
 // SECTIONS //
-import Services from "../../sections/home/Services.astro";
-import OurApproach from "../../sections/services/OurApproach.astro";
-import Faq from "../../sections/home/Faq.astro";
-import Tools from "../../sections/services/Tools.astro";
+import Services from "../../sections/who-we-are/Services.astro";
+import OurApproach from "../../sections/what-we-do/OurApproach.astro";
+import Faq from "../../sections/who-we-are/Faq.astro";
+import Tools from "../../sections/what-we-do/Tools.astro";
 
 let servicesInfo: ServicesInfo = { categories: [], services: [] };
 let faqInfo = { categories: [], frequently_asked_questions: [] };
