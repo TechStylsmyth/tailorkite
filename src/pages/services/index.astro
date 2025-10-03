@@ -18,10 +18,15 @@ import Faq from "../../sections/home/Faq.astro";
 import Tools from "../../sections/services/Tools.astro";
 
 let servicesInfo: ServicesInfo = { categories: [], services: [] };
+let faqInfo = { categories: [], frequently_asked_questions: [] };
 try {
   const res = await fetch(API_URL);
   const json = await res.json();
   servicesInfo = json?.data?.services_info ?? { categories: [], services: [] };
+  faqInfo = json?.data?.faq_info ?? {
+    categories: [],
+    frequently_asked_questions: [],
+  };
 } catch (e) {
   console.error(e);
 }
@@ -32,5 +37,5 @@ try {
   {servicesInfo && <Services servicesInfo={servicesInfo} showArrow />}
   <OurApproach />
   <Tools />
-  <Faq />
+  {faqInfo && <Faq faqInfo={faqInfo} />}
 </Layout>
