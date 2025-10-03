@@ -1,0 +1,62 @@
+---
+// COMPONENTS //
+import Button from "../../components/Button.astro";
+
+// Section data
+const ourStoryDetails = {
+  title: "Our Story",
+  description:
+    "STYLSMYTH was created with a simple vision - to bridge the efficiency gap for global fashion and Lifestyle brands. ",
+  para1:
+    "OWhile design and operational needs grew rapidly, companies struggled with rising costs, attrition, and limited scalability. We stepped in to offer a smarter model: dedicated, full-time remote teams that operate like your in-house department, but without the overhead.",
+  para2:
+    "From design to data-driven operations, STYLSMYTH has become the trusted partner for some of the world’s biggest fashion retailers, helping them scale faster, reduce costs, and focus on creativity and growth.",
+  backgroundImage: "/images/background.png",
+};
+---
+
+<section class="relative">
+  <!-- Background image -->
+  <div
+    class="absolute top-1/2 z-1 -translate-y-1/2 scale-[3] md:scale-[2] xl:scale-[1]"
+  >
+    <img src={ourStoryDetails.backgroundImage} alt="background" />
+  </div>
+
+  <!-- Content container  -->
+  <div
+    class="inner-container relative z-2 container mx-auto flex flex-col justify-between gap-10 md:gap-16 lg:px-14 xl:flex-row"
+  >
+    <!-- Title block -->
+    <div
+      class="fade-in flex w-full flex-col gap-10 md:gap-16 xl:items-center xl:gap-24"
+    >
+      <!-- Title -->
+      <p class="text-4xl font-semibold text-nowrap md:text-6xl">
+        {ourStoryDetails.title}
+      </p>
+
+      <!-- Image  -->
+      <img src="/icons/bulb.svg" alt="" class="w-30 md:w-45" />
+    </div>
+
+    <!-- Content Wrapper -->
+    <div class="fade-in flex flex-col items-start gap-8 md:gap-14">
+      <p
+        class="text-2xl font-medium md:text-3xl md:leading-10 lg:text-4xl lg:leading-12"
+      >
+        {ourStoryDetails.description}
+      </p>
+
+      <!-- Supporting paragraphs -->
+      <div
+        class="text-n-700 space-y-6 text-base font-normal md:space-y-12 md:text-lg md:leading-10 lg:text-2xl lg:leading-11"
+      >
+        <p>{ourStoryDetails.para1}</p>
+        <p>
+          {ourStoryDetails.para2}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

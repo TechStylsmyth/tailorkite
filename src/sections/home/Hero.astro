@@ -1,0 +1,75 @@
+---
+const heroContent = {
+  title: {
+    desktop: ["Full–time remote teams,", "tailored to your brand."],
+    mobile: "Full–time remote teams, tailored to your brand.",
+  },
+  subtitle: "at a fraction of the cost",
+};
+---
+
+<section
+  class="relative flex h-[55vh] w-full flex-col sm:h-[45vh] xl:h-[calc(100vh-95px)]"
+>
+  <div class="relative container mx-auto flex flex-1 items-center px-6">
+    <!-- Text content wrapper -->
+    <div class="flex w-full flex-col gap-10 lg:gap-16">
+      <div
+        class="fade-in text-n-900 relative text-3xl font-bold sm:w-full sm:text-4xl sm:leading-normal md:text-5xl xl:text-8xl"
+      >
+        <!-- Section main title -->
+        <p class="hidden sm:block">{heroContent.title.desktop[0]}</p>
+        <p class="hidden sm:block sm:text-right">
+          {heroContent.title.desktop[1]}
+        </p>
+        <p class="w-[90%] leading-[38px] sm:hidden">
+          {heroContent.title.mobile}
+        </p>
+
+        <!-- Floating arrow icon -->
+        <img
+          src="/icons/arrow.svg"
+          alt=""
+          class="bouncy absolute right-[38%] -bottom-10 h-10 md:right-[10%] md:-bottom-12 md:h-13 lg:-bottom-20 lg:h-24"
+        />
+      </div>
+
+      <!-- Subtitle -->
+      <p
+        class="text-n-500 pr-[18%] text-right text-sm font-medium sm:text-xl md:pr-[16%] md:text-2xl lg:text-5xl"
+      >
+        {heroContent.subtitle}
+      </p>
+    </div>
+  </div>
+
+  <svg
+    width="484"
+    height="796"
+    viewBox="0 0 484 796"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    class="absolute -right-[160px] bottom-[-30vh] hidden h-[45vh] md:block xl:h-[60vh]"
+  >
+    <path
+      d="M453.143 49.9261C366.733 27.3087 56.208 -18.4028 31.2368 202.291C12.7368 365.793 208.737 278.793 154.237 487.791C59.3932 851.5 294 784.5 388 693"
+      stroke="var(--color-blue-500)"
+      stroke-width="60"
+      stroke-linecap="round"
+      class="draw-path"></path>
+  </svg>
+  <!-- Scroll to explore text bar -->
+  <div
+    class="flex h-[80px] w-full items-center justify-between px-3 text-xs font-normal sm:px-12 md:text-sm lg:text-base"
+  >
+    <span class="hidden text-xs md:block md:text-3xl">+</span>
+    <span class="text-xs md:text-3xl">+</span>
+    <span class="text-xs md:text-3xl">+</span>
+    <!-- Text -->
+    <p class="bouncy-limited text-n-800 tracking-widest">SCROLL TO EXPLORE</p>
+
+    <span class="hidden text-xs md:block md:text-3xl">+</span>
+    <span class="text-xs md:text-3xl">+</span>
+    <span class="text-xs md:text-3xl">+</span>
+  </div>
+</section>
