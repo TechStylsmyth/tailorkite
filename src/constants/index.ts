@@ -1,5 +1,5 @@
 export const API_URL =
-  "https://www.pixoloproductions.com/pixsheetdata/index.php?project=styl-smyth";
+  "https://www.pixoloproductions.com/pixsheetdata/projects/styl-smyth/data.json";
 
 export const menuItems = [
   { name: "Who we are", href: "/" },
