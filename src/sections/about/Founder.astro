@@ -2,7 +2,7 @@
   class="m-auto bg-cover bg-center bg-no-repeat md:bg-[url('/images/founder-lines.png')]"
 >
   <div class="container mx-auto space-y-11 px-6 py-8 md:py-24 lg:space-y-22">
-    <p class="text-n-950 text-4xl md:text-5xl lg:text-6xl">
+    <p class="fade-in text-n-950 text-4xl md:text-5xl lg:text-6xl">
       <span class="font-bold text-blue-500">Founder</span> Story
     </p>
     <div class="flex flex-col items-center justify-between lg:flex-row">
@@ -13,7 +13,7 @@
         <div class="relative space-y-12">
           <div class="flex items-center gap-3 md:gap-4">
             <div
-              class="flex h-[50px] w-[50px] items-center justify-center rounded-full bg-blue-500 lg:h-[72px] lg:w-[72px]"
+              class="heart-beat flex h-[50px] w-[50px] items-center justify-center rounded-full bg-blue-500 lg:h-[72px] lg:w-[72px]"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -102,3 +102,26 @@
     </div>
   </div>
 </section>
+<style>
+  @keyframes heart-beat {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1); /* how big it grows */
+    }
+  }
+
+  .heart-beat {
+    animation: heart-beat 1.4s ease-in-out infinite; /* smooth & slow */
+    transform-origin: center;
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .heart-beat {
+      animation: none;
+    }
+  }
+</style>

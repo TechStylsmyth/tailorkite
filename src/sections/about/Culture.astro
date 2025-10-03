@@ -50,7 +50,7 @@ const cultureDetails = {
     class="container mx-auto flex flex-col gap-8 px-6 py-12 md:gap-14 md:py-24"
   >
     <!-- Section title wrapper -->
-    <div class="w-full space-y-6 md:space-y-12 lg:space-y-14">
+    <div class="fade-in w-full space-y-6 md:space-y-12 lg:space-y-14">
       <div>
         <p class="text-2xl font-light tracking-widest uppercase md:text-4xl">
           The
@@ -80,8 +80,11 @@ const cultureDetails = {
 
     <div class="flex flex-wrap gap-3">
       {
-        cultureDetails.cards.map((cultureItem) => (
-          <div class="w-full sm:w-[47%] lg:w-[32%] 2xl:w-[24%]">
+        cultureDetails.cards.map((cultureItem, index) => (
+          <div
+            class="card-anim w-full sm:w-[47%] lg:w-[32%] 2xl:w-[24%]"
+            style={`--delay: ${index * 0.2}s`}
+          >
             {/* // Service card component */}
             <CultureAndPeopleCard {...cultureItem} />
           </div>

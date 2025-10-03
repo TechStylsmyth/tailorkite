@@ -96,3 +96,91 @@ body {
     color: transparent !important;  
   }
 }
+
+/* Base fade-in setup */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
+
+/* When element is visible */
+.fade-in.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Base scale-in animation */
+.scale-in {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  will-change: transform, opacity;
+}
+
+/* When visible */
+.scale-in.in-view {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@keyframes gentle-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.bouncy {
+  animation: gentle-bounce 1.4s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bouncy {
+    animation: none;
+  }
+}
+
+/* Base animation setup */
+.card-anim {
+  opacity: 0;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition-delay: var(--delay, 0s);
+  will-change: opacity, transform;
+}
+
+.card-anim.in-view {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Direction variants */
+.card-left {
+  transform: translateX(-40px);
+}
+
+.card-right {
+  transform: translateX(40px);
+}
+
+.card-top {
+  transform: translateY(-40px);
+}
+
+.card-bottom {
+  transform: translateY(40px);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .card-anim,
+  .card-anim.in-view {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
