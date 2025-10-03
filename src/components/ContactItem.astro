@@ -1,4 +1,6 @@
 ---
+import { undefined } from "astro:schema";
+
 interface Props {
   label: string; // e.g., CALL US, EMAIL US, VISIT US
   phone?: string;
@@ -20,11 +22,15 @@ const {
 const value = phone ?? email ?? address ?? "";
 const isPhone = Boolean(phone);
 const isEmail = Boolean(email);
+const isAddress = Boolean(address);
+
 const href = isPhone
   ? `tel:${value.replace(/\s+/g, "")}`
   : isEmail
     ? `mailto:${value}`
-    : undefined;
+    : isAddress
+      ? `https://www.google.com/maps/search/${encodeURIComponent(value)}`
+      : undefined;
 ---
 
 <div class={`flex flex-col items-center gap-8  ${className}`}>
@@ -46,7 +52,11 @@ const href = isPhone
   >
     {
       href ? (
-        <a href={href} class="text-n-950 text-center break-words lg:text-lg">
+        <a
+          href={href}
+          class="text-n-950 text-center break-words lg:text-lg"
+          target="_blank"
+        >
           {value}
         </a>
       ) : (

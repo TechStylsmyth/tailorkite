@@ -74,7 +74,7 @@ const jobs = openings.map((opening) => {
               rel="noopener noreferrer"
               class="card-anim card-bottom job block w-full sm:w-[46%] lg:w-[38%] xl:w-[23%]"
               data-dept={job.department}
-              style={`--delay: ${index * 0.2}s`}
+              style={`--delay: ${index * 0.1}s`}
             >
               {/* Job Opening Card component */}
               <JobOpeningCard
@@ -93,13 +93,11 @@ const jobs = openings.map((opening) => {
       <p
         class="w-full text-2xl leading-tight font-semibold text-blue-500 md:text-4xl lg:text-5xl"
       >
-        Didn’t find what you
-        <br />
-        were looking for ?
+        Your Next Chapter Starts Here
       </p>
       <!-- Subtext -->
       <p class="text-n-900 text-base font-normal md:text-2xl">
-        Send us your resume anyway. Fill in the form below.
+        Fill in the form below.
       </p>
     </div>
   </div>
