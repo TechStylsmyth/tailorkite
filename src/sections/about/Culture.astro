@@ -1,14 +1,62 @@
 ---
 import CultureAndPeopleCard from "../../components/CultureAndPeopleCard.astro";
+
+const synergyData = {
+  section: "Synergy",
+  cards: [
+    {
+      icon: "👥", // replace with svg or component
+      title: "Synergy at the Core",
+      points: ["Empower individuals", "Succeed as one", "Amplify strength"],
+      bgText: "S",
+    },
+    {
+      icon: "📈",
+      title: "Tenancy for Excellence",
+      points: [
+        "Pursue perfection with purpose",
+        "Set benchmarks, not limits",
+        "Exceed goals, inspire trust",
+      ],
+      bgText: "T",
+    },
+    {
+      icon: "💡",
+      title: "Yearning for Innovation",
+      points: [
+        "Adapt quickly",
+        "Innovate constantly",
+        "Lead change with confidence",
+      ],
+      bgText: "Y",
+    },
+    {
+      icon: "🤝",
+      title: "Loyal Partnerships",
+      points: [
+        "Collaborate deeply",
+        "Understand needs",
+        "Deliver beyond expectations",
+      ],
+      bgText: "L",
+    },
+  ],
+};
 ---
 
-<div class="flex flex-wrap gap-3">
-  {
-    [0, 1, 2, 3].map(() => (
-      <div class="w-full sm:w-[47%] lg:w-[24%]">
-        {/* // Service card component */}
-        <CultureAndPeopleCard />
-      </div>
-    ))
-  }
-</div>
+<section class="m-auto">
+  <div
+    class="container mx-auto flex flex-col gap-8 px-6 py-12 md:gap-14 md:py-24"
+  >
+    <div class="flex flex-wrap gap-3">
+      {
+        synergyData.cards.map((cultureItem) => (
+          <div class="w-full sm:w-[47%] lg:w-[24%]">
+            {/* // Service card component */}
+            <CultureAndPeopleCard {...cultureItem} />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
