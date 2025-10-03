@@ -25,10 +25,10 @@ const { servicesInfo, showArrow = false } = Astro.props as {
 
 // Split by category id
 const designServices = (servicesInfo?.services ?? []).filter(
-  (s) => s.category_id === "1",
+  (s) => s.category_id === "1"
 );
 const tradeServices = (servicesInfo?.services ?? []).filter(
-  (s) => s.category_id === "2",
+  (s) => s.category_id === "2"
 );
 ---
 
@@ -38,7 +38,9 @@ const tradeServices = (servicesInfo?.services ?? []).filter(
   >
     <!-- Section title wrapper -->
     <div class="space-y-1 md:space-y-3">
-      <p class="text-4xl font-semibold text-blue-500 md:text-6xl 2xl:text-7xl">
+      <p
+        class="fade-in text-4xl font-semibold text-blue-500 md:text-6xl 2xl:text-7xl"
+      >
         What We Do?
       </p>
       <p

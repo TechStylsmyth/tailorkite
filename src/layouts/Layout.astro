@@ -137,4 +137,21 @@ const isHomePage = Astro.url.pathname === "/";
       initAccordions();
     }
   </script>
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("in-view");
+        });
+      },
+      { threshold: 0.2 } // reveal when 20% visible
+    );
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document
+        .querySelectorAll(".fade-in, .scale-in")
+        .forEach((el) => observer.observe(el));
+    });
+  </script>
 </html>
