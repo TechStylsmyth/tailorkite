@@ -82,12 +82,45 @@ body {
   animation: draw 3s ease forwards;
 }
 
+.draw-globe {
+  stroke-dasharray: 700;
+  stroke-dashoffset: 1400;
+  animation: draw 4s ease infinite backwards;
+}
+
 .inner-container{
   padding-top: 60px;   
   padding-bottom: 60px;
   padding-left: 24px;  
   padding-right: 24px;
 }
+
+
+.path {
+  stroke-dasharray: 200; /* big enough to cover path length */
+  stroke-dashoffset: 200;
+  animation: draw 1s forwards;
+}
+
+.path1 {
+  animation-delay: 1s;
+}
+
+.path2 {
+  animation-delay: 2s; /* start after path1 finishes */
+}
+
+.path3 {
+  animation-delay: 3s; /* start after path2 finishes */
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+
 
 @media (max-width: 1023px) {
   .inner-container {
@@ -128,10 +161,33 @@ body {
   will-change: opacity, transform;
 }
 
+.fade-in-left {
+  transform: translateX(-20px);
+   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
+
+.fade-in-right {
+  transform: translateX(20px);
+   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
+
+
 /* When element is visible */
 .fade-in.in-view {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) ;
+}
+
+.fade-in-left.in-view {
+  opacity: 1;
+  transform: translateX(0) ;
+}
+
+.fade-in-right.in-view {
+  opacity: 1;
+  transform: translateX(0) ;
 }
 
 /* Base scale-in animation */
@@ -161,6 +217,8 @@ body {
   animation: gentle-bounce 1.4s ease-in-out infinite;
   will-change: transform;
 }
+
+
 
 @media (prefers-reduced-motion: reduce) {
   .bouncy {

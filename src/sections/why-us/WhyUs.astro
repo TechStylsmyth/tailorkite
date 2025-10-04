@@ -1,0 +1,97 @@
+---
+import BrandLogo from "../../components/BrandLogo.astro";
+import ComparisonCard from "../../components/ComparisonCard.astro";
+
+const items = [
+  {
+    icon: "/icons/dollar.svg",
+    title: "Costs",
+    negativePoint: "Hidden costs - benefits, space, hardware not included",
+    positivePoint: "Costs are inclusive (Salaries, space, tools etc)",
+  },
+  {
+    icon: "/icons/file.svg",
+    title: "Output",
+    negativePoint: "Not tied to fixed output per hour",
+    positivePoint: "Guaranteed predetermined output",
+  },
+  {
+    icon: "/icons/downtime.svg",
+    title: "Downtime",
+    negativePoint: "Downtime & leave costs",
+    positivePoint: "Zero downtime",
+  },
+
+  {
+    icon: "/icons/attrition.svg",
+    title: "Attrition",
+    negativePoint: "Downtime & leave costs",
+    positivePoint: "Zero downtime",
+  },
+  {
+    icon: "/icons/graph.svg",
+    title: "Scalability",
+    negativePoint: "Costs vary",
+    positivePoint: "No scalability costs",
+  },
+  {
+    icon: "/icons/hand-cash.svg",
+    title: "Strategic Priorities",
+    negativePoint: "Stretched bandwidth, tactical firefighting",
+    positivePoint: "Freed bandwidth, strategic focus",
+  },
+];
+---
+
+<section class="bg-n-50">
+  <div class="inner-container container mx-auto flex flex-col gap-8 md:gap-14">
+    <div class="w-full space-y-6 md:space-y-12 lg:space-y-14">
+      <div>
+        <p class="text-2xl font-light tracking-widest uppercase md:text-4xl">
+          The
+        </p>
+        <div class="flex items-baseline gap-3 md:gap-5">
+          <!-- Brand logo -->
+          <BrandLogo variant="default" classes="w-38 md:w-88 lg:w-76" />
+          <!-- Asile text -->
+          <p class="text-2xl leading-0 font-normal tracking-widest md:text-4xl">
+            Way
+          </p>
+        </div>
+      </div>
+      <div class="space-y-16">
+        <p
+          class="text-4xl leading-12 font-normal md:text-6xl md:leading-20 lg:w-[90%]"
+        >
+          We’re fast, flexible, and easy to work with — no fluff, just
+          thoughtful, sharp execution.
+        </p>
+        <!-- Section sub header -->
+        <div class="space-y-1 lg:space-y-2">
+          <p class="text-n-950 text-2xl leading-tight font-medium md:text-4xl">
+            Why Outsource to StylSmyth?
+          </p>
+          <p class="text-n-950 text-sm font-normal md:text-2xl">
+            Here's how we stack up against an in-house team.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comparison Grid -->
+    <div class="grid gap-8 lg:grid-cols-2">
+      {
+        items.map((item, index) => (
+          <div class="card-anim card-bottom" style={`--delay: ${index * 0.1}s`}>
+            <ComparisonCard
+              icon={item.icon}
+              title={item.title}
+              negativePoint={item.negativePoint}
+              positivePoint={item.positivePoint}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

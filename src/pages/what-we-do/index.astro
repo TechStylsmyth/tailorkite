@@ -1,0 +1,41 @@
+---
+// TYPES //
+import type { ServicesInfo } from "../../types/services";
+
+// SERVICES //
+import Hero from "../../sections/what-we-do/Hero.astro";
+
+// CONSTANTS //
+import { API_URL } from "../../constants";
+
+// OTHERS //
+import Layout from "../../layouts/Layout.astro";
+
+// SECTIONS //
+import Services from "../../sections/who-we-are/Services.astro";
+import OurApproach from "../../sections/what-we-do/OurApproach.astro";
+import Faq from "../../sections/who-we-are/Faq.astro";
+import Tools from "../../sections/what-we-do/Tools.astro";
+
+let servicesInfo: ServicesInfo = { categories: [], services: [] };
+let faqInfo = { categories: [], frequently_asked_questions: [] };
+try {
+  const res = await fetch(API_URL);
+  const json = await res.json();
+  servicesInfo = json?.data?.services_info ?? { categories: [], services: [] };
+  faqInfo = json?.data?.faq_info ?? {
+    categories: [],
+    frequently_asked_questions: [],
+  };
+} catch (e) {
+  console.error(e);
+}
+---
+
+<Layout>
+  <Hero />
+  {servicesInfo && <Services servicesInfo={servicesInfo} showArrow />}
+  <OurApproach />
+  <Tools />
+  {faqInfo && <Faq faqInfo={faqInfo} />}
+</Layout>

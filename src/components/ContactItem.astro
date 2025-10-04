@@ -31,9 +31,11 @@ const href = isPhone
       : undefined;
 ---
 
-<div class={`flex flex-col items-center gap-8  ${className}`}>
+<div class={`group flex flex-col items-center gap-8  ${className}`}>
   <div class="flex w-full shrink-0 flex-col items-center gap-2.5">
-    <div class="relative size-11 md:size-12 lg:size-13">
+    <div
+      class="relative size-11 origin-bottom transition-transform duration-300 group-hover:-translate-y-4 md:size-12 lg:size-13"
+    >
       <div
         class="flex size-full items-center justify-center rounded-2xl bg-blue-500"
       >
@@ -61,6 +63,22 @@ const href = isPhone
         <div class="text-n-950 text-center break-words lg:text-lg">{value}</div>
       )
     }
-    <div class="bg-n-700 h-0.5 w-28 md:w-28 lg:w-32"></div>
+    <div class="bg-n-700 animate-line h-0.5 w-28 md:w-28 lg:w-32"></div>
   </div>
 </div>
+
+<style>
+  @keyframes lineGrow {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  .animate-line {
+    transform-origin: left center;
+    animation: lineGrow 700ms ease-out both;
+  }
+</style>
