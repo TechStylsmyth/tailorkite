@@ -4,10 +4,14 @@ const { name, role, field, image, links = [] } = Astro.props;
 
 <div class="m-auto flex max-w-[350px] flex-col gap-5 md:max-w-[400px]">
   <div
-    class="flex h-[400px] flex-col items-center justify-end rounded-t-[60px] bg-gradient-to-b from-[#D1D1D1] to-white px-[52px] pt-[32px] pb-0"
+    class="flex h-[400px] flex-col items-center justify-end rounded-t-[60px] bg-gradient-to-b from-[#D1D1D1] to-white px-[20px] pt-[32px] pb-0"
   >
     <!-- Image -->
-    <img src={image} alt={name} class="h-[400px] rounded-[40px] object-cover" />
+    <div
+      class="mx-auto h-[400px] w-full overflow-hidden rounded-[40px] md:h-[350px]"
+    >
+      <img src={image} alt={name} class="m-auto h-full object-cover" />
+    </div>
   </div>
 
   <div class="flex flex-col px-4">
