@@ -11,18 +11,22 @@ const { icon, title, alt = title, color, showArrow = false } = Astro.props;
 ---
 
 <div
-  class=`flex w-full h-full flex-col gap-6 2xl:gap-8 justify-between rounded-3xl ${color} px-6 py-10 cursor-pointer`
+  class={`flex w-full h-full flex-col gap-6 2xl:gap-8 justify-between rounded-3xl ${color} px-6 py-10 cursor-pointer group`}
 >
   <div class="flex h-full flex-col gap-4">
     <!-- Card icon -->
-    <img src={`/icons/${icon}.svg`} alt={alt} class="size-8 lg:size-9 2xl:size-11" />
+    <img
+      src={`/icons/${icon}.svg`}
+      alt={alt}
+      class="size-8 lg:size-9 2xl:size-11"
+    />
     <!-- Card Title -->
     <p class="text-lg font-semibold md:text-xl 2xl:text-2xl">{title}</p>
   </div>
 
   {
     showArrow && (
-      <div class="self-end">
+      <div class="self-end transition-transform duration-300 group-hover:translate-x-2">
         <svg
           width="28"
           height="35"
