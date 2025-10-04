@@ -11,6 +11,10 @@ body {
   background-color: var(--color-n-950);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @theme inline {
   --color-n-50: var(--color-n-50);
   --color-n-100: var(--color-n-100);

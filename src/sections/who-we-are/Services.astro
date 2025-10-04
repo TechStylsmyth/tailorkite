@@ -65,7 +65,7 @@ const tradeServices = (servicesInfo?.services ?? []).filter(
               >
                 {showArrow ? (
                   /* if you want to route by category, keep ?category=1; if by service, use ?id={service.id} */
-                  <a href={`/services/service-consumption/${service.id}`}>
+                  <a href={`/what-we-do/service-consumption/${service.id}`}>
                     <ServiceCard
                       icon={service.icon}
                       title={service.name}
@@ -97,7 +97,7 @@ const tradeServices = (servicesInfo?.services ?? []).filter(
                 style={`--delay: ${serviceIndex * 0.1}s`}
               >
                 {showArrow ? (
-                  <a href={`/services/service-consumption/${service.id}`}>
+                  <a href={`/what-we-do/service-consumption/${service.id}`}>
                     <ServiceCard
                       icon={service.icon}
                       title={service.name}
