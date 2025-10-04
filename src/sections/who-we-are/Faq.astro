@@ -14,16 +14,14 @@ const faqData = Object.fromEntries(
   tags.map((c) => [
     c.id,
     (faqInfo?.frequently_asked_questions ?? []).filter(
-      (f) => f.category_id === c.id
+      (f) => f.category_id === c.id,
     ),
-  ])
+  ]),
 );
 ---
 
 <section>
-  <div
-    class="inner-container container mx-auto flex items-center justify-center gap-40"
-  >
+  <div class="inner-container container mx-auto flex items-center gap-40">
     <!-- Left Side -->
     <div class="flex flex-col gap-6 md:gap-10 lg:w-1/2">
       <!-- Texts Wrapper -->

@@ -1,4 +1,6 @@
 ---
+import ScrollToExplore from "../../components/ScrollToExplore.astro";
+
 const heroContent = {
   title: {
     desktop: ["Full–time remote teams,", "tailored to your brand."],
@@ -59,17 +61,5 @@ const heroContent = {
       class="draw-path"></path>
   </svg>
   <!-- Scroll to explore text bar -->
-  <div
-    class="flex h-[80px] w-full items-center justify-between px-3 text-xs font-normal sm:px-12 md:text-sm lg:text-base"
-  >
-    <span class="hidden text-xs md:block md:text-3xl">+</span>
-    <span class="text-xs md:text-3xl">+</span>
-    <span class="text-xs md:text-3xl">+</span>
-    <!-- Text -->
-    <p class="bouncy-limited text-n-800 tracking-widest">SCROLL TO EXPLORE</p>
-
-    <span class="hidden text-xs md:block md:text-3xl">+</span>
-    <span class="text-xs md:text-3xl">+</span>
-    <span class="text-xs md:text-3xl">+</span>
-  </div>
+  <ScrollToExplore />
 </section>
