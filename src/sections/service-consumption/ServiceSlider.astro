@@ -91,16 +91,26 @@ const { photos } = Astro.props as {
 
 <script>
   import EmblaCarousel from "embla-carousel";
+  import Autoplay from "embla-carousel-autoplay";
 
   window.addEventListener("DOMContentLoaded", () => {
     const viewport = document.getElementById("embla");
+    const plugins = [
+      Autoplay({
+        stopOnMouseEnter: true,
+      }),
+    ];
     if (!viewport) return;
-    const embla = EmblaCarousel(viewport, {
-      align: "start",
-      loop: false,
-      containScroll: "trimSnaps",
-      dragFree: true,
-    });
+    const embla = EmblaCarousel(
+      viewport,
+      {
+        align: "start",
+        loop: false,
+        containScroll: "trimSnaps",
+        dragFree: true,
+      },
+      plugins,
+    );
 
     const prevBtn = document.getElementById("prev");
     const nextBtn = document.getElementById("next");

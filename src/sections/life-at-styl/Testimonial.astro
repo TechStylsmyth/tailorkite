@@ -107,6 +107,11 @@ const nextId = "embla-testimonials-next";
       plugins,
     );
 
+    // Auplay on  mouse leaves the carousel
+    viewport.addEventListener("mouseleave", () => {
+      embla.plugins().autoplay.play();
+    });
+
     const prevBtn = document.getElementById("embla-testimonials-prev");
     const nextBtn = document.getElementById("embla-testimonials-next");
 
