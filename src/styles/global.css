@@ -75,6 +75,14 @@ body {
   --color-blue-950: #001b3d;
 }
 
+/* 🩵 Custom container fix for 1536–1600px gap */
+@media (min-width: 1536px) and (max-width: 1599px) {
+  .container {
+    max-width: 85rem; /* ≈1440px — feels less cramped */
+  }
+}
+
+
 
 .draw-path {
   stroke-dasharray: 1364;
