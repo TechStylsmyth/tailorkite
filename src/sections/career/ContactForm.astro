@@ -13,7 +13,7 @@ const contactPageDetails = {
     },
     {
       title: "Phone Number",
-      value: "+91 7894561230",
+      value: "022 4157 2929",
     },
   ],
 };
@@ -106,7 +106,7 @@ const contactPageDetails = {
             contactPageDetails.contactDetails[0] && (
               <div>
                 {/* <!-- Icon -->  */}
-                <div class="text-blue-500">
+                <div class="mb-1 text-blue-500">
                   <svg
                     class="size-5 md:size-8"
                     width="24"
@@ -130,9 +130,13 @@ const contactPageDetails = {
                 </p>
 
                 {/* <!-- Text Description -->  */}
-                <p class="text-sm font-normal md:text-2xl">
-                  {contactPageDetails.contactDetails[0].value}
-                </p>
+                <a
+                  href={`mailto:${contactPageDetails.contactDetails[0].value}`}
+                >
+                  <p class="text-sm font-normal md:text-2xl">
+                    {contactPageDetails.contactDetails[0].value}
+                  </p>
+                </a>
               </div>
             )
           }
@@ -140,7 +144,7 @@ const contactPageDetails = {
           <!-- Phone details -->
           <div>
             <!-- Icon -->
-            <div class="text-blue-500">
+            <div class="mb-1 text-blue-500">
               <svg
                 class="size-5 md:size-8"
                 width="24"
@@ -174,57 +178,59 @@ const contactPageDetails = {
             </p>
 
             <!-- Text Description -->
-            <p class="text-sm font-normal md:text-2xl">
-              {contactPageDetails.contactDetails[1].value}
-            </p>
+            <a href={`tel:${contactPageDetails.contactDetails[1].value}`}>
+              <p class="text-sm font-normal md:text-2xl">
+                {contactPageDetails.contactDetails[1].value}
+              </p>
+            </a>
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
 
-<script is:inline>
-  const form = document.getElementById("careerForm");
-  const messageDiv = document.getElementById("form-message");
+  <script is:inline>
+    const form = document.getElementById("careerForm");
+    const messageDiv = document.getElementById("form-message");
 
-  form?.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    messageDiv.textContent = "";
+    form?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      messageDiv.textContent = "";
 
-    const formData = new FormData(form);
+      const formData = new FormData(form);
 
-    // Basic validation (HTML required already covers most)
-    if (
-      !form.full_name.value.trim() ||
-      !form.email.value.trim() ||
-      !form.phone.value.trim() ||
-      !form.linkedin.value.trim() ||
-      !form.cv.files.length
-    ) {
-      messageDiv.textContent = "All fields are required.";
-      return;
-    }
-
-    try {
-      const res = await fetch(
-        "https://api.pixoloproductions.com/styl-smyth/career.php",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
-      if (res.ok) {
-        messageDiv.textContent =
-          "Thank you! Your application has been submitted.";
-        messageDiv.classList.remove("text-red-500");
-        messageDiv.classList.add("text-green-500");
-        form.reset();
-      } else {
-        messageDiv.textContent = "Something went wrong. Please try again.";
+      // Basic validation (HTML required already covers most)
+      if (
+        !form.full_name.value.trim() ||
+        !form.email.value.trim() ||
+        !form.phone.value.trim() ||
+        !form.linkedin.value.trim() ||
+        !form.cv.files.length
+      ) {
+        messageDiv.textContent = "All fields are required.";
+        return;
       }
-    } catch {
-      messageDiv.textContent = "Network error. Please try again.";
-    }
-  });
-</script>
+
+      try {
+        const res = await fetch(
+          "https://api.pixoloproductions.com/styl-smyth/career.php",
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+        if (res.ok) {
+          messageDiv.textContent =
+            "Thank you! Your application has been submitted.";
+          messageDiv.classList.remove("text-red-500");
+          messageDiv.classList.add("text-green-500");
+          form.reset();
+        } else {
+          messageDiv.textContent = "Something went wrong. Please try again.";
+        }
+      } catch {
+        messageDiv.textContent = "Network error. Please try again.";
+      }
+    });
+  </script>
+</section>

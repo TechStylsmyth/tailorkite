@@ -85,7 +85,7 @@ const contactPageDetails = {
                   contactPageDetails.contactDetails[0] && (
                     <div>
                       {/* <!-- Icon -->  */}
-                      <div class="text-blue-500">
+                      <div class="mb-1 text-blue-500">
                         <svg
                           class="size-8"
                           width="24"
@@ -109,9 +109,13 @@ const contactPageDetails = {
                       </p>
 
                       {/* <!-- Text Description -->  */}
-                      <p class="text-xl font-normal md:text-2xl">
-                        {contactPageDetails.contactDetails[0].value}
-                      </p>
+                      <a
+                        href={`mailto:${contactPageDetails.contactDetails[0].value}`}
+                      >
+                        <p class="text-xl font-normal md:text-2xl">
+                          {contactPageDetails.contactDetails[0].value}
+                        </p>
+                      </a>
                     </div>
                   )
                 }
@@ -119,7 +123,7 @@ const contactPageDetails = {
                 <!-- Phone details -->
                 <div>
                   <!-- Icon -->
-                  <div class="text-blue-500">
+                  <div class="mb-1 text-blue-500">
                     <svg
                       class="size-8"
                       width="24"
@@ -153,9 +157,11 @@ const contactPageDetails = {
                   </p>
 
                   <!-- Text Description -->
-                  <p class="text-xl font-normal md:text-2xl">
-                    {contactPageDetails.contactDetails[1].value}
-                  </p>
+                  <a href={`tel:${contactPageDetails.contactDetails[1].value}`}>
+                    <p class="text-xl font-normal md:text-2xl">
+                      {contactPageDetails.contactDetails[1].value}
+                    </p>
+                  </a>
                 </div>
               </div>
 

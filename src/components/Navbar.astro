@@ -23,10 +23,12 @@ const { navItems } = Astro.props;
                 : "text-n-700 hover:text-blue-950"
             }`}
           >
-            {navItem.name}
-            {navItem.active && (
-              <span class="absolute -right-3 bottom-[4px] size-1.5 rounded-full bg-blue-500" />
-            )}
+            <p class="relative">
+              {navItem.name}
+              {navItem.active && (
+                <span class="absolute -right-3 bottom-[6px] size-1.5 rounded-full bg-blue-500" />
+              )}
+            </p>
           </a>
         </li>
       ))

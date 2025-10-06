@@ -25,10 +25,10 @@ const { servicesInfo, showArrow = false } = Astro.props as {
 
 // Split by category id
 const designServices = (servicesInfo?.services ?? []).filter(
-  (s) => s.category_id === "1",
+  (s) => s.category_id === "1"
 );
 const tradeServices = (servicesInfo?.services ?? []).filter(
-  (s) => s.category_id === "2",
+  (s) => s.category_id === "2"
 );
 ---
 
@@ -54,7 +54,7 @@ const tradeServices = (servicesInfo?.services ?? []).filter(
     <!-- Services wrapper -->
     <div class="flex flex-col gap-18 xl:flex-row xl:gap-5">
       <!-- Design solutions -->
-      <div class="flex w-full flex-col gap-10 md:gap-16 xl:w-1/2">
+      <div class="flex w-full flex-col gap-5 md:gap-12 xl:w-1/2">
         <p class="text-2xl font-medium md:text-3xl">Design Solutions</p>
         <div class="flex flex-wrap gap-3">
           {
@@ -87,7 +87,7 @@ const tradeServices = (servicesInfo?.services ?? []).filter(
       </div>
 
       <!-- Trade solutions -->
-      <div class="flex w-full flex-col gap-10 md:gap-16 xl:w-1/2">
+      <div class="flex w-full flex-col gap-5 md:gap-12 xl:w-1/2">
         <p class="text-2xl font-medium md:text-3xl">Trade Solutions</p>
         <div class="flex flex-wrap gap-3">
           {

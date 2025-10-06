@@ -31,10 +31,10 @@ const href = isPhone
       : undefined;
 ---
 
-<div class={`group flex flex-col items-center gap-8  ${className}`}>
+<div class={`contact-item flex flex-col items-center gap-8  ${className}`}>
   <div class="flex w-full shrink-0 flex-col items-center gap-2.5">
     <div
-      class="relative size-11 origin-bottom transition-transform duration-300 group-hover:-translate-y-4 md:size-12 lg:size-13"
+      class="icon-anim relative size-11 origin-bottom transition-transform duration-300 md:size-12 lg:size-13"
     >
       <div
         class="flex size-full items-center justify-center rounded-2xl bg-blue-500"
@@ -80,5 +80,10 @@ const href = isPhone
   .animate-line {
     transform-origin: left center;
     animation: lineGrow 700ms ease-out both;
+  }
+
+  /* Animate icon only when the link is hovered */
+  .contact-item:has(a:hover) .icon-anim {
+    transform: translateY(-1rem);
   }
 </style>
