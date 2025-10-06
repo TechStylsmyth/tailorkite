@@ -106,18 +106,39 @@ const tradeSolutions = [
   </p>
 </section>
 
+<script is:inline>
+  window.addEventListener("DOMContentLoaded", () => {
+    const titles = document.querySelectorAll(".title");
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-line");
+          }
+        });
+      },
+      { threshold: 0.5 },
+    );
+    titles.forEach((title) => io.observe(title));
+  });
+</script>
+
 <style>
   .title {
     position: relative;
-    &::after {
-      content: "";
-      position: absolute;
-      width: 45%;
-      height: 5px;
-      background-color: var(--color-blue-500);
-      border-radius: 4px;
-      bottom: 7px;
-      right: -47%;
-    }
+  }
+  .title::after {
+    content: "";
+    position: absolute;
+    left: 105%;
+    bottom: 7px;
+    width: 0;
+    height: 5px;
+    background-color: var(--color-blue-500, #3b82f6);
+    border-radius: 4px;
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .title.animate-line::after {
+    width: 45%;
   }
 </style>

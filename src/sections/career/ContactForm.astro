@@ -65,14 +65,14 @@ const contactPageDetails = {
             <!-- Upload CV -->
             <FileUpload
               id="cv"
-              label="Upload CV"
+              label="Upload CV*"
               name="cv"
               accept=".pdf,.doc,.docx"
               required
             />
 
             <!-- Linkedin -->
-            <Input id="linkedin" label="Linkedin*" name="linkedin" required />
+            <Input id="linkedin" label="Linkedin" name="linkedin" />
 
             <!-- Additional comment -->
             <Input id="message" label="Message" name="message" required />
@@ -204,10 +204,9 @@ const contactPageDetails = {
         !form.full_name.value.trim() ||
         !form.email.value.trim() ||
         !form.phone.value.trim() ||
-        !form.linkedin.value.trim() ||
         !form.cv.files.length
       ) {
-        messageDiv.textContent = "All fields are required.";
+        messageDiv.textContent = "Please fill in all required fields.";
         return;
       }
 
@@ -217,7 +216,7 @@ const contactPageDetails = {
           {
             method: "POST",
             body: formData,
-          }
+          },
         );
         if (res.ok) {
           messageDiv.textContent =

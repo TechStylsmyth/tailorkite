@@ -33,11 +33,11 @@ const isHomePage = Astro.url.pathname === "/";
 
     <!-- Main content -->
     <main>
+      <!-- Header -->
+      <Header />
       <div
         class="bg-n-50 relative z-1 overflow-hidden rounded-br-4xl rounded-bl-4xl"
       >
-        <!-- Header -->
-        <Header />
         <slot />
         <!-- Footer -->
       </div>
