@@ -15,7 +15,21 @@ import BeforeAfter from "../../../../sections/service-consumption/BeforeAfter.as
 import ServiceSlider from "../../../../sections/service-consumption/ServiceSlider.astro";
 import ContactUs from "../../../../sections/service-consumption/ContactUs.astro";
 
-export const prerender = false;
+export const prerender = true;
+
+export async function getStaticPaths() {
+  try {
+    const res = await fetch(API_URL);
+    const json = await res.json();
+    const services = json?.data?.services_info?.services ?? [];
+    return services
+      .filter((s: Service) => Boolean(s?.id))
+      .map((s: Service) => ({ params: { id: String(s.id) } }));
+  } catch (e) {
+    console.error("getStaticPaths error:", e);
+    return [];
+  }
+}
 
 // Take the id from the URL
 const { id } = Astro.params;
@@ -36,7 +50,7 @@ try {
   const res = await fetch(API_URL);
   const json = await res.json();
   servicesConsumption = json?.data?.services_info.services?.find(
-    (s: Service) => s.id === id,
+    (s: Service) => s.id === id
   ) ?? {
     name: "",
     icon: "",
