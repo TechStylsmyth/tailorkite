@@ -1,10 +1,13 @@
 ---
+// OTHERS //
+import { toDirectDriveLink } from "../utils";
+
 const { photo_url, title, sub_title } = Astro.props;
 ---
 
 <div class="overflow-hidden rounded-3xl">
   <img
-    src={photo_url}
+    src={toDirectDriveLink(photo_url)}
     alt={title}
     class="h-[250px] w-full object-cover sm:h-[300px] md:h-[250px] xl:h-[300px] 2xl:h-[350px]"
   />

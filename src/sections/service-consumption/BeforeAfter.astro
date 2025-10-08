@@ -1,5 +1,6 @@
 ---
 import BeforeAfterCard from "../../components/BeforeAfterCard.astro";
+import { toDirectDriveLink } from "../../utils";
 
 export interface BeforeAfterItem {
   before_url: string;
@@ -34,8 +35,14 @@ const { beforeAfterItems = [] } = Astro.props as {
         beforeAfterItems.map((beforeAfterItem) => (
           <BeforeAfterCard
             caption={beforeAfterItem.caption}
-            before={{ src: beforeAfterItem.before_url, text: "Before" }}
-            after={{ src: beforeAfterItem.after_url, text: "After" }}
+            before={{
+              src: toDirectDriveLink(beforeAfterItem.before_url),
+              text: "Before",
+            }}
+            after={{
+              src: toDirectDriveLink(beforeAfterItem.after_url),
+              text: "After",
+            }}
           />
         ))
       }

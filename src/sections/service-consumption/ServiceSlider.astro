@@ -1,4 +1,6 @@
 ---
+import { toDirectDriveLink } from "../../utils";
+
 const { photos } = Astro.props as {
   photos: { url: string; caption?: string }[];
 };
@@ -31,7 +33,7 @@ const { photos } = Astro.props as {
                 style="height: var(--slide-h)"
               >
                 <img
-                  src={item.url}
+                  src={toDirectDriveLink(item.url)}
                   alt={item.caption ?? "Service Image"}
                   loading="lazy"
                   decoding="async"
@@ -109,7 +111,7 @@ const { photos } = Astro.props as {
         containScroll: "trimSnaps",
         dragFree: true,
       },
-      plugins,
+      plugins
     );
 
     const prevBtn = document.getElementById("prev");

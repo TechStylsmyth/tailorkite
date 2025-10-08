@@ -1,7 +1,12 @@
 ---
+// TYPES //
+import type { Service } from "../../types/services";
+
 // COMPONENTS //
 import Button from "../../components/Button.astro";
-import type { Service } from "../../types/services";
+
+// OTHERS //
+import { toDirectDriveLink } from "../../utils";
 
 const { serviceConsumption } = Astro.props as {
   serviceConsumption: Service;
@@ -26,7 +31,7 @@ while (filledImages.length < 4) {
         {
           filledImages.map((img) => (
             <img
-              src={img.image_url}
+              src={toDirectDriveLink(img.image_url)}
               alt="Consumption Images"
               class="h-[100px] h-full w-[100px] w-full object-cover"
             />
