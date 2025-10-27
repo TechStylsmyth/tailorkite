@@ -1,156 +1,31 @@
 ---
+// TYPES //
+import type { FaqInfo } from "../../types/home";
+
+// COMPONENTS //
 import Accordion from "../../components/Accordian.astro";
 
-const faqData = {
-  Services: [
-    {
-      question: "What graphic design services do you offer?",
-      answer:
-        "Marketing collateral, image retouching and editing, fashion design, textile design, video editing, and 3D fashion product development.",
-    },
-    {
-      question: "What Trade solutions do you offer?",
-      answer:
-        "PO and SO management, Product Lifecycle Management, Import management, and Marketing support",
-    },
-    {
-      question: "What is your typical workflow?",
-      answer:
-        "Understand requirements, create an SOP, iterate with client feedback, and deliver final output with clear communication throughout.",
-    },
-    {
-      question: "How experienced is your team?",
-      answer:
-        "20+ years in senior management; skilled professionals with extensive industry experience.",
-    },
-    {
-      question: "What is the typical turnaround time for projects?",
-      answer:
-        "Varies by project scope and complexity; we provide realistic timelines and meet deadlines.",
-    },
-    {
-      question: "How do you ensure the quality of your output?",
-      answer:
-        "Rigorous quality assurance with multiple revisions and feedback incorporation.",
-    },
-    {
-      question:
-        "How do you handle feedback and communication during the design process?",
-      answer:
-        "Open communication through multiple channels, with prompt responses to client input.",
-    },
-    {
-      question:
-        "What are your rates for graphic design and trade solution services?",
-      answer:
-        "Rates vary depending on the resource hired. We offer staffing solutions for various needs.",
-    },
-    {
-      question: "How do we start a project with your company?",
-      answer:
-        "Contact us via email or project management software. We'll discuss requirements and timelines to start the project.",
-    },
-    {
-      question: "What sets your company apart from competitors?",
-      answer:
-        "Our commitment to accuracy, detail, and customer satisfaction, along with long-term client relationships, sets us apart.",
-    },
-    {
-      question: "What timezone(s) does your team operate in?",
-      answer:
-        "Indian Standard Time (IST), with some overlapping hours for overseas clients.",
-    },
-  ],
-  Filesharing: [
-    {
-      question: "How do we exchange files and project assets securely?",
-      answer:
-        "We use secure file transfer protocols and encrypted communication channels.",
-    },
-    {
-      question:
-        "Can we integrate our project management tools or systems with your workflow?",
-      answer:
-        "Yes, we can integrate with your preferred project management tools for streamlined collaboration.",
-    },
-    {
-      question: "How do you handle version control and file revisions?",
-      answer:
-        "We use version control to track changes and revisions, ensuring accuracy and consistency.",
-    },
-    {
-      question: "Do you provide backups for project files and assets?",
-      answer:
-        "Yes, we regularly back up files and assets to secure servers to prevent data loss for up to 15 days.",
-    },
-  ],
-  Communication: [
-    {
-      question:
-        "How do you ensure smooth communication throughout the delivery process?",
-      answer: "Email, video conferencing, and project management platforms.",
-    },
-    {
-      question:
-        "Can we schedule regular status meetings or check-ins for ongoing projects?",
-      answer: "Yes, we encourage regular meetings or check-ins.",
-    },
-    {
-      question:
-        "Can we request specific communication preferences or channels for our team?",
-      answer:
-        "Yes, flexible with methods and channels; open to project management software and email.",
-    },
-  ],
-  Confidentiality: [
-    {
-      question: "Is our project information kept confidential?",
-      answer:
-        "Yes, we have strict policies to ensure all project information is confidential and secure.",
-    },
-    {
-      question:
-        "What measures do you have in place to protect our sensitive information?",
-      answer: "Encryption, access controls, and regular audits.",
-    },
-    {
-      question:
-        "How do you ensure the confidentiality of our design projects and sensitive information?",
-      answer:
-        "Strict access controls, encryption, and adherence to confidentiality agreements.",
-    },
-    {
-      question:
-        "Do you sign non-disclosure agreements (NDAs) before commencing work?",
-      answer: "Yes, we sign NDAs to ensure confidentiality.",
-    },
-    {
-      question:
-        "What measures do you have in place to prevent unauthorized access to our project files?",
-      answer:
-        "Access controls, user authentication, and regular security audits.",
-    },
-    {
-      question:
-        "What is the process for reporting and addressing security incidents or breaches?",
-      answer:
-        "Swift reporting, root cause investigation, and corrective measures.",
-    },
-  ],
-};
-
-const tags = Object.keys(faqData).map((key, index) => ({
-  name: key,
-  isActive: index === 0,
+const { faqInfo } = Astro.props as { faqInfo: FaqInfo };
+const tags = (faqInfo?.categories ?? []).map((c) => ({
+  id: c.id,
+  name: c.name,
 }));
+const faqData = Object.fromEntries(
+  tags.map((c) => [
+    c.id,
+    (faqInfo?.frequently_asked_questions ?? []).filter(
+      (f) => f.category_id === c.id,
+    ),
+  ]),
+);
 ---
 
 <section>
-  <div class="inner-container container mx-auto flex justify-center gap-40">
+  <div class="inner-container container mx-auto flex gap-40">
     <!-- Left Side -->
     <div class="flex flex-col gap-6 md:gap-10 lg:w-1/2">
       <!-- Texts Wrapper -->
-      <div>
+      <div class="fade-in">
         <p
           class="lg:6xl mb-1 text-3xl font-bold md:mb-3 md:text-5xl md:tracking-[4px]"
         >
@@ -161,32 +36,30 @@ const tags = Object.keys(faqData).map((key, index) => ({
         </p>
       </div>
 
-      <div class="flex flex-col gap-7">
+      <div class="fade-in flex flex-col gap-7">
         <!-- Tags Wrapper -->
-        <div id="faq-tags" class="flex flex-wrap gap-3 md:gap-6">
-          {
-            tags.map((tag) => (
-              <div
-                data-tag={tag.name}
-                class={`border-n-950 cursor-pointer rounded-3xl border px-5 py-2 text-sm font-normal transition-colors duration-200 md:px-6 md:py-2.5 lg:text-lg ${
-                  tag.isActive
-                    ? "bg-n-950 text-n-50"
-                    : "text-n-950 hover:bg-n-950 hover:text-n-50"
-                }`}
-              >
-                <p>{tag.name}</p>
-              </div>
-            ))
-          }
+        <div class="scrollbar-hidden overflow-x-scroll py-2">
+          <div id="faq-tags" class="flex gap-3 md:gap-6">
+            {
+              tags.map((tag) => (
+                <div
+                  data-tag={tag.id}
+                  class={`border-n-950 text-n-950 hover:bg-n-950 hover:text-n-50 cursor-pointer rounded-3xl border px-5 py-2 text-sm font-normal transition-colors duration-200 md:px-6 md:py-2.5 lg:text-lg`}
+                >
+                  <p>{tag.name}</p>
+                </div>
+              ))
+            }
+          </div>
         </div>
 
         <!-- Faq Wrapper -->
         <div id="faq">
           {
-            Object.entries(faqData).map(([category, faqs], idx) => (
+            Object.entries(faqData).map(([categoryId, faqs], idx) => (
               <div
                 data-faq-panel
-                data-category={category}
+                data-category={categoryId}
                 class={`${idx === 0 ? "block" : "hidden"} space-y-4`}
               >
                 {faqs.map((faq, i) => (
@@ -227,10 +100,10 @@ const tags = Object.keys(faqData).map((key, index) => ({
   const tagEls = Array.from(tagsEl?.children || []);
   const panels = document.querySelectorAll("[data-faq-panel]");
 
-  const activate = (name) => {
+  const activate = (id) => {
     // Toggle tag styles
     tagEls.forEach((el) => {
-      const isActive = el.getAttribute("data-tag") === name;
+      const isActive = el.getAttribute("data-tag") === id;
       el.classList.toggle("bg-n-950", isActive);
       el.classList.toggle("text-n-50", isActive);
       el.classList.toggle("text-n-950", !isActive);
@@ -238,7 +111,7 @@ const tags = Object.keys(faqData).map((key, index) => ({
 
     // Show matching panel
     panels.forEach((p) => {
-      const show = p.getAttribute("data-category") === name;
+      const show = p.getAttribute("data-category") === id;
       p.classList.toggle("hidden", !show);
       p.classList.toggle("block", show);
     });
@@ -248,4 +121,10 @@ const tags = Object.keys(faqData).map((key, index) => ({
   tagEls.forEach((el) => {
     el.addEventListener("click", () => activate(el.getAttribute("data-tag")));
   });
+
+  // Initialize first tab as active if present
+  if (tagEls.length > 0) {
+    const firstId = tagEls[0].getAttribute("data-tag");
+    activate(firstId);
+  }
 </script>

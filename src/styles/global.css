@@ -316,3 +316,13 @@ html {
   opacity: 0;
   animation: fade-in 0.7s ease forwards;
 }
+
+ /* input.css */
+  .scrollbar-hidden {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;             /* Chrome, Safari and Opera */
+  }

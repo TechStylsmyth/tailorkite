@@ -1,4 +1,10 @@
 ---
+// TYPES //
+import type { HomeInfo } from "../types/home";
+
+// CONSTANTS //
+import { API_URL } from "../constants";
+
 // OTHERS //
 import Layout from "../layouts/Layout.astro";
 
@@ -6,19 +12,16 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../sections/who-we-are/Hero.astro";
 import Stats from "../sections/who-we-are/Stats.astro";
 import ContactUs from "../sections/who-we-are/ContactUs.astro";
-import FAQ from "../sections/who-we-are/Faq.astro";
 import WhoAreWe from "../sections/who-we-are/WhoAreWe.astro";
 import OurStory from "../sections/who-we-are/OurStory.astro";
-import { API_URL } from "../constants";
-import type { HomeInfo, FaqInfo } from "../types/home";
+import Team from "../sections/who-we-are/Team.astro";
+import Founder from "../sections/who-we-are/Founder.astro";
 
 let homeInfo: HomeInfo = {
   stats: {
     numbers: [],
   },
 };
-
-let faqInfo: FaqInfo = { categories: [], frequently_asked_questions: [] };
 
 try {
   const res = await fetch(API_URL);
@@ -27,10 +30,6 @@ try {
     stats: {
       numbers: [],
     },
-  };
-  faqInfo = json?.data?.faq_info ?? {
-    categories: [],
-    frequently_asked_questions: [],
   };
 } catch (e) {
   console.error(e);
@@ -42,6 +41,7 @@ try {
   <OurStory />
   <WhoAreWe />
   {homeInfo.stats && <Stats stats={homeInfo.stats} />}
-  {faqInfo.frequently_asked_questions && <FAQ faqInfo={faqInfo} />}
+  <Founder />
+  <Team />
   <ContactUs />
 </Layout>
